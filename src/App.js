@@ -2,9 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import Amplify, { API } from 'aws-amplify';
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
-API.configure(awsExports);
+
 
 const myAPI = "api7dcb2768"
 const path = '/users'; 
