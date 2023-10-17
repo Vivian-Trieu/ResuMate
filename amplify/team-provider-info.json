@@ -15,7 +15,7 @@
       "function": {
         "UserHandler": {
           "deploymentBucketName": "amplify-resumescreenerapp-dev-05121-deployment",
-          "s3Key": "amplify-builds/UserHandler-315141783339336f4b54-build.zip"
+          "s3Key": "amplify-builds/UserHandler-4a6a67756c332f553037-build.zip"
         }
       },
       "api": {
