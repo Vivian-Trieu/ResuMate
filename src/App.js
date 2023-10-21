@@ -1,53 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import Amplify, { API } from 'aws-amplify';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import LoginPage from "src/components/LoginPage.js";
+import SignUpPage from "src/components/SignUpPage.js";
+import ForgotPasswordPage from "src/components/ForgotPasswordPage.js";
 
-
-const myAPI = "api7dcb2768"
-const path = '/users'; 
-
-const App = () => {
-  const [input, setInput] = useState("")
-  const [users, setUsers] = useState([])
-
-  //Function to fetch from our backend and update user array
-  function getUser(e) {
-    let userID = e.input
-    API.get(myAPI, path + "/" + userID)
-       .then(response => {
-         console.log(response)
-         let newUsers = [...users]
-         newUsers.push(response)
-         setUsers(newUsers)
-
-       })
-       .catch(error => {
-         console.log(error)
-       })
-  }
-
+function App() {
   return (
-    
-    <div className="App">
-      <h1>Super Simple React App</h1>
-      <div>
-          <input placeholder="user id" type="text" value={input} onChange={(e) => setInput(e.target.value)}/>      
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/signup">
+            <SignUpPage />
+          </Route>
+          <Route path="/forgot-password">
+            <ForgotPasswordPage />
+          </Route>
+          <Route path="/">
+            <LoginPage />
+          </Route>
+        </Switch>
       </div>
-      <br/>
-      <button onClick={() => getUser({input})}>Get User From Backend</button>
-
-      <h2 style={{visibility: users.length > 0 ? 'visible' : 'hidden' }}>Response</h2>
-      {
-       users.map((thisUser, index) => {
-         return (
-        <div key={thisUser.userID}>
-          <span><b>UserID:</b> {thisUser.userID} - <b>UserName</b>: {thisUser.userName}</span>
-        </div>)
-       })
-      }
-    </div>
-  )
+    </Router>
+  );
 }
 
 export default App;
