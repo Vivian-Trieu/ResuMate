@@ -1,6 +1,6 @@
 {
   "api": {
-    "api7dcb2768": {
+    "newapi": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "UserHandler"
+          "resourceName": "newapp732e55b5"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -16,27 +16,49 @@
     }
   },
   "function": {
-    "UserHandler": {
+    "newapp732e55b5": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
-  "hosting": {},
+  "hosting": {
+    "amplifyhosting": {
+      "providerPlugin": "awscloudformation",
+      "service": "amplifyhosting",
+      "type": "manual"
+    }
+  },
   "parameters": {
-    "AMPLIFY_function_UserHandler_deploymentBucketName": {
+    "AMPLIFY_function_newapp732e55b5_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "UserHandler"
+          "resourceName": "newapp732e55b5"
         }
       ]
     },
-    "AMPLIFY_function_UserHandler_s3Key": {
+    "AMPLIFY_function_newapp732e55b5_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "UserHandler"
+          "resourceName": "newapp732e55b5"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
         }
       ]
     }
