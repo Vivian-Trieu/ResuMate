@@ -8,9 +8,6 @@ import Profile from "../img/profile-button.png"
 import ClickedProfile from "../img/profile-button-clicked.png"
 
 
-
-// BottomNav.js
-
 function BottomNavigation({ activeTab, setActiveTab}) {
 
     const [homeImg, setHomeImg] = useState(ClickedHome);

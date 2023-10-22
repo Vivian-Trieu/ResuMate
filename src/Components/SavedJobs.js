@@ -1,6 +1,4 @@
-// SavedJobs.js
 import "./SavedJobs.css"
-
 import React from 'react';
 
 function SavedJobs({likedJobs}) {
