@@ -1,0 +1,63 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #00A7A6;
+
+}
+
+.profile-box {
+    display: flex;
+    flex-direction: column; 
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    /* max-width: 300px !important; */
+    width: 90%; /* Adjust as needed */
+    height: 60%;
+    min-height: 450px;
+    max-height: 500px;
+}
+  
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+  
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 20px;
+}
+  
+.resume-upload-btn {
+    background: blue;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.resume-info {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+  
+.sub-info {
+    display: flex;
+    flex-direction: column; 
+    /* margin: 20px; */
+    padding: 20px;
+    margin: 2px 0;
+    text-align: start;
+    max-width: 400px !important;
+    min-width: 350px;
+    width: 100%; /* Adjust as needed */
+}

@@ -7,6 +7,7 @@ import HomeScreen from "./Components/HomeScreen"
 import BottomNavigation from "./Components/BottomNavigation";
 import HeaderTab from "./Components/HeaderTab";
 import SavedJobs from './Components/SavedJobs';
+import Profile from "./Components/Profile"
 
 // function App() {
 //   return (
@@ -48,6 +49,8 @@ function App() {
   }
   else if (activeTab === 'saved-jobs') {
     content = <SavedJobs likedJobs={likedJobs}/>
+  } else {
+    content = <Profile/>
   }
 
   return (
