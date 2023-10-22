@@ -5,6 +5,7 @@ import SignUpPage from "./Components/SignUpPage";
 import ForgotPasswordPage from "./Components/ForgotPasswordPage";
 import HomeScreen from "./Components/HomeScreen"
 import BottomNavigation from "./Components/BottomNavigation";
+import HeaderTab from "./Components/HeaderTab"
 
 // function App() {
 //   return (
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div className="App">
+      <HeaderTab />
       <BottomNavigation 
         activeTab={activeTab}
         setActiveTab={setActiveTab}

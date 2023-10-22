@@ -10,7 +10,7 @@ import Profile from "../img/profile-button.png"
 
 function BottomNavigation({ activeTab, setActiveTab}) {
 
-    const [homeImg, setHomeImg] = useState(Home);
+    const [homeImg, setHomeImg] = useState(ClickedHome);
     const [savedImg, setSavedImg] = useState(SavedJobs);
     const [profileImg, setProfileImg] = useState(Profile);
 
