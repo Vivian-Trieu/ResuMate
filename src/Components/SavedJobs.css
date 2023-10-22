@@ -1,16 +1,50 @@
-.saved-jobs-container {
-    padding: 20px;
-  }
-  
-  .saved-jobs-list {
+/* SavedJobs.css */
+
+body {
+    margin: 0;
+}
+
+.saved-jobs-cointainer {
     display: flex;
     flex-direction: column;
-  }
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #00A7A6;
+}
+
+.saved-jobs-box {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 450px;
+}
+
+.saved-job {
+    display: flex;
+    flex-direction: column; 
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* margin: 20px; */
+    padding: 20px;
+    margin: 2px 0;
+    text-align: start;
+    max-width: 400px !important;
+    min-width: 350px;
+    width: 100%; /* Adjust as needed */
+    border-radius: 10px; /* Add rounded corners */
+    
+}
+
+.saved-jobs-cointainer h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.saved-jobs-cointainer h3,
+.saved-jobs-cointainer p {
+    margin: 0;
+}
   
-  .saved-job {
-    background: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+  /* Styles for job title, company, etc */

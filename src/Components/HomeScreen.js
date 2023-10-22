@@ -3,7 +3,7 @@ import "./HomeScreen.css"
 import SaveButton from "../img/click-to-save-job-button.png"
 import SkipButton from "../img/click-to-skip-job-button.png"
 
-function HomeScreen() {
+function HomeScreen({likedJobs, setLikedJobs}) {
 
     const [jobs, setJobs] = useState([
         {
@@ -39,8 +39,6 @@ function HomeScreen() {
         },
         // etc
       ]);
-    
-      const [likedJobs, setLikedJobs] = useState([]);
     
       const [currentJobIndex, setCurrentJobIndex] = useState(0);
 

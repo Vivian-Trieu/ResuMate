@@ -40,14 +40,14 @@ import SavedJobs from './Components/SavedJobs';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
-
+  const [likedJobs, setLikedJobs] = useState([]);
   let content;
 
   if (activeTab === 'home') {
-    content = <HomeScreen />
+    content = <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
   }
   else if (activeTab === 'saved-jobs') {
-    content = <SavedJobs />
+    content = <SavedJobs likedJobs={likedJobs}/>
   }
 
   return (
