@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "./HomeScreen.css"
 import SaveButton from "../img/click-to-save-job-button.png"
 import SkipButton from "../img/click-to-skip-job-button.png"
-// import BottomNavigation from "./BottomNavigation"
+import BottomNavigation from "./BottomNavigation"
 
 function HomeScreen() {
 
@@ -79,13 +79,13 @@ function HomeScreen() {
                   </div>
               </div>
               <div className="button-container">
-                <button><img class="button-img" src={SkipButton} alt="Save Job" onClick={handleDislike}/></button>
-                <button><img class="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
+                <button><img className="button-img" src={SkipButton} alt="Save Job" onClick={handleDislike}/></button>
+                <button><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
               </div>
             </div>
-            {/* <div className="nav-bar">
-              <BottomNavigation/>
-            </div> */}
+            <div className="nav-bar">
+              {/* <BottomNavigation/> */}
+            </div>
           </div>
         );
       } else if (currentScreen === 'no-more') {

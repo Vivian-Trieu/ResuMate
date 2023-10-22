@@ -4,10 +4,11 @@ body {
 
 .home-screen-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f2f2f2;
+    background-color: #00A7A6;
 }
 
 .job-box {
@@ -35,11 +36,12 @@ body {
 
 button {
     border: none;
-    background-color: transparent;
+    background-color: transparent; 
 }
 
 .button-img {
   width: 40%;
+  cursor: pointer;
 
 }
 
@@ -53,9 +55,8 @@ button {
 
     width: 90%;
     max-width: 280px;
-    height: 80%;
     min-height: 380px;
-    max-height: 380px;
+    max-height: 430px;
 }
 
 .description-box {
@@ -79,14 +80,18 @@ button {
 
 
 h2 {
-    font-size: 1.25em !important;
+    font-size: 1.3em !important;
     margin: 2px;
 }
   
 p {
-    font-size: 0.75em;
+    font-size: 0.9em;
 }
-  
+
+.nav-bar {
+    display: flex;
+    padding-top: 20px;
+}
 
 /* Media query for mobile screens
 @media (max-width: 768px) {
