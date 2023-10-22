@@ -5,7 +5,8 @@ import SignUpPage from "./Components/SignUpPage";
 import ForgotPasswordPage from "./Components/ForgotPasswordPage";
 import HomeScreen from "./Components/HomeScreen"
 import BottomNavigation from "./Components/BottomNavigation";
-import HeaderTab from "./Components/HeaderTab"
+import HeaderTab from "./Components/HeaderTab";
+import SavedJobs from './Components/SavedJobs';
 
 // function App() {
 //   return (
@@ -42,8 +43,11 @@ function App() {
 
   let content;
 
-  if(activeTab === 'home') {
+  if (activeTab === 'home') {
     content = <HomeScreen />
+  }
+  else if (activeTab === 'saved-jobs') {
+    content = <SavedJobs />
   }
 
   return (

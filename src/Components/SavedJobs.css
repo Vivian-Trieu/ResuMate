@@ -1,0 +1,16 @@
+.saved-jobs-container {
+    padding: 20px;
+  }
+  
+  .saved-jobs-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .saved-job {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
