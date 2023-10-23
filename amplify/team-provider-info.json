@@ -22,6 +22,14 @@
         "newapp732e55b5": {
           "deploymentBucketName": "amplify-newapp-dev-122955-deployment",
           "s3Key": "amplify-builds/newapp732e55b5-75786d6c506555574559-build.zip"
+        },
+        "handleUserSaveJobListing": {
+          "deploymentBucketName": "amplify-newapp-dev-122955-deployment",
+          "s3Key": "amplify-builds/handleUserSaveJobListing-6e4662744e6e66466645-build.zip"
+        },
+        "queryGoogleJobs": {
+          "deploymentBucketName": "amplify-newapp-dev-122955-deployment",
+          "s3Key": "amplify-builds/queryGoogleJobs-41643671595430704e59-build.zip"
         }
       }
     }

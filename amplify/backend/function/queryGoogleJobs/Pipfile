@@ -7,6 +7,7 @@ verify_ssl = true
 
 [packages]
 src = {editable = true, path = "./src"}
+google-api-python-client = "*"
 
 [requires]
-python_version = "3.11"
+python_version = "3.8"

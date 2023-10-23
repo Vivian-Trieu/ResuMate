@@ -16,7 +16,17 @@
     }
   },
   "function": {
+    "handleUserSaveJobListing": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "newapp732e55b5": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "queryGoogleJobs": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -30,6 +40,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_handleUserSaveJobListing_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserSaveJobListing"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserSaveJobListing_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserSaveJobListing"
+        }
+      ]
+    },
     "AMPLIFY_function_newapp732e55b5_deploymentBucketName": {
       "usedBy": [
         {
@@ -43,6 +69,22 @@
         {
           "category": "function",
           "resourceName": "newapp732e55b5"
+        }
+      ]
+    },
+    "AMPLIFY_function_queryGoogleJobs_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "queryGoogleJobs"
+        }
+      ]
+    },
+    "AMPLIFY_function_queryGoogleJobs_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "queryGoogleJobs"
         }
       ]
     },
