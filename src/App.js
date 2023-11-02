@@ -11,18 +11,31 @@ import Profile from "./Components/Profile"
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
+  const renderForm = () => {
+    switch (currentForm) {
+      case 'login':
+        return <LoginPage onFormSwitch={toggleForm} />;
+      case 'sign up':
+        return <SignUpPage onFormSwitch={toggleForm} />;
+      case 'forgot password':
+        return <ForgotPasswordPage onFormSwitch={toggleForm} />;
+      // Add more cases for other forms if needed
+      default:
+        return <LoginPage onFormSwitch={toggleForm} />;
+    }
+  };
+
   const toggleForm = (formName) => {
     setCurrentForm(formName);
   }
 
   return (
     <div className="App">
-      {
-        currentForm === "login" ? <LoginPage onFormSwitch={toggleForm} /> : <SignUpPage onFormSwitch={toggleForm} />
-      }
+      {renderForm()}
     </div>
   );
 }
+
 
 export default App;
 

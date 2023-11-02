@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ForgotPassword.css";
 
-function ForgotPasswordPage() {
+function ForgotPasswordPage(props) {
   return (
     <div className="forgot-password-container">
       <div className="forgot-password-box">
@@ -10,9 +11,7 @@ function ForgotPasswordPage() {
           <input type="email" placeholder="Email" />
           <button type="submit">Send Recovery Link</button>
         </form>
-        <p>
-          <Link to="/">Back to Login</Link>
-        </p>
+          <button type="button" onClick={() => props.onFormSwitch('login')}>Back to Login</button>
       </div>
     </div>
   );
