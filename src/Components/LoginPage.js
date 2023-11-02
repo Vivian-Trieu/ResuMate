@@ -1,7 +1,8 @@
+
 import React, { useState } from "react";
 import "./LoginPage.css";
 
-function LoginPage() {
+function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,43 +11,35 @@ function LoginPage() {
     alert("Logging in with Email: " + email + " and Password: " + password);
   };
 
-  const handleForgotPassword = () => {
-    // Implement forgot password here
-    alert("Forgot Password: Enter your email to recover your password");
-  };
-
-  const handleSignUp = () => {
-    // Implement signup here
-    alert("Redirect to the sign-up page");
-  };
-
   return (
     <div className="login-container">
-      <div className="login-box">
-        <h1>Login</h1>
+      <div className="div">
+        <div className="label">
+          <div className="login">Login</div>
+        </div>
         <form>
           <input
             type="email"
+            className="email-field"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
+            className="password-field"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div className="button-container">
-            <button type="button" onClick={handleLogin}>
-              Sign In
-            </button>
-            <button type="button" onClick={handleSignUp}>
-              Sign Up
-            </button>
-          </div>
-          <button type="button" onClick={handleForgotPassword}>
+          <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
             Forgot Password
+          </button>
+          <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
+              Don't have an account? 
+          </button>
+          <button type="button" className="sign-in" onClick={handleLogin}>
+              SIGN IN
           </button>
         </form>
       </div>

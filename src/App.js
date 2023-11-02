@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import LoginPage from "./Components/LoginPage";
 import SignUpPage from "./Components/SignUpPage";
@@ -9,36 +9,25 @@ import HeaderTab from "./Components/HeaderTab";
 import SavedJobs from './Components/SavedJobs';
 import Profile from "./Components/Profile"
 
-// function App() {
-//   return (
-//     <Router>
-//       <div className="App">
-//         <nav>
-//           <ul>
-//             <li>
-//               <Link to="/">Login</Link>
-//             </li>
-//             <li>
-//               <Link to="/signup">Sign Up</Link>
-//             </li>
-//           </ul>
-//         </nav>
-//         <Routes>
-//           <Route path="/signup">
-//             <SignUpPage />
-//           </Route>
-//           <Route path="/forgot-password">
-//             <ForgotPasswordPage />
-//           </Route>
-//           <Route path="/">
-//             <LoginPage />
-//           </Route>
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
+function App() {
+  const [currentForm, setCurrentForm] = useState('login');
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
 
+  return (
+    <div className="App">
+      {
+        currentForm === "login" ? <LoginPage onFormSwitch={toggleForm} /> : <SignUpPage onFormSwitch={toggleForm} />
+      }
+    </div>
+  );
+}
+
+export default App;
+
+
+/*
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [likedJobs, setLikedJobs] = useState([]);
@@ -65,4 +54,32 @@ function App() {
   )
 }
 
-export default App;
+ return (
+     <Router>
+       <div className="App">
+         <nav>
+           <ul>
+             <li>
+               <Link to="/">Login</Link>
+             </li>
+             <li>
+               <Link to="/signup">Sign Up</Link>
+             </li>
+           </ul>
+         </nav>
+         <Routes>
+           <Route path="/signup">
+             <SignUpPage />
+           </Route>
+           <Route path="/forgot-password">
+             <ForgotPasswordPage />
+           </Route>
+           <Route path="/">
+             <LoginPage />
+           </Route>
+         </Routes>
+       </div>
+     </Router>
+   );
+
+*/
