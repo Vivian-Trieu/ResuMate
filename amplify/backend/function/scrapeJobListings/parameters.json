@@ -1,3 +1,0 @@
-{
-  "CloudWatchRule": "cron(32 14 * * ? *)"
-}
