@@ -13,10 +13,114 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    },
+    "resu": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "handleGetResumeProfile"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "testgoogleapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "queryGoogleJobs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "newapp": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
     }
   },
   "function": {
+    "handleDeleteResumeProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleGetResumeProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleRegisterUser": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleResumeUploadEvent": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleStoringScrapedJobs": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUpdateResumeProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserLogin": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "handleUserSaveJobListing": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserUnsaveJobListing": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserUpdate": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserViewSavedJobListings": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -30,6 +134,12 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "scrapeJobListings": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -40,54 +150,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_handleUserSaveJobListing_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "handleUserSaveJobListing"
-        }
-      ]
-    },
-    "AMPLIFY_function_handleUserSaveJobListing_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "handleUserSaveJobListing"
-        }
-      ]
-    },
-    "AMPLIFY_function_newapp732e55b5_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "newapp732e55b5"
-        }
-      ]
-    },
-    "AMPLIFY_function_newapp732e55b5_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "newapp732e55b5"
-        }
-      ]
-    },
-    "AMPLIFY_function_queryGoogleJobs_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "queryGoogleJobs"
-        }
-      ]
-    },
-    "AMPLIFY_function_queryGoogleJobs_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "queryGoogleJobs"
-        }
-      ]
-    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/query": {
+      "name": "/query",
+      "lambdaFunction": "queryGoogleJobs",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

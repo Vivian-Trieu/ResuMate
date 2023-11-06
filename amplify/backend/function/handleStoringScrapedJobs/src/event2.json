@@ -1,0 +1,38 @@
+{
+    "jobs": [
+        {
+            "contents": "<p>Broadridge is hiring! We are looking for our next QA/BA SME to work remotely. This is a Technology based role that will enable you to partner with the business team, define the requirements, assuring the realization of business benefits and supporting the business process. Are you a self starter who is passionate about analyzing and enhancing technology solutions? If you're striving to work among a growing and dynamic team, we would love you to read below.</p>\n<p>In this role, your primary responsibility will be to work with a newly acquired client for the Broadridge Product suite of applications that support Cash Management. You will directly contribute to the creation and execution of QA test cases, coordinate with the client on UAT and SIT testing and ultimately the deployment of resulting new systems and enhanced functionality. To be successful in this role, you should possess exceptional drive and energy, with a market-driven solutions orientation, proven product/project management experience, highly effective verbal and written communications skills, and the organizational ability to achieve results.</p>\n<p><strong>Responsibilities include:</strong><br/>\n- You will be BA/SME working directly with a large client to successfully define, develop, and deploy new products and functionality and ultimately convert to the BR platform.<br/>\n- You will work amongst the QA teams to complete testing of various deliverables. This will include writing test cases, executing test cases, logging defects and working with Development to fix defects.<br/>\n- You will establish and maintain consistent communication with the client regarding progress of conversion<br/>\n- You will lead Workflow / Gap process and analysis as we go through the process.<br/>\n- You may need to assist with training the client once the product functionalities are developed<br/>\n- You will communicate internally with the tech leads and development teams on enhancements for your product<br/>\n- Support the client and other workstreams during integration testing and User Acceptance Testing<br/>\n- You will handle issues/escalations and are empowered to make informed decisions for your respective stream responsibilities, ensuring we stay on target and \u2018green\u2019 for the all deliverables leading to the end date of the conversion and beyond.</p>\n<p><strong>Qualifications</strong>:<br/>\n- Wealth Management experience in customer/retail cash management is a plus Cash management knowledge is specific to customer transactions and processes such as ACH, wires, checks, money markets.<br/>\n- Experience writing detailed user stories and requirements documentation<br/>\n- Experience eliciting complex requirements from a client verbally in meetings<br/>\n- Knowledge of Agile project methodology<br/>\n- Comfortable with completing QA-related responsibilities<br/>\n- Industry knowledge of processing these types of transactions with SWIFT, NACHA, Money Fund Companies a plus.<br/>\n- 5+ years' experience in Product Management or QA Testing and or product/brokerage operations<br/>\n- Self-starter; comfortable working under tight deadlines in a high-pressure environment<br/>\n- Highly detail oriented and organizational skills a must.<br/>\n- Must be able to work nights and weekends as required.<br/>\n- Must be assertive with client to prevent scope creep<br/>\n- Experience using JIRA<br/>\n- Experience executing a major technology project \u2013 including but not limited to enhancements to functions, building new functionality or applications, managing feature lists and ensuring project is delivered on time and in scope. Project management background/exposure is a plus.</p>\n<h1>LI-MR1</h1>",
+            "name": "QA/BA SME (CONTRACT) REMOTE - JR1031150",
+            "type": "external",
+            "publication_date": "2021-07-14T14:19:14Z",
+            "short_name": "qaba-sme-contract-remote-jr1031150",
+            "model_type": "jobs",
+            "id": 6290114,
+            "locations": [
+                {
+                    "name": "Newark, NJ"
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Accounting"
+                }
+            ],
+            "levels": [
+                {
+                    "name": "Senior Level",
+                    "short_name": "senior"
+                }
+            ],
+            "tags": [],
+            "refs": {
+                "landing_page": "https://www.themuse.com/jobs/broadridge/qaba-sme-contract-remote-jr1031150"
+            },
+            "company": {
+                "id": 702,
+                "short_name": "broadridge",
+                "name": "Broadridge"
+            }
+        }
+    ]
+}

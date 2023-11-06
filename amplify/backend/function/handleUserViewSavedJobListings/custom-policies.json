@@ -1,0 +1,10 @@
+[
+  {
+    "Action": ["dynamodb:Query"],
+    "Resource": ["arn:aws:dynamodb:us-west-1:319163603467:table/UserSavedListings"]
+  },
+  {
+    "Action": ["dynamodb:GetItem"],
+    "Resource": ["arn:aws:dynamodb:us-west-1:319163603467:table/JobListings"]
+  }
+]

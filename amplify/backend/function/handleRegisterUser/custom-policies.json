@@ -1,0 +1,10 @@
+[
+  {
+    "Action": ["dynamodb:PutItem"],
+    "Resource": ["arn:aws:dynamodb:us-west-1:319163603467:table/Users"]
+  },
+  {
+    "Action": ["dynamodb:Scan"],
+    "Resource": ["arn:aws:dynamodb:us-west-1:319163603467:table/Users"]
+  }
+]
