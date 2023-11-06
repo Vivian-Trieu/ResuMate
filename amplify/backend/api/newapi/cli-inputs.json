@@ -1,11 +1,30 @@
 {
   "version": 1,
   "paths": {
-    "/items": {
-      "name": "/items",
+    "/items/{event}": {
+      "name": "/items/{event}",
       "lambdaFunction": "newapp732e55b5",
       "permissions": {
         "setting": "open"
+      }
+    },
+    "/noevent": {
+      "name": "/noevent",
+      "lambdaFunction": "newapp732e55b5",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
       }
     }
   }

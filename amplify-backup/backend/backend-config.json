@@ -1,0 +1,108 @@
+{
+  "api": {
+    "newapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "newapp732e55b5"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "handleUserSaveJobListing": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "newapp732e55b5": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "queryGoogleJobs": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "providerPlugin": "awscloudformation",
+      "service": "amplifyhosting",
+      "type": "manual"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_handleUserSaveJobListing_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserSaveJobListing"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserSaveJobListing_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserSaveJobListing"
+        }
+      ]
+    },
+    "AMPLIFY_function_newapp732e55b5_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "newapp732e55b5"
+        }
+      ]
+    },
+    "AMPLIFY_function_newapp732e55b5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "newapp732e55b5"
+        }
+      ]
+    },
+    "AMPLIFY_function_queryGoogleJobs_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "queryGoogleJobs"
+        }
+      ]
+    },
+    "AMPLIFY_function_queryGoogleJobs_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "queryGoogleJobs"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    }
+  }
+}

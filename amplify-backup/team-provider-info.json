@@ -1,0 +1,37 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-newapp-dev-122955-authRole",
+      "UnauthRoleArn": "arn:aws:iam::319163603467:role/amplify-newapp-dev-122955-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::319163603467:role/amplify-newapp-dev-122955-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-newapp-dev-122955-deployment",
+      "UnauthRoleName": "amplify-newapp-dev-122955-unauthRole",
+      "StackName": "amplify-newapp-dev-122955",
+      "StackId": "arn:aws:cloudformation:us-west-1:319163603467:stack/amplify-newapp-dev-122955/b8358a10-6dec-11ee-ae83-021c0e4fc783",
+      "AmplifyAppId": "d3mxfxvj02tj0v"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3mxfxvj02tj0v",
+          "type": "manual"
+        }
+      },
+      "function": {
+        "newapp732e55b5": {
+          "deploymentBucketName": "amplify-newapp-dev-122955-deployment",
+          "s3Key": "amplify-builds/newapp732e55b5-75786d6c506555574559-build.zip"
+        },
+        "handleUserSaveJobListing": {
+          "deploymentBucketName": "amplify-newapp-dev-122955-deployment",
+          "s3Key": "amplify-builds/handleUserSaveJobListing-6e4662744e6e66466645-build.zip"
+        },
+        "queryGoogleJobs": {
+          "deploymentBucketName": "amplify-newapp-dev-122955-deployment",
+          "s3Key": "amplify-builds/queryGoogleJobs-41643671595430704e59-build.zip"
+        }
+      }
+    }
+  }
+}
