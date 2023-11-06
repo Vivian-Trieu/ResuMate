@@ -15,15 +15,17 @@ body {
     display: flex;
     flex-direction: column; 
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     padding: 20px;
     text-align: center;
-    max-width: 300px !important;
-    width: 90%; /* Adjust as needed */
-    height: 60%;
-    min-height: 450px;
-    max-height: 500px;
-    border-radius: 10px; /* Add rounded corners */
+    /* max-width: 300px !important; */
+    /* width: 90%; Adjust as needed */
+    /* height: 60%; */
+    /* min-height: 550px;
+    max-height: 550px; */
+    width: 40vw;
+    height: 70vh;
+    border-radius: 30px; /* Add rounded corners */
 }
 
 .button-container {
