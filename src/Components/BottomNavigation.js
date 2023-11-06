@@ -34,21 +34,23 @@ function BottomNavigation({ activeTab, setActiveTab}) {
 
     return (
         <div className="bottom-nav-container">
-            <nav className="bottom-nav">
-                <ul>
-                    <li className={activeTab === 'saved-jobs' ? 'active' : ''} onClick={() => {setActiveTab('saved-jobs'); handleTabClick('saved-jobs');}}>
-                        <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
-                    </li>
-            
-                    <li className={activeTab === 'home' ? 'active' : ''} onClick={() => {setActiveTab('home'); handleTabClick('home');}}>
-                        <img className="nav-button-img" src={homeImg} alt="Home"  />
-                    </li>
-            
-                    <li className={activeTab === 'account' ? 'active' : ''} onClick={() => {setActiveTab('account'); handleTabClick('account');}}>
-                        <img className="nav-button-img" src={profileImg} alt="Profile"  />
-                    </li>
-                </ul>
-            </nav>
+            <div className="bottom-nav-box">
+                <nav className="bottom-nav">
+                    <ul>
+                        <li className={activeTab === 'saved-jobs' ? 'active' : ''} onClick={() => {setActiveTab('saved-jobs'); handleTabClick('saved-jobs');}}>
+                            <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
+                        </li>
+                
+                        <li className={activeTab === 'home' ? 'active' : ''} onClick={() => {setActiveTab('home'); handleTabClick('home');}}>
+                            <img className="nav-button-img" src={homeImg} alt="Home"  />
+                        </li>
+                
+                        <li className={activeTab === 'account' ? 'active' : ''} onClick={() => {setActiveTab('account'); handleTabClick('account');}}>
+                            <img className="nav-button-img" src={profileImg} alt="Profile"  />
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     );
 }

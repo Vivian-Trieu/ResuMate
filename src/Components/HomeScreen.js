@@ -68,16 +68,19 @@ function HomeScreen({likedJobs, setLikedJobs}) {
           <div className="home-screen-container">
             <div className="job-box">
               <div className="job">
-                  <h2>{jobs[currentJobIndex].title}</h2>
-                  <p>{jobs[currentJobIndex].company}</p>
-                  <p>{jobs[currentJobIndex].location}</p>
+                  <h1 className="job-title">{jobs[currentJobIndex].title}</h1>
+                  <p className="company">{jobs[currentJobIndex].company}</p>
+                  <div className="break"></div>
+                  <div className="other-attributes">
+                    <p>{jobs[currentJobIndex].location}</p>
+                  </div>
                   <div className="description-box">
                       <p>{jobs[currentJobIndex].description}</p>
                   </div>
               </div>
               <div className="button-container">
-                <button><img className="button-img" src={SkipButton} alt="Save Job" onClick={handleDislike}/></button>
-                <button><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
+                <button className="skip-job"><img className="button-img" src={SkipButton} alt="Skip Job" onClick={handleDislike}/></button>
+                <button className="save-job"><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
               </div>
             </div>  
           </div>

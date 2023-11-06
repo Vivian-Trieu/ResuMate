@@ -1,5 +1,6 @@
 body {
-    margin: 0 !important
+    margin: 0 !important;
+    font-family: 'Nunito', sans-serif;
 }
 
 .home-screen-container {
@@ -16,15 +17,15 @@ body {
     flex-direction: column; 
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-    padding: 20px;
+    padding: 1em;
     text-align: center;
     /* max-width: 300px !important; */
     /* width: 90%; Adjust as needed */
     /* height: 60%; */
     /* min-height: 550px;
     max-height: 550px; */
-    width: 40vw;
-    height: 70vh;
+    width: 20em;
+    height: 36em;
     border-radius: 30px; /* Add rounded corners */
 }
 
@@ -37,14 +38,19 @@ body {
 }
 
 button {
+    display: flex;
     border: none;
     background-color: transparent; 
 }
 
 .button-img {
-  width: 40%;
+  width: 45%;
   cursor: pointer;
 
+}
+
+.save-job {
+    justify-content: flex-end;
 }
 
 .job {
@@ -56,16 +62,16 @@ button {
     margin: 5px auto;
 
     width: 90%;
-    max-width: 280px;
+    max-width: 20em;
     min-height: 380px;
-    max-height: 430px;
+    max-height: 550px;
 }
 
 .description-box {
     /* height: calc(100vh - 60vh); */
     overflow: auto;
     position: relative;
-    padding: 0px 5px;
+    padding: 0;
     text-align: start;
     /* margin-bottom: 20px */
 }
@@ -81,11 +87,29 @@ button {
 }
 
 
-h2 {
-    font-size: 1.3em !important;
-    margin: 2px;
+h1, .job-title {
+    text-align: left;
+    margin-top: 0.3em;
+    font-size: 2em !important;
+    margin-bottom: 0 !important;
+    /* margin: 2px; */
 }
-  
+
+p, .company {
+    font-size: 1.4em;
+    margin-top: 0 !important;
+    margin-bottom: 0.6em;
+}
+
+.break {
+    width: 100%;
+    border-bottom: 1.25px solid #C3C3C3;
+}
+
+.other-attributes {
+    margin: 0.85em 0 0.6em 0;
+}
+
 p {
     font-size: 0.9em;
 }

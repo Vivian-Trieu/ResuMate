@@ -1,5 +1,4 @@
 .header-tab {
-    position: absolute;
     top: 0px;
     background: #fff;
     position: fixed;
@@ -7,7 +6,8 @@
     left: 0;
     right: 0;
     height: 5%; 
-    min-height: 72px;
+    /* min-height: 72px; */
+    min-height: 4.5em;
     display: flex;
     align-items: center;
     justify-content: center;

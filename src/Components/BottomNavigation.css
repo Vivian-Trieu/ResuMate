@@ -5,7 +5,8 @@
     left: 0;
     right: 0;
     height: 5%; 
-    min-height: 72px;
+    /* min-height: 72px; */
+    min-height: 4.5em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,15 +16,19 @@
     position: relative;
 }
 
+.bottom-nav-box {
+    width: 22em ;
+}
   
 .bottom-nav ul {
     display: flex;
     align-items: center;
     list-style-type: none;
-    height: 100%;
+    /* height: 100%; */
     padding: 0;
     margin: 0;
     position: relative;
+    /* width: 24em; */
 }
 
 .bottom-nav li {
@@ -32,6 +37,7 @@
     font-size: 12px;
     cursor: pointer;
     color: #65676b;
+    /* width: 12em; */
 }
 
 .bottom-nav li.active {
@@ -40,7 +46,7 @@
 }
 
 .nav-button-img {
-    width: 20%; 
+    width: 28%; 
     max-width: 200px;
 }
 
