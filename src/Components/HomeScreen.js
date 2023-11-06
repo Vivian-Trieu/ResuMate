@@ -72,7 +72,7 @@ function HomeScreen({likedJobs, setLikedJobs}) {
                   <p className="company">{jobs[currentJobIndex].company}</p>
                   <div className="break"></div>
                   <div className="other-attributes">
-                    <p>{jobs[currentJobIndex].location}</p>
+                    <p className="location">{jobs[currentJobIndex].location}</p>
                   </div>
                   <div className="description-box">
                       <p>{jobs[currentJobIndex].description}</p>

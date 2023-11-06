@@ -11,39 +11,67 @@ body {
     background-color: #00A7A6;
 }
 
-.saved-jobs-box {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    height: 70%;
-    width: 450px;
-}
 
 .saved-job {
     display: flex;
     flex-direction: column; 
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 7px 10px 0 rgba(0, 0, 0, 2);
     /* margin: 20px; */
-    padding: 20px;
-    margin: 2px 0;
+    padding: 1em;
+    margin: 0.8em 0;
     text-align: start;
-    max-width: 400px !important;
-    min-width: 350px;
-    width: 100%; /* Adjust as needed */
+    width: 20em;
+    /* width: 100%; Adjust as needed */
     border-radius: 10px; /* Add rounded corners */
     
 }
 
-.saved-jobs-cointainer h2 {
+.saved-jobs-title {
+    margin: 0 !important;
+    display: flex;
+    width: 22em;
+}
+
+.saved-jobs {
+    /* text-align: left; */
+    /* margin-top: 0.3em; */
+    font-size: 2em !important;
     color: #fff;
-    margin-bottom: 20px;
-    font-size: 1.3em;
+    margin: 0 !important;
+    /* font-size: 1.3em */
 }
 
 .saved-jobs-cointainer h3,
 .saved-jobs-cointainer p {
     margin: 0;
 }
+
+.saved-jobs-box {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 34em;
+    width: 100%;
+    /* width: 20em; */
+}
+
+.job-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.apply-btn, .remove-btn {
+    background: #EFEFEF;
+    /* color: white; */
+    margin-top: 0.6em;
+    padding: 0.3em 4em;
+    border: 1px solid #c3c3c3;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
   
   /* Styles for job title, company, etc */

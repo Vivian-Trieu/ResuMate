@@ -81,13 +81,14 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #eee;
+    background: #eeeeee00;
+    /* background: #eee; */
     height: 30px;
     border-radius: 15px;
 }
 
 
-h1, .job-title {
+.job-title {
     text-align: left;
     margin-top: 0.3em;
     font-size: 2em !important;
@@ -108,6 +109,10 @@ p, .company {
 
 .other-attributes {
     margin: 0.85em 0 0.6em 0;
+}
+
+p, .location {
+    margin-bottom: 0;
 }
 
 p {
