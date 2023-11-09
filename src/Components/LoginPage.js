@@ -35,11 +35,11 @@ function LoginPage(props) {
           <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
             Forgot Password?
           </button>
-          <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
-              Don't have an account? 
-          </button>
           <button type="button" className="sign-in" onClick={handleLogin}>
               SIGN IN
+          </button>
+          <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
+              Register here
           </button>
         </form>
       </div>

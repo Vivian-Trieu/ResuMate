@@ -57,6 +57,10 @@
   margin-bottom: 10px;
 }
 
+.form input:not(:placeholder-shown) {
+  color: #000; /* Change text color to black when there is content */
+}
+
 .email-field, .password-field {
   background-position: 95%;
   background-repeat: no-repeat;
@@ -82,27 +86,9 @@
   font-size: 16px;
   font-weight: 400;
   text-align: center;
-  position: absolute;
-  bottom: 290px;
-  left: 75px;
-  width: 100%;
-}
-
-.sign-up {
-  color: #0D1929;
-  font-family: Nunito;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: center;
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  width: 100%;
-}
-
-.sign-up::after {
-  color: #00A7A6;
-  content: " Sign up here";
+  position: relative;
+  margin-top: 2px;
+  margin-left: 150px;
 }
 
 .sign-in {
@@ -119,25 +105,26 @@
   font-weight: 500;
   height: 57px;
   width: 304px; 
-  position: absolute;
-  bottom: 120px;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  margin-top: 170px;
+  align-self: center;
+}
 
+.sign-up {
+  color: #00A7A6;
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+.sign-up::before {
+  color: #0D1929;
+  content: "Don't have an account? ";
 }
 
 .sign-in-button:hover {
   background-color: #0b6e6e;
-}
-
-/* Media query for mobile screens */
-@media (max-width: 768px) {
-  .login-box {
-    width: 95%;
-  }
-
-  .sign-in-button,
-  .sign-up-button {
-    width: 100%;
-  }
 }
