@@ -17,7 +17,7 @@ function LoginPage(props) {
         <div className="label">
           <div className="login">Login</div>
         </div>
-        <form>
+        <form className="form">
           <input
             type="email"
             className="email-field"
@@ -33,7 +33,7 @@ function LoginPage(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
-            Forgot Password
+            Forgot Password?
           </button>
           <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
               Don't have an account? 
