@@ -1,32 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;900&family=Varela+Round&display=swap');
+
 .signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f2f2f2;
-  }
-  
-  .signup-box {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    max-width: 300px;
-    width: 90%;
-    border-radius: 10px;
-  }
-  
-  h1 {
-    margin: 0;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signup-container .div {
+  background-color: #ffffff;
+  height: 844px;
+  width: 390px;
+  margin-top: 20px;
+}
+
+.label {
+  height: 44px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.label .signup {
+  color: #00a7a6;
+  font-family: 'Nunito', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: -100px;
+}
+
+.form input {
+  background-color: #EFEFEF;
+  border: transparent;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.02) inset;
+  border-radius: 30px;
+  width: 275px;
+  height: 28px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  color: #C3C3C3;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.form input:not(:placeholder-shown) {
+  color: #000; /* Change text color to black when there is content */
+}
+
+.name-field, .email-field, .password-field, .confirm-password-field {
+  background-position: 95%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+.name-field {
+  background-image: url('../img/person.png');
+}
+
+.email-field {
+  background-image: url('../img/Email.png');
+
+}
+
+.password-field, .confirm-password-field {
+  background-image: url('../img/password.png');
+}
+
+.register {
+  background-color: #00A7A6;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  height: 57px;
+  width: 304px; 
+  position: relative;
+  margin-top: 60px;
+  align-self: center;
+}
+
+.login-here {
+  color: #00A7A6;
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.login-here::before {
+  color: #0D1929;
+  content: "Already have an account? ";
+}
+
+
