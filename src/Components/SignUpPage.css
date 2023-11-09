@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 200px;
 }
 
 .label .signup {
@@ -38,7 +38,8 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  margin-top: -100px;
+  position: relative;
+  margin-top: -110px;
 }
 
 .form input {
@@ -73,7 +74,6 @@
 
 .email-field {
   background-image: url('../img/Email.png');
-
 }
 
 .password-field, .confirm-password-field {
@@ -99,6 +99,22 @@
   align-self: center;
 }
 
+.back {
+  color: #00A7A6;
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  padding-left: 20px;
+  background-image: url('../img/arrow-back.png');
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+/*
 .login-here {
   color: #00A7A6;
   font-family: Nunito;
@@ -113,5 +129,6 @@
   color: #0D1929;
   content: "Already have an account? ";
 }
+*/
 
 

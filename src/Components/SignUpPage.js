@@ -26,6 +26,7 @@ function SignUpPage(props) {
   return (
     <div className="signup-container">
       <div className="div">
+        <button type="button" className="back" onClick={() => props.onFormSwitch('login')}>Back</button>
         <div className="label">
           <div className="signup">Sign Up</div>
         </div>
@@ -59,7 +60,6 @@ function SignUpPage(props) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <button type="submit" className="register" onClick={handleSignUp}>REGISTER</button>
-          <button type="button" className="login-here" onClick={() => props.onFormSwitch('login')}>Login here</button>
         </form>
       </div>
     </div>
