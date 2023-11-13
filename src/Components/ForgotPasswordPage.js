@@ -1,17 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
 import "./ForgotPassword.css";
 
 function ForgotPasswordPage(props) {
+  const [email, setEmail] = useState("");
+
   return (
     <div className="forgot-password-container">
-      <div className="forgot-password-box">
-        <h1>Forgot Password</h1>
+      <div className="div">
+        <button type="button" className="back" onClick={() => props.onFormSwitch('login')}>Back</button>
+        <div className="label">
+          <div className="recover-password">Recover Password</div>
+        </div>
         <form>
-          <input type="email" placeholder="Email" />
-          <button type="submit">Send Recovery Link</button>
+          <input 
+            type="email" 
+            className="email-field"
+            placeholder="Email"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="submit" className="send">SEND</button>
         </form>
-          <button type="button" onClick={() => props.onFormSwitch('login')}>Back to Login</button>
       </div>
     </div>
   );

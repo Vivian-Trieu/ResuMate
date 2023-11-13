@@ -55,7 +55,7 @@ function SignUpPage(props) {
           <input 
             type="password" 
             className="confirm-password-field"
-            placeholder="Confirm Password" 
+            placeholder="Confirm password" 
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />

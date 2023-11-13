@@ -33,7 +33,7 @@ function LoginPage(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
-            Forgot Password?
+            Forgot password?
           </button>
           <button type="button" className="sign-in" onClick={handleLogin}>
               SIGN IN
