@@ -30,6 +30,21 @@ function SignUpPage(props) {
       // Handle response data
       console.log('API Response:', apiResponse);
 
+      // Check if registration was successful and send alert based on status code
+      /*
+      if (apiResponse.statusCode === 200) {
+        alert('Registration successful!'); 
+        return;
+      } else if (apiResponse.statusCode === 400) {
+        alert('Registration failed. Account already exists.');
+        return;
+      } else {
+        alert('Registration failed. Please try again.');
+        return;
+      }
+      */
+      
+
     } catch (error) {
       // Handle errors from API call
       console.error('API Error:', error);
@@ -86,23 +101,3 @@ function SignUpPage(props) {
 }
 
 export default SignUpPage;
-
-
-const myAPI = "apiname"
-const path = '/pathname';
-
-function postRequestToSomeAPI(e) {
-  API.post(myAPI, path, {
-    contentType: "application/json",
-    body: {
-      "query" : "Healthcare accounting, remote",
-      "field2" : "otherstuff",
-    }
-  })
-    .then(response => {
-        console.log(response);
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
