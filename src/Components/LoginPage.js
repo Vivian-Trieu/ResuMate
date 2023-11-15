@@ -1,14 +1,40 @@
-
 import React, { useState } from "react";
 import "./LoginPage.css";
+import { API } from 'aws-amplify';
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // Implement login here
-    alert("Logging in with Email: " + email + " and Password: " + password);
+  const handleLogin = async () => {
+    try {
+      const user = {
+        username: email,
+        password: password,
+      };
+
+      // Make API request to lambda function for login
+      const apiResponse = await API.post('Users', '/login', {
+        body: user,
+      });
+
+      console.log('Login API Response:', apiResponse);
+
+      // If login was successful, switch to HomeScreen
+      if (apiResponse.statusCode === 200) {
+        alert('Login successful!');
+
+        props.onFormSwitch('home');
+      } else {
+        alert('Login failed. Invalid credentials.');
+      }
+    } catch (error) {
+      console.error('Login API Error:', error);
+    }
+
+    setEmail("");
+    setPassword("");
+    
   };
 
   return (

@@ -19,6 +19,8 @@ function App() {
         return <SignUpPage onFormSwitch={toggleForm} />;
       case 'forgot password':
         return <ForgotPasswordPage onFormSwitch={toggleForm} />;
+      case 'home':
+        return <HomeScreen onFormSwitch={toggleForm} />;
       // Add more cases for other forms if needed
       default:
         return <LoginPage onFormSwitch={toggleForm} />;
