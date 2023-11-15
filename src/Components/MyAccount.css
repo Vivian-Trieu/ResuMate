@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+}
+
+.my-account-cointainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #efefef;
+}
+
+
+.my-account-block {
+    display: flex;
+    flex-direction: row; 
+    background-color: #fff;
+    /* box-shadow: 7px 10px 0 rgba(0, 0, 0, 2); */
+    /* margin: 20px; */
+    padding: 1em;
+    margin: 0.5em 0;
+    text-align: start;
+    width: 20em;
+    /* width: 100%; Adjust as needed */
+    border-radius: 10px; /* Add rounded corners */
+    
+}
+
+.my-account-block-img {
+    width: 8%;
+    margin-right: 0.8em;
+    margin-top: 0.2em;
+}
+
+.my-account-img {
+    width: 100%;
+}
+
+.my-account-block-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-account-title {
+    margin: 0 !important;
+    display: flex;
+    width: 22em;
+}
+
+.my-account {
+    /* text-align: left; */
+    /* margin-top: 0.3em; */
+    font-size: 2em !important;
+    color: #000000;
+    margin: 0 !important;
+    /* font-size: 1.3em */
+}
+
+.my-account-cointainer h3,
+.my-account-cointainer p {
+    margin: 0;
+}
+
+.my-account-box {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 34em;
+    width: 100%;
+    /* width: 20em; */
+}
+

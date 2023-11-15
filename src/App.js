@@ -8,6 +8,7 @@ import BottomNavigation from "./Components/BottomNavigation";
 import HeaderTab from "./Components/HeaderTab";
 import SavedJobs from './Components/SavedJobs';
 import Profile from "./Components/Profile"
+import MyAccount from "./Components/MyAccount";
 
 // function App() {
 //   return (
@@ -50,7 +51,7 @@ function App() {
   else if (activeTab === 'saved-jobs') {
     content = <SavedJobs likedJobs={likedJobs}/>
   } else {
-    content = <Profile/>
+    content = <MyAccount/>
   }
 
   return (
