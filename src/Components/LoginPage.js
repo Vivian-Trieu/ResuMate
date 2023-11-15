@@ -15,18 +15,20 @@ function LoginPage(props) {
 
       // Make API request to lambda function for login
       const apiResponse = await API.post('Users', '/login', {
+        contentType: "application/json",
         body: user,
       });
 
       console.log('Login API Response:', apiResponse);
 
       // If login was successful, switch to HomeScreen
-      if (apiResponse.statusCode === 200) {
-        alert('Login successful!');
-
-        props.onFormSwitch('home');
-      } else {
+      if (apiResponse.statusCode === 401) {
         alert('Login failed. Invalid credentials.');
+        console.log("Login failed. Invalid credentials.");
+      } else {
+        alert('Login successful!');
+        console.log("Login successful.");
+        props.onFormSwitch('home');
       }
     } catch (error) {
       console.error('Login API Error:', error);
