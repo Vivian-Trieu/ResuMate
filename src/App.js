@@ -45,22 +45,49 @@ function App() {
   const [likedJobs, setLikedJobs] = useState([]);
   let content;
 
-  if (activeTab === 'home') {
-    content = <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
-  }
-  else if (activeTab === 'saved-jobs') {
-    content = <SavedJobs likedJobs={likedJobs}/>
-  } else {
-    content = <MyAccount/>
-  }
+  switch (activeTab) {
+    case 'home':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab}/>
+          <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
+    
+    case 'saved-jobs':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <SavedJobs likedJobs={likedJobs} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
 
+    case 'account':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <MyAccount activeTab={activeTab} setActiveTab={setActiveTab} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
+    
+    case 'profile':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <Profile activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
+  }
+ 
   return (
     <div className="App">
-      <HeaderTab />
-      <BottomNavigation 
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
       {content}
     </div>
   )

@@ -3,17 +3,23 @@ import "./MyAccount.css"
 import UserProfile from "../img/user-profile.png"
 import UserPreference from "../img/user-preference.png"
 import UserSetting from "../img/user-setting.png"
+import BottomNavigation from "./BottomNavigation";
 
 
-function MyAccount() {
+function MyAccount({ activeTab, setActiveTab}) {
+    const handleProfileClick = () => {
+        setActiveTab('profile');
+    }
+
     return (
+        <>
         <div className="my-account-cointainer">
           <div className="my-account-title">
             <h1 className="my-account">Your Account</h1>
           </div>
           
           <div className="my-account-box">
-                <div className="my-account-block">
+                <div className="my-account-block user-profile" onClick={handleProfileClick}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserProfile} alt="User Profile" />
                     </div>
@@ -22,7 +28,7 @@ function MyAccount() {
                         <p>Upload or edit your resume to <br></br> create a profile.</p>
                     </div>
                 </div>
-                <div className="my-account-block">
+                <div className="my-account-block user-preference">
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserPreference} alt="User Preference" />
                     </div>
@@ -31,7 +37,7 @@ function MyAccount() {
                         <p>Filter your job matches to match <br></br> your preferences.</p>
                     </div>
                 </div>
-                <div className="my-account-block">
+                <div className="my-account-block user-setting">
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserSetting} alt="User Setting" />
                     </div>
@@ -42,6 +48,8 @@ function MyAccount() {
                 </div>
             </div>
         </div>
+        <BottomNavigation />
+        </>
       );
 }
 

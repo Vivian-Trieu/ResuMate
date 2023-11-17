@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "./HomeScreen.css"
 import SaveButton from "../img/click-to-save-job-button.png"
 import SkipButton from "../img/click-to-skip-job-button.png"
+import BottomNavigation from "./BottomNavigation";
 
 function HomeScreen({likedJobs, setLikedJobs}) {
 
@@ -99,16 +100,19 @@ function HomeScreen({likedJobs, setLikedJobs}) {
       }
 
       return (
-        <div className="job-finder">
-          <header>
+        <>
+          <div className="job-finder">
+            <header>
 
-          </header>
-    
-          <main>
-            {content}
-          </main>
-          <div style={{display: 'none'}}> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
-        </div>
+            </header>
+      
+            <main>
+              {content}
+            </main>
+            <div style={{display: 'none'}}> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
+          </div>
+          <BottomNavigation/>
+        </>
       );
 
 

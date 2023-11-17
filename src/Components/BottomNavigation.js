@@ -23,7 +23,7 @@ function BottomNavigation({ activeTab, setActiveTab}) {
             setHomeImg(Home); 
             setSavedImg(ClickedSavedJobs)
             setProfileImg(Profile)
-        } else {
+        } else if (tab === 'account') {
             setHomeImg(Home); 
             setSavedImg(SavedJobs)
             setProfileImg(ClickedProfile)

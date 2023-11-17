@@ -10,5 +10,23 @@
     min-height: 4.5em;
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.account-tab {
+    justify-content: space-around;
+}
+
+.header-tab-box {
+    display: flex;
+    /* justify-content: space-between;  */
+    align-items: center;
+    width: 100%;
+}
+
+.close-btn {
+    cursor: pointer;
+}
+
+.close-button-img {
+    width: 2em;
 }

@@ -24,7 +24,7 @@ body {
     width: 20em;
     /* width: 100%; Adjust as needed */
     border-radius: 10px; /* Add rounded corners */
-    
+    cursor: pointer;
 }
 
 .my-account-block-img {
