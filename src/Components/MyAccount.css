@@ -2,13 +2,18 @@ body {
     margin: 0;
 }
 
+.header-placeholder {
+    height: 10vh
+}
+
 .my-account-cointainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     background-color: #efefef;
+    margin: auto;
 }
 
 
@@ -43,7 +48,7 @@ body {
 }
 
 .my-account-title {
-    margin: 0 !important;
+    margin: 2em 0 0.3em 0 !important;
     display: flex;
     width: 22em;
 }
@@ -57,8 +62,8 @@ body {
     /* font-size: 1.3em */
 }
 
-.my-account-cointainer h3,
-.my-account-cointainer p {
+.my-account-block h3,
+.my-account-block p {
     margin: 0;
 }
 
@@ -72,3 +77,28 @@ body {
     /* width: 20em; */
 }
 
+/* Media query for mobile screens */
+@media (max-width: 780px) {
+    .my-account-container {
+        height: 78dvh
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1500px) {
+    .my-account-title {
+        width: 25em;
+    }
+
+    .my-account-box {
+        height: 50em;
+    }
+
+    .my-account-block {
+        /* height: 50em; */
+        width: 25em;
+    }
+}

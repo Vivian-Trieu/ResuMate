@@ -2,13 +2,18 @@ body {
     margin: 0;
 }
 
-.saved-jobs-cointainer {
+.header-placeholder {
+    height: 10vh
+}
+
+.saved-jobs-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     background-color: #00A7A6;
+    margin: auto;
 }
 
 
@@ -28,7 +33,7 @@ body {
 }
 
 .saved-jobs-title {
-    margin: 0 !important;
+    margin: 2em 0 0.3em 0 !important;
     display: flex;
     width: 22em;
 }
@@ -42,8 +47,8 @@ body {
     /* font-size: 1.3em */
 }
 
-.saved-jobs-cointainer h3,
-.saved-jobs-cointainer p {
+.saved-job h3,
+.saved-job p {
     margin: 0;
 }
 
@@ -52,7 +57,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 34em;
+    /* height: 34em; */
     width: 100%;
     /* width: 20em; */
 }
@@ -74,4 +79,32 @@ body {
 }
 
   
-  /* Styles for job title, company, etc */
+  /* Media query for mobile screens */
+@media (max-width: 780px) {
+    .saved-jobs-container {
+        height: 78dvh
+    }
+
+    .saved-jobs-box {
+        height: 30em;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1500px) {
+    .saved-jobs-title {
+        width: 25em;
+    }
+    
+    .saved-jobs-box {
+        height: 53em;
+    }
+
+    .saved-job {
+        /* height: 50em; */
+        width: 25em;
+    }
+}

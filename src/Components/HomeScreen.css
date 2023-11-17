@@ -3,12 +3,16 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+.header-placeholder {
+    height: 10vh
+}
+
 .home-screen-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     background-color: #00A7A6;
 }
 
@@ -25,7 +29,7 @@ body {
     /* min-height: 550px;
     max-height: 550px; */
     width: 20em;
-    height: 36em;
+    height: 35em;
     border-radius: 30px; /* Add rounded corners */
 }
 
@@ -91,13 +95,13 @@ button {
 .job-title {
     text-align: left;
     margin-top: 0.3em;
-    font-size: 2em !important;
+    font-size: 1.8em !important;
     margin-bottom: 0 !important;
     /* margin: 2px; */
 }
 
 p, .company {
-    font-size: 1.4em;
+    font-size: 1.3em;
     margin-top: 0 !important;
     margin-bottom: 0.6em;
 }
@@ -124,13 +128,20 @@ p {
     padding-top: 20px;
 }
 
-/* Media query for mobile screens
-@media (max-width: 768px) {
-    .home-screen-box {
-      width: 95%;
+/* Media query for mobile screens */
+@media (max-width: 780px) {
+    .home-screen-container {
+        height: 78dvh
     }
-  
-    .ssave-button {
-      width: 100%;
+    .job-box {
+        height: 32em;
+        width: 19.5em;
+
     }
-} */
+}
+@media (min-width: 1500px) {
+    .job-box {
+        height: 50em;
+        width: 25em;
+    }
+}

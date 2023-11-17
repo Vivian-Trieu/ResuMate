@@ -3,7 +3,6 @@ import "./MyAccount.css"
 import UserProfile from "../img/user-profile.png"
 import UserPreference from "../img/user-preference.png"
 import UserSetting from "../img/user-setting.png"
-import BottomNavigation from "./BottomNavigation";
 
 
 function MyAccount({ activeTab, setActiveTab}) {
@@ -13,6 +12,7 @@ function MyAccount({ activeTab, setActiveTab}) {
 
     return (
         <>
+        <div className="header-placeholder"></div>
         <div className="my-account-cointainer">
           <div className="my-account-title">
             <h1 className="my-account">Your Account</h1>
@@ -48,7 +48,6 @@ function MyAccount({ activeTab, setActiveTab}) {
                 </div>
             </div>
         </div>
-        <BottomNavigation />
         </>
       );
 }
