@@ -81,6 +81,7 @@ function App() {
         <>
           <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
           <Profile activeTab={activeTab} setActiveTab={setActiveTab} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
         </>
       )
       break

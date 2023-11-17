@@ -32,27 +32,31 @@ function BottomNavigation({ activeTab, setActiveTab}) {
         setActiveTab(tab);
     }
 
-    return (
-        <div className="bottom-nav-container">
-            <div className="bottom-nav-box">
-                <nav className="bottom-nav">
-                    <ul>
-                        <li className={activeTab === 'saved-jobs' ? 'active' : ''} onClick={() => {setActiveTab('saved-jobs'); handleTabClick('saved-jobs');}}>
-                            <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
-                        </li>
-                
-                        <li className={activeTab === 'home' ? 'active' : ''} onClick={() => {setActiveTab('home'); handleTabClick('home');}}>
-                            <img className="nav-button-img" src={homeImg} alt="Home"  />
-                        </li>
-                
-                        <li className={activeTab === 'account' ? 'active' : ''} onClick={() => {setActiveTab('account'); handleTabClick('account');}}>
-                            <img className="nav-button-img" src={profileImg} alt="Profile"  />
-                        </li>
-                    </ul>
-                </nav>
+    if (activeTab === 'home' || activeTab === 'saved-jobs' || activeTab === 'account')
+        return (
+            <div className="bottom-nav-container">
+                <div className="bottom-nav-box">
+                    <nav className="bottom-nav">
+                        <ul>
+                            <li className={activeTab === 'saved-jobs' ? 'active' : ''} onClick={() => {setActiveTab('saved-jobs'); handleTabClick('saved-jobs');}}>
+                                <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
+                            </li>
+                    
+                            <li className={activeTab === 'home' ? 'active' : ''} onClick={() => {setActiveTab('home'); handleTabClick('home');}}>
+                                <img className="nav-button-img" src={homeImg} alt="Home"  />
+                            </li>
+                    
+                            <li className={activeTab === 'account' ? 'active' : ''} onClick={() => {setActiveTab('account'); handleTabClick('account');}}>
+                                <img className="nav-button-img" src={profileImg} alt="My Account"  />
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
-    );
+        )
+    else {
+        return null;
+    }
 }
 
 export default BottomNavigation
