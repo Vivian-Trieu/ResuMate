@@ -82,7 +82,7 @@ body {
   /* Media query for mobile screens */
 @media (max-width: 780px) {
     .saved-jobs-container {
-        height: 78dvh
+        height: 80dvh
     }
 
     .saved-jobs-box {

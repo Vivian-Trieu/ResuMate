@@ -13,7 +13,7 @@ function MyAccount({ activeTab, setActiveTab}) {
     return (
         <>
         <div className="header-placeholder"></div>
-        <div className="my-account-cointainer">
+        <div className="my-account-container">
           <div className="my-account-title">
             <h1 className="my-account">Your Account</h1>
           </div>
@@ -48,6 +48,7 @@ function MyAccount({ activeTab, setActiveTab}) {
                 </div>
             </div>
         </div>
+        <div className="header-placeholder"></div>
         </>
       );
 }

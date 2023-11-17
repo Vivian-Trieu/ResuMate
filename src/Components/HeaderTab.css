@@ -7,7 +7,7 @@
     right: 0;
     height: 10vh; 
     /* min-height: 72px; */
-    /* min-height: 4.5em; */
+    min-height: 4.5em;
     display: flex;
     align-items: center;
 }

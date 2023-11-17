@@ -6,7 +6,7 @@ body {
     height: 10vh
 }
 
-.my-account-cointainer {
+.my-account-container {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -80,7 +80,7 @@ body {
 /* Media query for mobile screens */
 @media (max-width: 780px) {
     .my-account-container {
-        height: 78dvh
+        height: 80dvh;
     }
     /* .job-box {
         height: 32em;

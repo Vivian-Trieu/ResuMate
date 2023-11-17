@@ -51,3 +51,14 @@
     max-width: 3.5em;
 }
 
+
+@media (max-width: 780px) {
+    .bottom-nav-container {
+        height: 10dvh;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}

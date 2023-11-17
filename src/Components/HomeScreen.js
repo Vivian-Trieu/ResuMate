@@ -86,6 +86,7 @@ function HomeScreen({likedJobs, setLikedJobs}) {
                 </div>
               </div>  
             </div>
+            <div className="header-placeholder"></div>
           </>
         );
       } else if (currentScreen === 'no-more') {
@@ -100,6 +101,7 @@ function HomeScreen({likedJobs, setLikedJobs}) {
                 </div>
               </div>
             </div>
+            <div className="header-placeholder"></div>
           </>
         );
       }

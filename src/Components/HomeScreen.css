@@ -131,7 +131,7 @@ p {
 /* Media query for mobile screens */
 @media (max-width: 780px) {
     .home-screen-container {
-        height: 78dvh
+        height: 80dvh
     }
     .job-box {
         height: 32em;
