@@ -18,15 +18,21 @@
 
 .header-tab-box {
     display: flex;
-    /* justify-content: space-between;  */
-    align-items: center;
-    width: 100%;
+    flex-direction: row;
+    width: 30em;
+    justify-content: space-between;
 }
 
 .close-btn {
     cursor: pointer;
+
 }
 
 .close-button-img {
     width: 2em;
+    margin: auto;
+}
+
+.btn-placeholder {
+    visibility: hidden;
 }

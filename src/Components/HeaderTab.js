@@ -15,9 +15,11 @@ function HeaderTab({ activeTab, setActiveTab}) {
     else 
         return (
             <div className="header-tab account-tab">
-                <div></div>
-                <h2 className="profile">Profile</h2>
-                <button className="close-btn" onClick={handleCloseClick}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                <div className="header-tab-box">
+                    <button className="close-btn btn-placeholder"><img className="close-button-img" src={closeButton} alt="Close Button"/></button>
+                    <div className="header-title"><h2 className="profile">Profile</h2></div>
+                    <button className="close-btn" onClick={handleCloseClick}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                </div>
             </div>
         )
 }
