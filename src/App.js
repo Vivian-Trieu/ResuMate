@@ -46,7 +46,7 @@ function App() {
           </>
         );
       case 'profile':
-        return(
+        return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
             <Profile currentForm={currentForm} onFormSwitch={toggleForm} />

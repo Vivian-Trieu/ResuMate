@@ -81,6 +81,8 @@ button {
 }
 
 ::-webkit-scrollbar {
+    visibility: hidden !important;
+    display: none;
     width: 6px;
 }
 
