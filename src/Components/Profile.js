@@ -4,6 +4,7 @@ import EditButton from "../img/edit-button.png"
 import "./Profile.css"
 import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
+import addButton from "../img/add.png"
 // import BottomNavigation from "./Components/BottomNavigation";
 
 function Profile(props) {
@@ -37,6 +38,7 @@ function Profile(props) {
                         <div className="sub-info education">
                             <div className="sub-info-title">
                                 <h4>Education</h4>
+                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
@@ -51,6 +53,7 @@ function Profile(props) {
                         <div className="sub-info experience">
                             <div className="sub-info-title">
                                 <h4>Work experience</h4>
+                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
@@ -65,11 +68,37 @@ function Profile(props) {
                         <div className="sub-info skills">
                             <div className="sub-info-title">
                                 <h4>Skills</h4>
+                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-tags"> 
-                                <p>Tag 1</p>
-                                <p>Tag 2</p>
-                                <p>Tag 3</p>
+                                <div className="tag">
+                                    <p>Tag 1</p>
+                                </div>
+                                <div className="tag">
+                                    <p>Tag 2</p>
+                                </div>
+                                <div className="tag">
+                                    <p>Tag 3</p>
+                                </div>
+                                <div className="tag">
+                                    <p>Tag 4</p>
+                                </div>
+                                <div className="tag">
+                                    <p>Tag 5</p>
+                                </div>
+                                <div className="tag">
+                                    <p>Tag 6</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="sub-info links">
+                            <div className="sub-info-title">
+                                <h4>Links</h4>
+                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
+                            </div>
+                            <div className="sub-info-description"> 
+                                <p>
+                                </p>
                             </div>
                         </div>
                     </div>

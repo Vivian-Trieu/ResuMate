@@ -1,5 +1,5 @@
-.body {
-    overflow: auto;
+body {
+    background-color: #efefef;
 }
 
 .header-tab {
@@ -7,19 +7,21 @@
 }
 
 .header-placeholder {
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .profile-container {
-    display: flex;
+    display: visible !important;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     height: 100vh;
     background-color: #efefef;
     padding: 1em 0;
+    /* overflow: scroll; */
 }
 
 .profile-box {
@@ -30,9 +32,9 @@
     align-items: center;
     /* max-width: 300px !important; */
     width: 90%; /* Adjust as needed */
-    height: 60%;
+    /* height: 60%;
     min-height: 450px;
-    max-height: 500px;
+    max-height: 500px; */
 }
 
 .profile-picture-box {
@@ -55,6 +57,7 @@
     position: absolute;
     top: 110px;
     left: 215px;
+    cursor: pointer;
 }
 
 .edit-btn-img {
@@ -100,6 +103,8 @@
 
 .sub-info-title h4 {
     margin: 0.7em 0;
+    display: flex;
+    flex-direction: row;
 }
 
 .sub-info-description {
@@ -107,4 +112,35 @@
     padding: 1em;
     border-radius: 10px;
 
+}
+
+.sub-info-tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%
+}
+
+.tag {
+    background-color: #ffffff;
+    margin: 0 12px 4px 0;
+    padding: 5px 16px;
+    border-radius: 5px;
+}
+
+.sub-info-title {
+    display: flex;
+    flex-direction: row;
+}
+
+.add {
+    margin: auto;
+    justify-content: flex-end;
+    margin-right: 0 !important;
+    cursor: pointer;
+}
+
+
+.add-button-img {
+    width: 7%;
 }
