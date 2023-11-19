@@ -3,12 +3,9 @@ import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 
 
-function HeaderTab({ activeTab, setActiveTab}) {
-    const handleCloseClick = () => {
-        setActiveTab('account');
-    }
+function HeaderTab(props) {
 
-    if (activeTab === 'home' || activeTab === 'saved-jobs' || activeTab === 'account')
+    if (props.currentForm === 'home' || props.currentForm === 'saved-jobs' || props.currentForm === 'account')
         return (
             <div className="header-tab"></div>
         )
@@ -18,7 +15,7 @@ function HeaderTab({ activeTab, setActiveTab}) {
                 <div className="header-tab-box">
                     <button className="close-btn btn-placeholder"><img className="close-button-img" src={closeButton} alt="Close Button"/></button>
                     <div className="header-title"><h2 className="profile">Profile</h2></div>
-                    <button className="close-btn" onClick={handleCloseClick}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                    <button className="close-btn" onClick={() => props.onFormSwitch('account')}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
                 </div>
             </div>
         )

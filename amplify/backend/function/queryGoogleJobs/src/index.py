@@ -1,9 +1,11 @@
 ##Returns a list of jobs most closely matched with input keyword string
-    #Expected Request Payload
-        #Keyword Query: "query" : "some string of keywords or other search parameters" 
+    #Expected POST request body in JSON format:
+        #"query" : "some string of keywords or other search parameters" 
 #May return 0 results
 
-
+#TODO: Add optional googlejobs query parameters:
+    #jobCategories
+    #locationFilters
 
 import os
 import json
@@ -12,7 +14,7 @@ import json
 from googleapiclient.discovery import build
 from googleapiclient.errors import Error
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.abspath("src\\igneous-tracer-401703-f52a40df0c10.json")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "igneous-tracer-401703-f52a40df0c10.json"
 os.environ["GOOGLE_CLOUD_PROJECT"] = "igneous-tracer-401703"
 
 client_service = build("jobs", "v3")
@@ -20,6 +22,7 @@ client_service = build("jobs", "v3")
 
 
 def handler(event, context):
+    event = json.loads(event["body"])
     # company_name = "projects/igneous-tracer-401703/companies/88a5289e-1c35-478a-93c4-a83eee16140e"
     company_name = None #option to specify jobs within a specific company
     keywords = event["query"]
@@ -62,7 +65,9 @@ def handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        'search_query': keywords,
-        'length': len(response["matchingJobs"]),
-        'matches': [match['job'] for match in response['matchingJobs']]
+        'body': json.dumps({
+            'search_query': keywords,
+            'length': len(response["matchingJobs"]) if 'matchingJobs' in response else 0,
+            'matches': [match['job'] for match in response['matchingJobs']] if 'matchingJobs' in response else "No Matches"
+        })
     }

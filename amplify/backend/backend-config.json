@@ -1,5 +1,27 @@
 {
   "api": {
+    "Users": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "handleRegisterUser"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "handleUserLogin"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "newapi": {
       "dependsOn": [
         {
@@ -13,10 +35,100 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    },
+    "testgoogleapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "queryGoogleJobs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "newapp": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
     }
   },
   "function": {
+    "handleDeleteResumeProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleGetResumeProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleRegisterUser": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleResumeUploadEvent": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleStoringScrapedJobs": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUpdateResumeProfile": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserLogin": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "handleUserSaveJobListing": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserUnsaveJobListing": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserUpdate": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "handleUserViewSavedJobListings": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -30,6 +142,12 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "scrapeJobListings": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -40,6 +158,118 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_handleDeleteResumeProfile_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleDeleteResumeProfile"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleDeleteResumeProfile_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleDeleteResumeProfile"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleGetResumeProfile_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleGetResumeProfile"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleGetResumeProfile_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleGetResumeProfile"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleRegisterUser_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleRegisterUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleRegisterUser_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleRegisterUser"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleResumeUploadEvent_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleResumeUploadEvent"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleResumeUploadEvent_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleResumeUploadEvent"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleStoringScrapedJobs_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleStoringScrapedJobs"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleStoringScrapedJobs_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleStoringScrapedJobs"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUpdateResumeProfile_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUpdateResumeProfile"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUpdateResumeProfile_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUpdateResumeProfile"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserLogin_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserLogin"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserLogin_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserLogin"
+        }
+      ]
+    },
     "AMPLIFY_function_handleUserSaveJobListing_deploymentBucketName": {
       "usedBy": [
         {
@@ -53,6 +283,54 @@
         {
           "category": "function",
           "resourceName": "handleUserSaveJobListing"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserUnsaveJobListing_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserUnsaveJobListing"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserUnsaveJobListing_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserUnsaveJobListing"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserUpdate_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserUpdate"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserUpdate_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserUpdate"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserViewSavedJobListings_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserViewSavedJobListings"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleUserViewSavedJobListings_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleUserViewSavedJobListings"
         }
       ]
     },
@@ -88,6 +366,22 @@
         }
       ]
     },
+    "AMPLIFY_function_scrapeJobListings_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "scrapeJobListings"
+        }
+      ]
+    },
+    "AMPLIFY_function_scrapeJobListings_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "scrapeJobListings"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
@@ -103,6 +397,30 @@
           "resourceName": "amplifyhosting"
         }
       ]
+    },
+    "AMPLIFY_storage_newapp4e788f9b_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "newapp4e788f9b"
+        }
+      ]
+    },
+    "AMPLIFY_storage_newapp4e788f9b_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "newapp4e788f9b"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "newapp4e788f9b": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3",
+      "serviceType": "imported"
     }
   }
 }

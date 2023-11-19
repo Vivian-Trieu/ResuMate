@@ -12,6 +12,7 @@ import MyAccount from "./Components/MyAccount";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
+  const [likedJobs, setLikedJobs] = useState([]);
   const renderForm = () => {
     switch (currentForm) {
       case 'login':
@@ -21,7 +22,37 @@ function App() {
       case 'forgot password':
         return <ForgotPasswordPage onFormSwitch={toggleForm} />;
       case 'home':
-        return <HomeScreen onFormSwitch={toggleForm} />;
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
+            <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />;
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'saved-jobs':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <SavedJobs likedJobs={likedJobs} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'account':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'profile':
+        return(
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Profile currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
       // Add more cases for other forms if needed
       default:
         return <LoginPage onFormSwitch={toggleForm} />;

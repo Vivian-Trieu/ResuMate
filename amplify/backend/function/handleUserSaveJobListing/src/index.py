@@ -1,5 +1,5 @@
 ##Associate User with a JobListing to complete Saved Job Process
-    #Expected event format
+    #Expected POST body format
         #"user_id": "str",
         #"job_id": "str"
 
@@ -20,6 +20,7 @@ table = dynamodb.Table(USERSAVEDLISTINGS_TABLE_NAME)
 
 
 def handler(event, context):
+    event = json.loads(event["body"])
     new_saved_listing_item = formatNewUserSavedListingEntry(event["user_id"], event["job_id"])
 
    #create new entry
@@ -31,8 +32,9 @@ def handler(event, context):
         'statusCode': 200,
         'headers': {
             'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Origin': '*'
-        },
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+        }, 
         'body': f"job listing id: {new_saved_listing_item['job_id']} saved by user id: {new_saved_listing_item['user_id']}"
     }
     return response

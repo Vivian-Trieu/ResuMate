@@ -8,7 +8,7 @@ import Profile from "../img/profile-button.png"
 import ClickedProfile from "../img/profile-button-clicked.png"
 
 
-function BottomNavigation({ activeTab, setActiveTab}) {
+function BottomNavigation(props) {
 
     const [homeImg, setHomeImg] = useState(ClickedHome);
     const [savedImg, setSavedImg] = useState(SavedJobs);
@@ -29,24 +29,24 @@ function BottomNavigation({ activeTab, setActiveTab}) {
             setProfileImg(ClickedProfile)
         }
 
-        setActiveTab(tab);
+        props.onFormSwitch(tab);
     }
 
-    if (activeTab === 'home' || activeTab === 'saved-jobs' || activeTab === 'account')
+    if (props.currentForm === 'home' || props.currentForm === 'saved-jobs' || props.currentForm === 'account')
         return (
             <div className="bottom-nav-container">
                 <div className="bottom-nav-box">
                     <nav className="bottom-nav">
                         <ul>
-                            <li className={activeTab === 'saved-jobs' ? 'active' : ''} onClick={() => {setActiveTab('saved-jobs'); handleTabClick('saved-jobs');}}>
+                            <li className={props.currentForm === 'saved-jobs' ? 'active' : ''} onClick={() => {handleTabClick('saved-jobs');}}>
                                 <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
                             </li>
                     
-                            <li className={activeTab === 'home' ? 'active' : ''} onClick={() => {setActiveTab('home'); handleTabClick('home');}}>
+                            <li className={props.currentForm === 'home' ? 'active' : ''} onClick={() => {handleTabClick('home');}}>
                                 <img className="nav-button-img" src={homeImg} alt="Home"  />
                             </li>
                     
-                            <li className={activeTab === 'account' ? 'active' : ''} onClick={() => {setActiveTab('account'); handleTabClick('account');}}>
+                            <li className={props.currentForm === 'account' ? 'active' : ''} onClick={() => {handleTabClick('account');}}>
                                 <img className="nav-button-img" src={profileImg} alt="My Account"  />
                             </li>
                         </ul>

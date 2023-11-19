@@ -1,4 +1,93 @@
 {
+  "devbackend": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-newapp-devbackend-115212-authRole",
+      "UnauthRoleArn": "arn:aws:iam::319163603467:role/amplify-newapp-devbackend-115212-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::319163603467:role/amplify-newapp-devbackend-115212-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+      "UnauthRoleName": "amplify-newapp-devbackend-115212-unauthRole",
+      "StackName": "amplify-newapp-devbackend-115212",
+      "StackId": "arn:aws:cloudformation:us-west-1:319163603467:stack/amplify-newapp-devbackend-115212/f99af8d0-8194-11ee-b796-06190d03733d",
+      "AmplifyAppId": "d3mxfxvj02tj0v",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-newapp-devbackend-115212-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3mxfxvj02tj0v",
+          "type": "manual"
+        }
+      },
+      "storage": {
+        "newapp4e788f9b": {
+          "bucketName": "userresumes",
+          "region": "us-west-1"
+        }
+      },
+      "auth": {
+        "newapp": {}
+      },
+      "function": {
+        "handleDeleteResumeProfile": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleDeleteResumeProfile-6f68356a67394f673163-build.zip"
+        },
+        "handleGetResumeProfile": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleGetResumeProfile-557777626f7164596b77-build.zip"
+        },
+        "handleRegisterUser": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleRegisterUser-74665a2b35346f793574-build.zip"
+        },
+        "handleResumeUploadEvent": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleResumeUploadEvent-506b645735592b554442-build.zip"
+        },
+        "handleStoringScrapedJobs": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleStoringScrapedJobs-617a4141552b4c6d7551-build.zip"
+        },
+        "handleUpdateResumeProfile": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleUpdateResumeProfile-514e61374b7931654457-build.zip"
+        },
+        "handleUserLogin": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleUserLogin-6e4b6e447135702b4943-build.zip"
+        },
+        "handleUserSaveJobListing": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleUserSaveJobListing-3962316c65523656506f-build.zip"
+        },
+        "handleUserUnsaveJobListing": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleUserUnsaveJobListing-38566235326c49434250-build.zip"
+        },
+        "handleUserUpdate": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleUserUpdate-38626e336c6b6350616b-build.zip"
+        },
+        "handleUserViewSavedJobListings": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/handleUserViewSavedJobListings-427655434f707a563446-build.zip"
+        },
+        "newapp732e55b5": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/newapp732e55b5-547147626a7157705876-build.zip"
+        },
+        "queryGoogleJobs": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/queryGoogleJobs-766f4c4f664b464f5058-build.zip"
+        },
+        "scrapeJobListings": {
+          "deploymentBucketName": "amplify-newapp-devbackend-115212-deployment",
+          "s3Key": "amplify-builds/scrapeJobListings-685a72576f6954557334-build.zip"
+        }
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-newapp-dev-122955-authRole",

@@ -5,10 +5,7 @@ import UserPreference from "../img/user-preference.png"
 import UserSetting from "../img/user-setting.png"
 
 
-function MyAccount({ activeTab, setActiveTab}) {
-    const handleProfileClick = () => {
-        setActiveTab('profile');
-    }
+function MyAccount(props) {
 
     return (
         <>
@@ -19,7 +16,7 @@ function MyAccount({ activeTab, setActiveTab}) {
           </div>
           
           <div className="my-account-box">
-                <div className="my-account-block user-profile" onClick={handleProfileClick}>
+                <div className="my-account-block user-profile" onClick={() => props.onFormSwitch('profile')}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserProfile} alt="User Profile" />
                     </div>
