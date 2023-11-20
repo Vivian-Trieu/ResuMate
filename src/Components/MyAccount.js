@@ -11,11 +11,11 @@ function MyAccount(props) {
         <>
         <div className="header-placeholder"></div>
         <div className="my-account-container">
-          <div className="my-account-title">
-            <h1 className="my-account">Your Account</h1>
-          </div>
+            <div className="my-account-title">
+                <h1 className="my-account">Your Account</h1>
+            </div>
           
-          <div className="my-account-box">
+            <div className="my-account-box">
                 <div className="my-account-block user-profile" onClick={() => props.onFormSwitch('profile')}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserProfile} alt="User Profile" />
@@ -44,6 +44,7 @@ function MyAccount(props) {
                     </div>
                 </div>
             </div>
+            <button className="log-out">LOG OUT</button>
         </div>
         <div className="header-placeholder"></div>
         </>

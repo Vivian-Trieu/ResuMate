@@ -77,6 +77,22 @@ body {
     /* width: 20em; */
 }
 
+.log-out {
+    background: #ffffff;
+    color: #EE4A53;
+    border: #EE4A53 1px solid;
+    padding: 0.7em 12em;
+    /* border: none; */
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    margin: 2em 0;
+}
+
 /* Media query for mobile screens */
 @media (max-width: 780px) {
     .my-account-container {
