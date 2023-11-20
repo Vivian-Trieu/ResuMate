@@ -57,7 +57,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* height: 34em; */
+    height: 32em;
     width: 100%;
     /* width: 20em; */
 }
@@ -94,7 +94,7 @@ body {
 
     } */
 }
-@media (min-width: 1500px) {
+@media (min-width: 1800px) {
     .saved-jobs-title {
         width: 25em;
     }
