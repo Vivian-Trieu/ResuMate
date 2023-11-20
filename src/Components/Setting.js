@@ -71,6 +71,7 @@ function Setting(props) {
                     {/* <button type="submit">Update Account</button> */}
                     {/* </form> */}
                 </div>
+                <button className="delete-account">DELETE ACCOUNT</button>
             </div>
         </>
     );

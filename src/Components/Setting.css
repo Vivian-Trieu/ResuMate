@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* justify-content: center; */
+    /* justify-content: space-between; */
     height: 100vh;
     background-color: #efefef;
     padding: 2em 0;
@@ -69,6 +69,22 @@ body {
     padding: 0;
     font-size: 14px;
     text-decoration: underline;
+}
+
+.delete-account {
+    background: #ffffff;
+    color: #EE4A53;
+    border: #EE4A53 1px solid;
+    padding: 0.7em 10em;
+    /* border: none; */
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    margin: 2em 0;
 }
 
 .break {
