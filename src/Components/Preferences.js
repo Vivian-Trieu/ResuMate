@@ -3,6 +3,7 @@ import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 import "./Preferences.css"
 import Slider from "./Slider"
+import Checkbox from "./Checkbox";
 
 function Preferences(props) {
 
@@ -16,8 +17,6 @@ function Preferences(props) {
     const handleCheck = () => {
       setChecked(!checked);
     }
-    
-    // const sliderPercentage = sliderValue + '%';
 
     return (
         <>  
@@ -42,23 +41,20 @@ function Preferences(props) {
                     <div className="break"></div>
                     <div className="preference">
                         <h4>Experience level</h4>
-                        <label>
-                            <input 
-                            type="checkbox"
-                            checked={checked}
-                            onChange={handleCheck}
-                            />
-                            Option
-                        </label>
+                        <Checkbox label="Entry level" />
+                        <Checkbox label="Mid level" />
+                        <Checkbox label="Senior level" />
+                        <Checkbox label="No Experience Required" />
                     </div>
-                        {/* Checkbox */}
-                        
-
-                        {/* Show values */}
-                        {/* <p>Slider value: {sliderPercentage}</p> */}
-                        <p>{checked ? 'Checked' : 'Not checked'}</p>
-
-                        <button>Save Preferences</button>
+                    <div className="break"></div>
+                    <div className="preference">
+                        <h4>Job type</h4>
+                        <Checkbox label="Part-time" />
+                        <Checkbox label="Full-time" />
+                        <Checkbox label="Contract" />
+                        <Checkbox label="Temporary" />
+                        <Checkbox label="Internship" />
+                    </div>
                 </div>
             </div>
         </>
