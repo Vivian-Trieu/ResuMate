@@ -25,7 +25,7 @@ function MyAccount(props) {
                         <p>Upload or edit your resume to <br></br> create a profile.</p>
                     </div>
                 </div>
-                <div className="my-account-block user-preference">
+                <div className="my-account-block user-preference" onClick={() => props.onFormSwitch('preferences')}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserPreference} alt="User Preference" />
                     </div>

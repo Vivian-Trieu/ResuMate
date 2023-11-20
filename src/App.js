@@ -9,6 +9,7 @@ import HeaderTab from "./Components/HeaderTab";
 import SavedJobs from './Components/SavedJobs';
 import Profile from "./Components/Profile"
 import MyAccount from "./Components/MyAccount";
+import Preferences from "./Components/Preferences"
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -50,6 +51,14 @@ function App() {
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
             <Profile currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'preferences':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Preferences currentForm={currentForm} onFormSwitch={toggleForm} />
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );
