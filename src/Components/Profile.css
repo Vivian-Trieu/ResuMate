@@ -14,24 +14,25 @@ body {
 }
 
 .profile-container {
-    display: visible !important;
+    /* display: visible !important; */
+    display: flex;
+    align-items: center;
     flex-direction: column;
     /* justify-content: center; */
-    align-items: center;
     height: 100vh;
     background-color: #efefef;
-    padding: 1em 0;
+    padding: 2em 0;
     /* overflow: scroll; */
 }
 
 .profile-box {
     display: flex;
     flex-direction: column; 
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
     align-items: center;
     /* max-width: 300px !important; */
-    width: 90%; /* Adjust as needed */
+    /* width: 90%; Adjust as needed */
     /* height: 60%;
     min-height: 450px;
     max-height: 500px; */
@@ -56,7 +57,7 @@ body {
 .edit-btn {
     position: absolute;
     top: 110px;
-    left: 215px;
+    left: 190px;
     cursor: pointer;
 }
 
@@ -73,7 +74,7 @@ body {
 .resume-upload-btn {
     background: #00A7A6;
     color: white;
-    padding: 10px 100px;
+    padding: 10px 72px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -93,18 +94,15 @@ body {
     display: flex;
     flex-direction: column; 
     /* margin: 20px; */
-    padding: 0.7em;
+    padding: 0.7em 0;
     margin: 2px 0;
     text-align: start;
-    max-width: 400px !important;
-    min-width: 350px;
-    width: 100%; /* Adjust as needed */
+    width: 22em !important;
 }
 
 .sub-info-title h4 {
     margin: 0.7em 0;
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
 }
 
 .sub-info-description {
@@ -131,16 +129,37 @@ body {
 .sub-info-title {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .add {
-    margin: auto;
-    justify-content: flex-end;
-    margin-right: 0 !important;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    width: 1.5em;
+    justify-content: flex-end;
+    padding: 0
 }
 
 
 .add-button-img {
-    width: 7%;
+    width: 100%;
+}
+
+
+@media (max-width: 780px) {
+    .profile-container {
+        height: 150dvh
+    }
+    .profile-box {
+        height: 32em;
+        width: 19.5em;
+
+    }
+}
+@media (min-width: 1500px) {
+    .profile-box {
+        height: 50em;
+        width: 25em;
+    }
 }
