@@ -1,0 +1,82 @@
+body {
+    background-color: #efefef;
+}
+
+.header-tab {
+    position: absolute;
+}
+
+.header-placeholder {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setting-container {
+    /* display: visible !important; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    height: 100vh;
+    background-color: #efefef;
+    padding: 2em 0;
+    /* overflow: scroll; */
+}
+
+.setting-box {
+    display: flex;
+    flex-direction: column; 
+    /* padding: 20px; */
+    text-align: center;
+    /* align-items: center; */
+    width: 20em;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.setting-box h2 {
+    display: flex;
+    margin: 0 0 0.3em 0;
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: start;
+}
+
+.setting h4 {
+    margin: 0.7em 0;
+}
+
+.setting-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-text {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 1.5em;
+    justify-content: flex-end;
+    padding: 0;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.break {
+    width: 100%;
+    border-bottom: 1.25px solid #C3C3C3;
+    margin-top: 0.7em;
+}
+
+form {
+    margin: 0;
+}

@@ -10,6 +10,7 @@ import SavedJobs from './Components/SavedJobs';
 import Profile from "./Components/Profile"
 import MyAccount from "./Components/MyAccount";
 import Preferences from "./Components/Preferences"
+import Setting from "./Components/Setting";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -62,6 +63,15 @@ function App() {
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );
+      case 'setting':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Setting currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+
       // Add more cases for other forms if needed
       default:
         return <LoginPage onFormSwitch={toggleForm} />;

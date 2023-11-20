@@ -34,7 +34,7 @@ function MyAccount(props) {
                         <p>Filter your job matches to match <br></br> your preferences.</p>
                     </div>
                 </div>
-                <div className="my-account-block user-setting">
+                <div className="my-account-block user-setting" onClick={() => props.onFormSwitch('setting')}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserSetting} alt="User Setting" />
                     </div>
