@@ -105,12 +105,12 @@ button {
 p, .company {
     font-size: 1.3em;
     margin-top: 0 !important;
-    margin-bottom: 0.6em;
 }
 
 .break {
     width: 100%;
     border-bottom: 1.25px solid #C3C3C3;
+    margin-top: 0.7em;
 }
 
 .other-attributes {
