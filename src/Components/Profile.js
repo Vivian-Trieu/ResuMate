@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfilePic from "../img/profile-picture.png"
 import EditButton from "../img/edit-button.png"
 import "./Profile.css"
 import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 import addButton from "../img/add.png"
-// import BottomNavigation from "./Components/BottomNavigation";
+import Amplify, { API, Storage } from 'aws-amplify';
 
 function Profile(props) {
+    const [selectedFile, setSelectedFile] = useState();
+
+    useEffect(() => {
+        if (selectedFile) {
+            console.log('File uploaded successfully', selectedFile.name);
+        }
+    }, [selectedFile]);
+    
+    function handleFileUpload() {
+        const fileInput = document.getElementById('resume-upload-btn');
+        setSelectedFile(fileInput.files[0]);
+    }
+
+
     return (
         <>
             <div className="header-placeholder">
@@ -29,9 +43,13 @@ function Profile(props) {
 
                         <h2 className="profile-name">John Doe</h2>
 
-                        <button className="resume-upload-btn">
+                        <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
+                            <input type="file" id="resume-upload-btn" onChange={handleFileUpload} />
+                       
+                        {/* <button className="resume-upload-btn">
                             UPLOAD RESUME
-                        </button>
+                            
+                        </button> */}
                     </div>
 
                     <div className="resume-info">
