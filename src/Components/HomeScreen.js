@@ -81,8 +81,8 @@ function HomeScreen({likedJobs, setLikedJobs}) {
                     </div>
                 </div>
                 <div className="button-container">
-                  <button className="skip-job"><img className="button-img" src={SkipButton} alt="Skip Job" onClick={handleDislike}/></button>
-                  <button className="save-job"><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
+                  <button className="swipe-btn skip-job"><img className="button-img" src={SkipButton} alt="Skip Job" onClick={handleDislike}/></button>
+                  <button className="swipe-btn save-job"><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
                 </div>
               </div>  
             </div>

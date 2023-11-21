@@ -41,7 +41,7 @@ body {
     
 }
 
-button {
+.swipe-btn {
     display: flex;
     border: none;
     background-color: transparent; 
