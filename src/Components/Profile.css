@@ -36,6 +36,7 @@ body {
     /* height: 60%;
     min-height: 450px;
     max-height: 500px; */
+    width: 20em
 }
 
 .profile-picture-box {
@@ -97,7 +98,7 @@ body {
     padding: 0.7em 0;
     margin: 2px 0;
     text-align: start;
-    width: 22em !important;
+    width: 22em;
 }
 
 .sub-info-title h4 {
@@ -157,9 +158,15 @@ body {
 
     }
 }
-@media (min-width: 1500px) {
+@media (min-width: 1800px) {
     .profile-box {
         height: 50em;
+    }
+    .resume-info {
+        /* overflow: auto; */
         width: 25em;
+    }
+    .sub-info {
+        width: 100%
     }
 }

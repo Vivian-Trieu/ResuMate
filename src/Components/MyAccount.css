@@ -72,7 +72,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 34em;
+    /* height: 34em; */
     width: 100%;
     /* width: 20em; */
 }
@@ -104,17 +104,20 @@ body {
 
     } */
 }
-@media (min-width: 1500px) {
+@media (min-width: 1800px) {
     .my-account-title {
         width: 25em;
     }
 
     .my-account-box {
-        height: 50em;
+        /* height: 50em; */
     }
 
     .my-account-block {
         /* height: 50em; */
         width: 25em;
+    }
+    .log-out {
+        padding: 0.7em 15.4em;
     }
 }

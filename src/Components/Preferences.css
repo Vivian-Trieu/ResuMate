@@ -19,7 +19,7 @@ body {
     align-items: center;
     flex-direction: column;
     /* justify-content: center; */
-    height: 100vh;
+    height: 80vh;
     background-color: #efefef;
     padding: 2em 0;
     /* overflow: scroll; */
@@ -55,3 +55,23 @@ body {
     margin-top: 0.7em;
 }
 
+@media (max-width: 780px) {
+    .preferences-container {
+        height: 100dvh;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1800px) {
+    .preferences-title {
+        width: 25em;
+    }
+
+    .preferences-box {
+        /* height: 50em; */
+        width: 25em;
+    }
+}

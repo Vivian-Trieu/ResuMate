@@ -19,7 +19,7 @@ body {
     align-items: center;
     flex-direction: column;
     /* justify-content: space-between; */
-    height: 100vh;
+    height: 80vh;
     background-color: #efefef;
     padding: 2em 0;
     /* overflow: scroll; */
@@ -95,4 +95,30 @@ body {
 
 form {
     margin: 0;
+}
+
+@media (max-width: 780px) {
+    .setting-container {
+        height: 80dvh;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1800px) {
+    .setting-title {
+        width: 25em;
+    }
+
+    .setting-box {
+        /* height: 50em; */
+        width: 25em;
+    }
+
+    .delete-account {
+        /* height: 50em; */
+        padding: 0.7em 13.2em;
+    }
 }
