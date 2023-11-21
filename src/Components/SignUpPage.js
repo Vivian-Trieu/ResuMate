@@ -10,7 +10,11 @@ function SignUpPage(props) {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+    // Check if fields are empty
+    if (!name || !email || !password || !confirmPassword) {
+      alert('Please fill out all fields!');
+      return;
+    }
     // Check if the passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -25,6 +29,7 @@ function SignUpPage(props) {
 
       // Make API request to AWS Lambda function
       const apiResponse = await API.post('Users', '/register', {
+        contentType: "application/json",
         body: user,
       });
       // Handle response data
