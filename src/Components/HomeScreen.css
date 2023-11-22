@@ -43,8 +43,6 @@ body {
 
 .swipe-btn {
     display: flex;
-    border: none;
-    background-color: transparent; 
 }
 
 .button-img {
