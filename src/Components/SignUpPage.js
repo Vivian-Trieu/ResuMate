@@ -10,7 +10,12 @@ function SignUpPage(props) {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+    // Check if fields are empty
+    if (!name || !email || !password || !confirmPassword) {
+      alert('Please fill out all fields!');
+      return;
+    }
+    
     // Check if the passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -31,18 +36,15 @@ function SignUpPage(props) {
       console.log('API Response:', apiResponse);
 
       // Check if registration was successful and send alert based on status code
-      /*
+      
       if (apiResponse.statusCode === 200) {
         alert('Registration successful!'); 
-        return;
-      } else if (apiResponse.statusCode === 400) {
-        alert('Registration failed. Account already exists.');
-        return;
+        console.log("Registration successful.");
       } else {
-        alert('Registration failed. Please try again.');
-        return;
+        alert('Registration failed. Account already exists.');
+        console.log("Registration failed.");
       }
-      */
+      
       
 
     } catch (error) {

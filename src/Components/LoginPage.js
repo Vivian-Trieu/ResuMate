@@ -7,6 +7,12 @@ function LoginPage(props) {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    // Check if fields are empty
+    if (!email || !password) {
+      alert('Please enter both email and password.');
+      return;
+    }
+    
     try {
       const user = {
         username: email,
