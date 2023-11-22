@@ -65,47 +65,54 @@ function HomeScreen({likedJobs, setLikedJobs}) {
 
       if (currentScreen === 'swiping') {
         content = (
-          <div className="home-screen-container">
-            <div className="job-box">
-              <div className="job">
-                  <h2>{jobs[currentJobIndex].title}</h2>
-                  <p>{jobs[currentJobIndex].company}</p>
-                  <p>{jobs[currentJobIndex].location}</p>
-                  <div className="description-box">
-                      <p>{jobs[currentJobIndex].description}</p>
-                  </div>
-              </div>
-              <div className="button-container">
-                <button><img className="button-img" src={SkipButton} alt="Save Job" onClick={handleDislike}/></button>
-                <button><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
-              </div>
-            </div>  
-          </div>
+          <>
+            <div className="header-placeholder"></div>
+            <div className="home-screen-container">
+              <div className="job-box">
+                <div className="job">
+                    <h1 className="job-title">{jobs[currentJobIndex].title}</h1>
+                    <p className="company">{jobs[currentJobIndex].company}</p>
+                    <div className="break"></div>
+                    <div className="other-attributes">
+                      <p className="location">{jobs[currentJobIndex].location}</p>
+                    </div>
+                    <div className="description-box">
+                        <p>{jobs[currentJobIndex].description}</p>
+                    </div>
+                </div>
+                <div className="button-container">
+                  <button className="swipe-btn skip-job"><img className="button-img" src={SkipButton} alt="Skip Job" onClick={handleDislike}/></button>
+                  <button className="swipe-btn save-job"><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
+                </div>
+              </div>  
+            </div>
+            <div className="header-placeholder"></div>
+          </>
         );
       } else if (currentScreen === 'no-more') {
         content = (
-          <div className="home-screen-container">
-            <div className="job-box">
-              <div className="job no-more">
-                <h2>No more jobs</h2>
-                <p>You've seen all available jobs. Check back later.</p>
+          <>
+            <div className="header-placeholder"></div>
+            <div className="home-screen-container">
+              <div className="job-box">
+                <div className="job no-more">
+                  <h2>No more jobs</h2>
+                  <p>You've seen all available jobs. Check back later.</p>
+                </div>
               </div>
             </div>
-          </div>
+            <div className="header-placeholder"></div>
+          </>
         );
       }
 
       return (
-        <div className="job-finder">
-          <header>
-
-          </header>
-    
-          <main>
+        <>
+          <div className="job-finder">
             {content}
-          </main>
-          <div style={{display: 'none'}}> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
-        </div>
+            <div style={{display: 'none'}}> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
+          </div>
+        </>
       );
 
 

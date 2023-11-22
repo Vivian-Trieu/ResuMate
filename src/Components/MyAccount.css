@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+}
+
+.header-placeholder {
+    height: 10vh
+}
+
+.my-account-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 80vh;
+    background-color: #efefef;
+    margin: auto;
+}
+
+
+.my-account-block {
+    display: flex;
+    flex-direction: row; 
+    background-color: #fff;
+    /* box-shadow: 7px 10px 0 rgba(0, 0, 0, 2); */
+    /* margin: 20px; */
+    padding: 1em;
+    margin: 0.5em 0;
+    text-align: start;
+    width: 20em;
+    /* width: 100%; Adjust as needed */
+    border-radius: 10px; /* Add rounded corners */
+    cursor: pointer;
+}
+
+.my-account-block-img {
+    width: 8%;
+    margin-right: 0.8em;
+    margin-top: 0.2em;
+}
+
+.my-account-img {
+    width: 100%;
+}
+
+.my-account-block-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-account-title {
+    margin: 2em 0 0.3em 0 !important;
+    display: flex;
+    width: 22em;
+}
+
+.my-account {
+    /* text-align: left; */
+    /* margin-top: 0.3em; */
+    font-size: 2em !important;
+    color: #000000;
+    margin: 0 !important;
+    /* font-size: 1.3em */
+}
+
+.my-account-block h3,
+.my-account-block p {
+    margin: 0;
+}
+
+.my-account-box {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* height: 34em; */
+    width: 100%;
+    /* width: 20em; */
+}
+
+.log-out {
+    background: #ffffff;
+    color: #EE4A53;
+    border: #EE4A53 1px solid;
+    padding: 0.7em 12em;
+    /* border: none; */
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    margin: 2em 0;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 780px) {
+    .my-account-container {
+        height: 80dvh;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1800px) {
+    .my-account-title {
+        width: 25em;
+    }
+
+    .my-account-box {
+        /* height: 50em; */
+    }
+
+    .my-account-block {
+        /* height: 50em; */
+        width: 25em;
+    }
+    .log-out {
+        padding: 0.7em 15.4em;
+    }
+}

@@ -8,9 +8,13 @@ import BottomNavigation from "./Components/BottomNavigation";
 import HeaderTab from "./Components/HeaderTab";
 import SavedJobs from './Components/SavedJobs';
 import Profile from "./Components/Profile"
+import MyAccount from "./Components/MyAccount";
+import Preferences from "./Components/Preferences"
+import Setting from "./Components/Setting";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
+  const [likedJobs, setLikedJobs] = useState([]);
   const renderForm = () => {
     switch (currentForm) {
       case 'login':
@@ -20,7 +24,54 @@ function App() {
       case 'forgot password':
         return <ForgotPasswordPage onFormSwitch={toggleForm} />;
       case 'home':
-        return <HomeScreen onFormSwitch={toggleForm} />;
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
+            <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'saved-jobs':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <SavedJobs likedJobs={likedJobs} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'account':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'profile':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Profile currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'preferences':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Preferences currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+      case 'setting':
+        return (
+          <>
+            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Setting currentForm={currentForm} onFormSwitch={toggleForm} />
+            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+          </>
+        );
+
       // Add more cases for other forms if needed
       default:
         return <LoginPage onFormSwitch={toggleForm} />;
@@ -48,22 +99,50 @@ function App() {
   const [likedJobs, setLikedJobs] = useState([]);
   let content;
 
-  if (activeTab === 'home') {
-    content = <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
-  }
-  else if (activeTab === 'saved-jobs') {
-    content = <SavedJobs likedJobs={likedJobs}/>
-  } else {
-    content = <Profile/>
-  }
+  switch (activeTab) {
+    case 'home':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab}/>
+          <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
+    
+    case 'saved-jobs':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <SavedJobs likedJobs={likedJobs} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
 
+    case 'account':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <MyAccount activeTab={activeTab} setActiveTab={setActiveTab} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
+    
+    case 'profile':
+      content = (
+        <>
+          <HeaderTab activeTab={activeTab} setActiveTab={setActiveTab} />
+          <Profile activeTab={activeTab} setActiveTab={setActiveTab} />
+          <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </>
+      )
+      break
+  }
+ 
   return (
     <div className="App">
-      <HeaderTab />
-      <BottomNavigation 
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
       {content}
     </div>
   )

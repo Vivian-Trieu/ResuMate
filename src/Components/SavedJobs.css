@@ -2,48 +2,109 @@ body {
     margin: 0;
 }
 
-.saved-jobs-cointainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #00A7A6;
+.header-placeholder {
+    height: 10vh
 }
 
-.saved-jobs-box {
-    overflow: auto;
+.saved-jobs-container {
     display: flex;
     flex-direction: column;
-    height: 70%;
-    width: 450px;
+    /* justify-content: center; */
+    align-items: center;
+    height: 80vh;
+    background-color: #00A7A6;
+    margin: auto;
 }
+
 
 .saved-job {
     display: flex;
     flex-direction: column; 
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 7px 10px 0 rgba(0, 0, 0, 2);
     /* margin: 20px; */
-    padding: 20px;
-    margin: 2px 0;
+    padding: 1em;
+    margin: 0.8em 0;
     text-align: start;
-    max-width: 400px !important;
-    min-width: 350px;
-    width: 100%; /* Adjust as needed */
+    width: 20em;
+    /* width: 100%; Adjust as needed */
     border-radius: 10px; /* Add rounded corners */
     
 }
 
-.saved-jobs-cointainer h2 {
-    color: #fff;
-    margin-bottom: 20px;
-    font-size: 1.3em;
+.saved-jobs-title {
+    margin: 2em 0 0.3em 0 !important;
+    display: flex;
+    width: 22em;
 }
 
-.saved-jobs-cointainer h3,
-.saved-jobs-cointainer p {
+.saved-jobs {
+    /* text-align: left; */
+    /* margin-top: 0.3em; */
+    font-size: 2em !important;
+    color: #fff;
+    margin: 0 !important;
+    /* font-size: 1.3em */
+}
+
+.saved-job h3,
+.saved-job p {
     margin: 0;
 }
+
+.saved-jobs-box {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 32em;
+    width: 100%;
+    /* width: 20em; */
+}
+
+.job-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.apply-btn, .remove-btn {
+    background: #EFEFEF;
+    /* color: white; */
+    margin-top: 0.6em;
+    padding: 0.3em 4em;
+    border: 1px solid #c3c3c3;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
   
-  /* Styles for job title, company, etc */
+  /* Media query for mobile screens */
+@media (max-width: 780px) {
+    .saved-jobs-container {
+        height: 80dvh
+    }
+
+    .saved-jobs-box {
+        height: 30em;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1800px) {
+    .saved-jobs-title {
+        width: 25em;
+    }
+    
+    .saved-jobs-box {
+        height: 53em;
+    }
+
+    .saved-job {
+        /* height: 50em; */
+        width: 25em;
+    }
+}
