@@ -43,4 +43,10 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+<<<<<<< HEAD
 amplify/
+=======
+
+amplify/
+/amplify
+>>>>>>> 8983170033d425824e5f9ba6b1e774a65f38f163

@@ -1,0 +1,124 @@
+body {
+    background-color: #efefef;
+}
+
+.header-tab {
+    position: absolute;
+}
+
+.header-placeholder {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setting-container {
+    /* display: visible !important; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 80vh;
+    background-color: #efefef;
+    padding: 2em 0;
+    /* overflow: scroll; */
+}
+
+.setting-box {
+    display: flex;
+    flex-direction: column; 
+    /* padding: 20px; */
+    text-align: center;
+    /* align-items: center; */
+    width: 20em;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.setting-box h2 {
+    display: flex;
+    margin: 0 0 0.3em 0;
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: start;
+}
+
+.setting h4 {
+    margin: 0.7em 0;
+}
+
+.setting-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-text {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 1.5em;
+    justify-content: flex-end;
+    padding: 0;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.delete-account {
+    background: #ffffff;
+    color: #EE4A53;
+    border: #EE4A53 1px solid;
+    padding: 0.7em 10em;
+    /* border: none; */
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    margin: 2em 0;
+}
+
+.break {
+    width: 100%;
+    border-bottom: 1.25px solid #C3C3C3;
+    margin-top: 0.7em;
+}
+
+form {
+    margin: 0;
+}
+
+@media (max-width: 780px) {
+    .setting-container {
+        height: 80dvh;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
+}
+@media (min-width: 1800px) {
+    .setting-title {
+        width: 25em;
+    }
+
+    .setting-box {
+        /* height: 50em; */
+        width: 25em;
+    }
+
+    .delete-account {
+        /* height: 50em; */
+        padding: 0.7em 13.2em;
+    }
+}

@@ -8,7 +8,7 @@ import Profile from "../img/profile-button.png"
 import ClickedProfile from "../img/profile-button-clicked.png"
 
 
-function BottomNavigation({ activeTab, setActiveTab}) {
+function BottomNavigation(props) {
 
     const [homeImg, setHomeImg] = useState(ClickedHome);
     const [savedImg, setSavedImg] = useState(SavedJobs);
@@ -23,34 +23,40 @@ function BottomNavigation({ activeTab, setActiveTab}) {
             setHomeImg(Home); 
             setSavedImg(ClickedSavedJobs)
             setProfileImg(Profile)
-        } else {
+        } else if (tab === 'account') {
             setHomeImg(Home); 
             setSavedImg(SavedJobs)
             setProfileImg(ClickedProfile)
         }
 
-        setActiveTab(tab);
+        props.onFormSwitch(tab);
     }
 
-    return (
-        <div className="bottom-nav-container">
-            <nav className="bottom-nav">
-                <ul>
-                    <li className={activeTab === 'saved-jobs' ? 'active' : ''} onClick={() => {setActiveTab('saved-jobs'); handleTabClick('saved-jobs');}}>
-                        <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
-                    </li>
-            
-                    <li className={activeTab === 'home' ? 'active' : ''} onClick={() => {setActiveTab('home'); handleTabClick('home');}}>
-                        <img className="nav-button-img" src={homeImg} alt="Home"  />
-                    </li>
-            
-                    <li className={activeTab === 'account' ? 'active' : ''} onClick={() => {setActiveTab('account'); handleTabClick('account');}}>
-                        <img className="nav-button-img" src={profileImg} alt="Profile"  />
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    );
+    if (props.currentForm === 'home' || props.currentForm === 'saved-jobs' || props.currentForm === 'account')
+        return (
+            <div className="bottom-nav-container">
+                <div className="bottom-nav-box">
+                    <nav className="bottom-nav">
+                        <ul>
+                            <li className={props.currentForm === 'saved-jobs' ? 'active' : ''} onClick={() => {handleTabClick('saved-jobs');}}>
+                                <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
+                            </li>
+                    
+                            <li className={props.currentForm === 'home' ? 'active' : ''} onClick={() => {handleTabClick('home');}}>
+                                <img className="nav-button-img" src={homeImg} alt="Home"  />
+                            </li>
+                    
+                            <li className={props.currentForm === 'account' ? 'active' : ''} onClick={() => {handleTabClick('account');}}>
+                                <img className="nav-button-img" src={profileImg} alt="My Account"  />
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        )
+    else {
+        return null;
+    }
 }
 
 export default BottomNavigation

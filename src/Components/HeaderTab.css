@@ -1,14 +1,55 @@
 .header-tab {
-    position: absolute;
     top: 0px;
     background: #fff;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 5%; 
-    min-height: 72px;
+    height: 10vh; 
+    /* min-height: 72px; */
+    min-height: 4.5em;
+    display: flex;
+    align-items: center;
+}
+
+.account-tab {
+    justify-content: space-around;
+}
+
+.header-tab-box {
+    display: flex;
+    flex-direction: row;
+    width: 30em;
+    justify-content: space-between;
+}
+
+.header-title {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.close-btn {
+    cursor: pointer;
+
+}
+
+.close-button-img {
+    width: 2em;
+    margin: auto;
+}
+
+.btn-placeholder {
+    visibility: hidden;
+}
+
+@media (max-width: 780px) {
+    .header-tab-box {
+        height: 10dvh;
+    }
+    /* .job-box {
+        height: 32em;
+        width: 19.5em;
+
+    } */
 }

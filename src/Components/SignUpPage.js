@@ -15,6 +15,10 @@ function SignUpPage(props) {
       alert('Please fill out all fields!');
       return;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 8983170033d425824e5f9ba6b1e774a65f38f163
     // Check if the passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -36,18 +40,15 @@ function SignUpPage(props) {
       console.log('API Response:', apiResponse);
 
       // Check if registration was successful and send alert based on status code
-      /*
+      
       if (apiResponse.statusCode === 200) {
         alert('Registration successful!'); 
-        return;
-      } else if (apiResponse.statusCode === 400) {
-        alert('Registration failed. Account already exists.');
-        return;
+        console.log("Registration successful.");
       } else {
-        alert('Registration failed. Please try again.');
-        return;
+        alert('Registration failed. Account already exists.');
+        console.log("Registration failed.");
       }
-      */
+      
       
 
     } catch (error) {
