@@ -21,7 +21,7 @@ function App() {
   const renderForm = () => {
     switch (currentForm) {
       case 'login':
-        return <LoginPage onFormSwitch={toggleForm} />;
+        return <LoginPage setUserID={setUserID} onFormSwitch={toggleForm} />;
       case 'sign up':
         return <SignUpPage onFormSwitch={toggleForm} />;
       case 'forgot password':
@@ -46,7 +46,7 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} />
+            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id}/>
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );
@@ -81,17 +81,8 @@ function App() {
     }
   };
 
-  const toggleForm = async (formName, user_id) => {
+  const toggleForm = async (formName) => {
     setCurrentForm(formName);
-
-    switch (formName) {
-      case 'profile':
-        setUserID(user_id);
-        break;
-
-      default:
-        break;
-    } 
   };
 
   return (

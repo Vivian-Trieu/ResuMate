@@ -9,7 +9,7 @@ import Amplify, { API, Storage } from 'aws-amplify';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
-    console.log('User ID in Profile', props.user_id); 
+    console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
     useEffect(() => {
         if (selectedFile) {
             uploadFileToS3(selectedFile);
