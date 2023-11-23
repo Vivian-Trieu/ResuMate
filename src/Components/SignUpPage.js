@@ -15,10 +15,6 @@ function SignUpPage(props) {
       alert('Please fill out all fields!');
       return;
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 8983170033d425824e5f9ba6b1e774a65f38f163
     // Check if the passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");

@@ -12,7 +12,7 @@ function Profile(props) {
 
     useEffect(() => {
         if (selectedFile) {
-            console.log('File uploaded successfully', selectedFile.name);
+            uploadFileToS3(selectedFile);
         }
     }, [selectedFile]);
     
@@ -21,6 +21,43 @@ function Profile(props) {
         setSelectedFile(fileInput.files[0]);
     }
 
+    const uploadFileToS3 = async (file) => {
+        try {
+            const fileName = `resume_${Date.now()}.pdf`; // Generate a unique file name
+            await Storage.put(fileName, file, {
+                level: 'public',
+                contentType: 'application/pdf', // Set the content type for PDF files
+            });
+
+            console.log('File uploaded successfully:', fileName);
+
+            // Perform any additional actions after uploading the file 
+            //handleResumeUploadEvent(props.user_id, fileName);
+
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        }
+    };
+
+    const handleResumeUploadEvent = async (user_id, resume_id) => {
+        
+        try {
+            const resume = {
+                user_id: user_id,
+                resume_id: resume_id,
+            };
+
+            const apiResponse = await API.post('Resumes', '/upload', {
+                contentType: "application/json",
+                body: resume,
+            });
+            console.log('Handle resume upload event for user:', user_id, 'resumeId:', resume_id);
+            console.log('Resume upload event response:', apiResponse);
+
+        } catch (error) {
+            console.error('Error handling resume upload event:', error);
+        }
+    };
 
     return (
         <>
@@ -44,7 +81,7 @@ function Profile(props) {
                         <h2 className="profile-name">John Doe</h2>
 
                         <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
-                            <input type="file" id="resume-upload-btn" onChange={handleFileUpload} />
+                            <input type="file" id="resume-upload-btn" accept=".pdf" onChange={handleFileUpload} />
                        
                         {/* <button className="resume-upload-btn">
                             UPLOAD RESUME
