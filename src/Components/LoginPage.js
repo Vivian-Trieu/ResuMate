@@ -25,7 +25,9 @@ function LoginPage(props) {
         body: user,
       });
 
+      const user_id = apiResponse.Items[0].user_id; // Get user_id from api response
       console.log('Login API Response:', apiResponse);
+      console.log('User ID:', user_id); 
 
       // If login was successful, switch to HomeScreen
       if (apiResponse.statusCode === 401) {
@@ -34,7 +36,7 @@ function LoginPage(props) {
       } else {
         alert('Login successful!');
         console.log("Login successful.");
-        props.onFormSwitch('home');
+        props.onFormSwitch('home', user_id); // pass user_id to home screen
       }
     } catch (error) {
       console.error('Login API Error:', error);
