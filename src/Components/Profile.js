@@ -9,7 +9,7 @@ import Amplify, { API, Storage } from 'aws-amplify';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
-
+    console.log('User ID in Profile', props.user_id); 
     useEffect(() => {
         if (selectedFile) {
             uploadFileToS3(selectedFile);
@@ -30,9 +30,10 @@ function Profile(props) {
             });
 
             console.log('File uploaded successfully:', fileName);
+            
 
             // Perform any additional actions after uploading the file 
-            //handleResumeUploadEvent(props.user_id, fileName);
+            handleResumeUploadEvent(props.user_id, fileName);
 
         } catch (error) {
             console.error('Error uploading file:', error);

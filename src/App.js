@@ -15,6 +15,9 @@ import Setting from "./Components/Setting";
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const [likedJobs, setLikedJobs] = useState([]);
+  const [user_id, setUserID] = useState(null);
+
+
   const renderForm = () => {
     switch (currentForm) {
       case 'login':
@@ -51,7 +54,7 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Profile currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Profile currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} />
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );
@@ -78,9 +81,18 @@ function App() {
     }
   };
 
-  const toggleForm = (formName) => {
+  const toggleForm = async (formName, user_id) => {
     setCurrentForm(formName);
-  }
+
+    switch (formName) {
+      case 'profile':
+        setUserID(user_id);
+        break;
+
+      default:
+        break;
+    } 
+  };
 
   return (
     <div className="App">
