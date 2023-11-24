@@ -23,6 +23,7 @@ function SignUpPage(props) {
 
     try {
       const user = {
+        name: name,
         username: email,
         password: password,
       };

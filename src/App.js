@@ -16,12 +16,14 @@ function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const [likedJobs, setLikedJobs] = useState([]);
   const [user_id, setUserID] = useState(null);
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
 
 
   const renderForm = () => {
     switch (currentForm) {
       case 'login':
-        return <LoginPage setUserID={setUserID} onFormSwitch={toggleForm} />;
+        return <LoginPage setUserID={setUserID} onFormSwitch={toggleForm} setName={setName} setEmail={setEmail}/>;
       case 'sign up':
         return <SignUpPage onFormSwitch={toggleForm} />;
       case 'forgot password':
@@ -46,7 +48,7 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id}/>
+            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} />
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );
@@ -54,7 +56,7 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Profile currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} />
+            <Profile currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} name={name}/>
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );
@@ -67,10 +69,11 @@ function App() {
           </>
         );
       case 'setting':
+        console.log(email)
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Setting currentForm={currentForm} onFormSwitch={toggleForm} />
+            <Setting currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} name={name} email={email}/>
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );

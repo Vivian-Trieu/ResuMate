@@ -44,7 +44,7 @@ function Setting(props) {
                             <button className="edit-text">Edit</button>
                         </div>
                         <div className="setting-description"> 
-                            <p>{email}</p>
+                            <p>{props.email}</p>
                         </div>
                     </div>
                     <div className="break"></div>
@@ -54,7 +54,7 @@ function Setting(props) {
                             <button className="edit-text">Edit</button>
                         </div>
                         <div className="s-description"> 
-                            <p>{name}</p>
+                            <p>{props.name}</p>
                         </div>
                     </div>
                     <div className="break"></div>

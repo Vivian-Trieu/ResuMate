@@ -26,6 +26,8 @@ function LoginPage(props) {
       });
 
       const user_id = apiResponse.Items[0].user_id; // Get user_id from api response
+      const name = apiResponse.Items[0].name;
+      const user_email = apiResponse.Items[0].username;
       console.log('Login API Response:', apiResponse);
       console.log('User ID:', user_id); 
 
@@ -37,6 +39,8 @@ function LoginPage(props) {
         alert('Login successful!');
         console.log("Login successful.");
         props.setUserID(user_id)
+        props.setName(name)
+        props.setEmail(user_email)
         props.onFormSwitch('home'); // pass user_id to home screen
       }
     } catch (error) {

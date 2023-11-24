@@ -79,7 +79,7 @@ function Profile(props) {
                             </button>
                         </div>
 
-                        <h2 className="profile-name">John Doe</h2>
+                        <h2 className="profile-name">{props.name}</h2>
 
                         <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
                             <input type="file" id="resume-upload-btn" accept=".pdf" onChange={handleFileUpload} />
