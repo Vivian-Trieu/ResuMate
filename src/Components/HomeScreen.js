@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import JobCard from './JobCard'
 import "./HomeScreen.css"
-import SaveButton from "../img/click-to-save-job-button.png"
-import SkipButton from "../img/click-to-skip-job-button.png"
+
 
 function HomeScreen({likedJobs, setLikedJobs}) {
 
@@ -68,23 +68,11 @@ function HomeScreen({likedJobs, setLikedJobs}) {
           <>
             <div className="header-placeholder"></div>
             <div className="home-screen-container">
-              <div className="job-box">
-                <div className="job">
-                    <h1 className="job-title">{jobs[currentJobIndex].title}</h1>
-                    <p className="company">{jobs[currentJobIndex].company}</p>
-                    <div className="break"></div>
-                    <div className="other-attributes">
-                      <p className="location">{jobs[currentJobIndex].location}</p>
-                    </div>
-                    <div className="description-box">
-                        <p>{jobs[currentJobIndex].description}</p>
-                    </div>
-                </div>
-                <div className="button-container">
-                  <button className="swipe-btn skip-job"><img className="button-img" src={SkipButton} alt="Skip Job" onClick={handleDislike}/></button>
-                  <button className="swipe-btn save-job"><img className="button-img" src={SaveButton} alt="Save Job" onClick={handleLike}/></button>
-                </div>
-              </div>  
+              < JobCard
+                job={jobs[currentJobIndex]}
+                onDislikeButton={handleDislike}
+                onLikeButton={handleLike}
+              />
             </div>
             <div className="header-placeholder"></div>
           </>
