@@ -24,6 +24,7 @@ function SignUpPage(props) {
     try {
       const user = {
         name: name,
+        email: email,
         username: email,
         password: password,
       };
@@ -39,13 +40,14 @@ function SignUpPage(props) {
       // Check if registration was successful and send alert based on status code
       
       if (apiResponse.statusCode === 200) {
-        alert('Registration successful!'); 
         console.log("Registration successful.");
-      } else {
-        alert('Registration failed. Account already exists.');
+        alert('Registration successful!'); // alert does not show up
+        return;
+      } else if (apiResponse.statusCode === 400) {
         console.log("Registration failed.");
+        alert('Registration failed. Account already exists.'); // alert does not show up
+        return;
       }
-      
       
 
     } catch (error) {

@@ -18,6 +18,7 @@ function App() {
   const [user_id, setUserID] = useState(null);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
 
   const renderForm = () => {
@@ -73,7 +74,14 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Setting currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} name={name} email={email}/>
+            <Setting 
+              currentForm={currentForm} 
+              onFormSwitch={toggleForm} 
+              user_id={user_id} name={name} 
+              email={email} setName={setName} 
+              setEmail={setEmail} 
+              setPassword={setPassword}
+            />
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );

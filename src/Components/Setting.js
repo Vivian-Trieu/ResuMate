@@ -38,7 +38,7 @@ function Setting(props) {
             setUpdatedValue('');
 
         } catch (error) {
-            console.error('Failed to update user attribute.')
+            console.error('Failed to update user attribute:', error)
         }
     }
 

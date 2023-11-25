@@ -17,6 +17,7 @@ function LoginPage(props) {
       const user = {
         username: email,
         password: password,
+        email: email,
       };
 
       // Make API request to lambda function for login
@@ -76,7 +77,7 @@ function LoginPage(props) {
           <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
             Forgot password?
           </button>
-          <button type="button" className="sign-in" onClick={handleLogin}>
+          <button type="button" className="sign-in" onClick={handleLogin} >
               SIGN IN
           </button>
           <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
