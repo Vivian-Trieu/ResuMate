@@ -9,16 +9,40 @@ import Amplify, { API, Storage } from 'aws-amplify';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
+    const [resumeData, setResumeData] = useState([]);
+    //const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
+    //const [education, setEducation] = useState('');
+    //const [skills, setSkills] = useState([]);
+    //const [links, setLinks] = useState('');
+
     console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
+    
     useEffect(() => {
         if (selectedFile) {
             uploadFileToS3(selectedFile);
         }
+
+        fetchResumeData();
     }, [selectedFile]);
     
     function handleFileUpload() {
         const fileInput = document.getElementById('resume-upload-btn');
         setSelectedFile(fileInput.files[0]);
+    }
+
+    const fetchResumeData = async () => {
+        try {
+            const apiResponse = await API.post('Resumes', '/getProfile', {
+                contentType: "application/json",
+                body: { user_id: props.user_id },
+            });
+
+            console.log('Resume Info API Response:', apiResponse);
+            
+
+        } catch (error) {
+            console.error('Error fetching resume info:', error);
+        }
     }
 
     const uploadFileToS3 = async (file) => {
@@ -34,7 +58,7 @@ function Profile(props) {
 
             // Perform any additional actions after uploading the file 
             handleResumeUploadEvent(props.user_id, fileName);
-
+            
         } catch (error) {
             console.error('Error uploading file:', error);
         }
@@ -46,6 +70,10 @@ function Profile(props) {
             const resume = {
                 user_id: user_id,
                 resume_id: resume_id,
+                //work_experience: work_experience, // add work experience as an attribute
+                //education: education,
+                //skills: skills,
+                //links: links,
             };
 
             const apiResponse = await API.post('Resumes', '/upload', {
