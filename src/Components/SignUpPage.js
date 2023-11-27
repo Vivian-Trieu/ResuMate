@@ -15,7 +15,6 @@ function SignUpPage(props) {
       alert('Please fill out all fields!');
       return;
     }
-    
     // Check if the passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
@@ -26,10 +25,13 @@ function SignUpPage(props) {
       const user = {
         username: email,
         password: password,
+        name: name,
+        email: email,
       };
 
       // Make API request to AWS Lambda function
       const apiResponse = await API.post('Users', '/register', {
+        contentType: "application/json",
         body: user,
       });
       // Handle response data
@@ -38,13 +40,14 @@ function SignUpPage(props) {
       // Check if registration was successful and send alert based on status code
       
       if (apiResponse.statusCode === 200) {
-        alert('Registration successful!'); 
         console.log("Registration successful.");
-      } else {
-        alert('Registration failed. Account already exists.');
+        alert('Registration successful!'); // alert does not show up
+        return;
+      } else if (apiResponse.statusCode === 400) {
         console.log("Registration failed.");
+        alert('Registration failed. Account already exists.'); // alert does not show up
+        return;
       }
-      
       
 
     } catch (error) {

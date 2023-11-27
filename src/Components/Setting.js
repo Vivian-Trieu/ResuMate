@@ -2,28 +2,45 @@ import React, { useState } from 'react';
 import "./Setting.css"
 import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
+import { API } from 'aws-amplify';
 
 function Setting(props) {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
+    const [editableField, setEditableField] = useState('');
+    const [updatedValue, setUpdatedValue] = useState('');
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+    const handleUpdate = async (field) => {
+        try {
+            const user = {
+                user_id: props.user_id,
+                update_attributes: { [field]: updatedValue },
+            };
+            // Send updated data to DynamoDB
+            const apiResponse = await API.post('Users', '/update', {
+                contentType: "application/json",
+                body: user,
+            });
 
-    const handleNameChange = (e) => {
-        setName(e.target.value);
-    };
+            // Update the corresponding prop based on the changed value
+            switch (field) {
+                case 'email':
+                    props.setEmail(updatedValue);
+                    break;
+                case 'name':
+                    props.setName(updatedValue);
+                    break;
+                // Add additional cases for other fields if needed
+                default:
+                    break;
+            }
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+            console.log('API Response:', apiResponse);
+            setEditableField('');
+            setUpdatedValue('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // submit form data
-    };
+        } catch (error) {
+            console.error('Failed to update user attribute:', error)
+        }
+    }
 
     return (
         <>  
@@ -41,30 +58,69 @@ function Setting(props) {
                     <div className="setting">
                         <div className="setting-title">
                             <h4>Email</h4>
-                            <button className="edit-text">Edit</button>
-                        </div>
-                        <div className="setting-description"> 
-                            <p>{email}</p>
+                            {editableField === 'email' ? (
+                                <>
+                                    <input
+                                        type="text"
+                                        value={updatedValue}
+                                        onChange={(e) => setUpdatedValue(e.target.value)}
+                                    /> 
+                                    <button className="edit-text" onClick={() => handleUpdate('email')}>Update</button>
+                                </>
+                            ) : (
+                                <div className="label-edit-container">
+                                    <div className="setting-description"> 
+                                        <p>{props.email}</p>
+                                    </div>
+                                    <button className="edit-text" onClick={() => setEditableField('email')}>Edit</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="break"></div>
                     <div className="setting">
                         <div className="setting-title">
                             <h4>Name</h4>
-                            <button className="edit-text">Edit</button>
-                        </div>
-                        <div className="s-description"> 
-                            <p>{name}</p>
+                            {editableField === 'name' ? (
+                                <>
+                                    <input
+                                        type="text"
+                                        value={updatedValue}
+                                        onChange={(e) => setUpdatedValue(e.target.value)}
+                                    /> 
+                                    <button className="edit-text" onClick={() => handleUpdate('name')}>Update</button>
+                                </>
+                            ) : (
+                                <div className="label-edit-container">
+                                    <div className="s-description"> 
+                                        <p>{props.name}</p>
+                                    </div>
+                                    <button className="edit-text" onClick={() => setEditableField('name')}>Edit</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="break"></div>
                     <div className="setting">
                         <div className="setting-title">
                             <h4>Password</h4>
-                            <button className="edit-text">Edit</button>
-                        </div>
-                        <div className="setting-description"> 
-                            <p>********</p>
+                            {editableField === 'password' ? (
+                                <>
+                                    <input
+                                        type="text"
+                                        value={updatedValue}
+                                        onChange={(e) => setUpdatedValue(e.target.value)}
+                                    /> 
+                                    <button className="edit-text" onClick={() => handleUpdate('password')}>Update</button>
+                                </>
+                            ) : (
+                                <div className="label-edit-container">
+                                    <div className="setting-description"> 
+                                        <p>********</p>
+                                    </div>
+                                    <button className="edit-text" onClick={() => setEditableField('password')}>Edit</button>
+                                </div>
+                            )}
                         </div>
                     </div>
 

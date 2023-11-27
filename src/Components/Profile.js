@@ -9,11 +9,20 @@ import Amplify, { API, Storage } from 'aws-amplify';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
+    const [resumeData, setResumeData] = useState([]);
+    //const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
+    //const [education, setEducation] = useState('');
+    //const [skills, setSkills] = useState([]);
+    //const [links, setLinks] = useState('');
 
+    console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
+    
     useEffect(() => {
         if (selectedFile) {
-            console.log('File uploaded successfully', selectedFile.name);
+            uploadFileToS3(selectedFile);
         }
+
+        fetchResumeData();
     }, [selectedFile]);
     
     function handleFileUpload() {
@@ -21,6 +30,63 @@ function Profile(props) {
         setSelectedFile(fileInput.files[0]);
     }
 
+    const fetchResumeData = async () => {
+        try {
+            const apiResponse = await API.post('Resumes', '/getProfile', {
+                contentType: "application/json",
+                body: { user_id: props.user_id },
+            });
+
+            console.log('Resume Info API Response:', apiResponse);
+            
+
+        } catch (error) {
+            console.error('Error fetching resume info:', error);
+        }
+    }
+
+    const uploadFileToS3 = async (file) => {
+        try {
+            const fileName = `resume_${Date.now()}.pdf`; // Generate a unique file name
+            await Storage.put(fileName, file, {
+                level: 'public',
+                contentType: 'application/pdf', // Set the content type for PDF files
+            });
+
+            console.log('File uploaded successfully:', fileName);
+            
+
+            // Perform any additional actions after uploading the file 
+            handleResumeUploadEvent(props.user_id, fileName);
+            
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        }
+    };
+
+    const handleResumeUploadEvent = async (user_id, resume_id) => {
+        
+        try {
+            const resume = {
+                user_id: user_id,
+                resume_id: resume_id,
+                //work_experience: work_experience, // add work experience as an attribute
+                //education: education,
+                //skills: skills,
+                //links: links,
+            };
+
+            const apiResponse = await API.post('Resumes', '/upload', {
+                contentType: "application/json",
+                body: resume,
+            });
+            console.log('Handle resume upload event for user:', user_id, 'resumeId:', resume_id);
+            console.log('Resume upload event response:', apiResponse);
+
+        } catch (error) {
+            console.error('Error handling resume upload event:', error);
+        }
+    };
 
     return (
         <>
@@ -41,10 +107,10 @@ function Profile(props) {
                             </button>
                         </div>
 
-                        <h2 className="profile-name">John Doe</h2>
+                        <h2 className="profile-name">{props.name}</h2>
 
                         <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
-                            <input type="file" id="resume-upload-btn" onChange={handleFileUpload} />
+                            <input type="file" id="resume-upload-btn" accept=".pdf" onChange={handleFileUpload} />
                        
                         {/* <button className="resume-upload-btn">
                             UPLOAD RESUME

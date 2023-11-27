@@ -93,6 +93,23 @@ body {
     margin-top: 0.7em;
 }
 
+.label-edit-container {
+    display: flex;
+    align-items: center;
+}
+
+.label-edit-container p {
+    margin: 0;
+}
+
+.label-edit-container .edit-text {
+    margin-left: 1em;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+
 form {
     margin: 0;
 }

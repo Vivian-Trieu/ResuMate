@@ -17,6 +17,7 @@ function LoginPage(props) {
       const user = {
         username: email,
         password: password,
+        email: email,
       };
 
       // Make API request to lambda function for login
@@ -25,7 +26,11 @@ function LoginPage(props) {
         body: user,
       });
 
+      const user_id = apiResponse.Items[0].user_id; // Get user_id from api response
+      const name = apiResponse.Items[0].name;
+      const user_email = apiResponse.Items[0].username;
       console.log('Login API Response:', apiResponse);
+      console.log('User ID:', user_id); 
 
       // If login was successful, switch to HomeScreen
       if (apiResponse.statusCode === 401) {
@@ -34,7 +39,10 @@ function LoginPage(props) {
       } else {
         alert('Login successful!');
         console.log("Login successful.");
-        props.onFormSwitch('home');
+        props.setUserID(user_id)
+        props.setName(name)
+        props.setEmail(user_email)
+        props.onFormSwitch('home'); // pass user_id to home screen
       }
     } catch (error) {
       console.error('Login API Error:', error);
@@ -69,7 +77,7 @@ function LoginPage(props) {
           <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
             Forgot password?
           </button>
-          <button type="button" className="sign-in" onClick={handleLogin}>
+          <button type="button" className="sign-in" onClick={handleLogin} >
               SIGN IN
           </button>
           <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
