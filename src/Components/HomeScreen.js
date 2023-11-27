@@ -13,14 +13,21 @@ function HomeScreen({ likedJobs, setLikedJobs }) {
     const fetchJobs = async () => {
       try {
         const apiResponse = await API.post('Jobs', '/query', {
-          contentType: "application/json",
-          query: "{\"query\":\"New Jersey, BPO, data trend analysis, MSFT Office\"}", // Example query input from function test event.json
+          body: {
+            query: "New Jersey, BPO, data trend analysis, MSFT Office",
+          },
         });
 
         console.log('Resume Info API Response:', apiResponse);
-        const data = await apiResponse.json();
-        setJobs(data.matches);
-        setCurrentScreen('swiping');
+
+        // Check if the response contains the expected property
+        if (apiResponse && apiResponse.matches) {
+          setJobs(apiResponse.matches);
+          setCurrentScreen('swiping');
+        } else {
+          console.log('Error fetching jobs: Invalid response format');
+          setCurrentScreen('error');
+        }
 
       } catch (error) {
         console.log('Error fetching jobs:', error);
