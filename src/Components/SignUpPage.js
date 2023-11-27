@@ -23,10 +23,10 @@ function SignUpPage(props) {
 
     try {
       const user = {
-        name: name,
-        email: email,
         username: email,
         password: password,
+        name: name,
+        email: email,
       };
 
       // Make API request to AWS Lambda function
