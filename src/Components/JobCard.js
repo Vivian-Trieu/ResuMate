@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "./JobCard.css";
 import SaveButton from "../img/click-to-save-job-button.png"
 import SkipButton from "../img/click-to-skip-job-button.png"
+import InnerHTMLReader from './InnerHTMLReader';
 
 function JobCard({ job, onDislikeButton, onLikeButton }) {
     const [swiped, setSwiped] = useState(false);
@@ -53,7 +54,8 @@ function JobCard({ job, onDislikeButton, onLikeButton }) {
                     <p className="location">{job.location}</p>
                 </div>
                 <div className="description-box">
-                    <p>{job.description}</p>
+                    {/* <p>{job.description}</p> */}
+                    <InnerHTMLReader value={job.description} />
                 </div>
             </div>
             <div className="button-container">

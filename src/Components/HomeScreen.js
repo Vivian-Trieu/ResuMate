@@ -62,15 +62,23 @@ function HomeScreen({ likedJobs, setLikedJobs }) {
 
   if (currentScreen === 'loading') {
     content = (
-      <div className="home-screen-container">
-        <p>Loading...</p>
-      </div>
+      <>
+        <div className="header-placeholder"></div>
+        <div className="home-screen-container">
+          <p>Loading...</p>
+        </div>
+        <div className="header-placeholder"></div>
+      </>
     );
   } else if (currentScreen === 'error') {
     content = (
-      <div className="home-screen-container">
-        <p>Error fetching jobs. Please try again later.</p>
-      </div>
+      <>
+        <div className="header-placeholder"></div>
+        <div className="home-screen-container">
+          <p>Error fetching jobs. Please try again later.</p>
+        </div>
+        <div className="header-placeholder"></div>
+      </>
     );
   } else if (currentScreen === 'swiping') {
     content = (
@@ -88,14 +96,18 @@ function HomeScreen({ likedJobs, setLikedJobs }) {
     );
   } else if (currentScreen === 'no-more') {
     content = (
-      <div className="home-screen-container">
-        <div className="job-box">
-          <div className="job no-more">
-            <h2>No more jobs</h2>
-            <p>You've seen all available jobs. Check back later.</p>
+      <>
+        <div className="header-placeholder"></div>
+        <div className="home-screen-container">
+          <div className="job-box">
+            <div className="job no-more">
+              <h2>No more jobs</h2>
+              <p>You've seen all available jobs. Check back later.</p>
+            </div>
           </div>
         </div>
-      </div>
+        <div className="header-placeholder"></div>
+      </>
     );
   }
 
