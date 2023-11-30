@@ -1,4 +1,5 @@
 import React from "react";
+import "./InnerHTMLReader.css";
 
 function InnerHTMLReader(props) {
     return (
