@@ -20,6 +20,12 @@ function App() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
+  function handleRemoveButton(job){
+    const index = likedJobs.indexOf(job);
+    console.log(index)
+    var updatedJobs = likedJobs.filter(j => j !== job); 
+    setLikedJobs(updatedJobs);
+  }
 
   const renderForm = () => {
     switch (currentForm) {
@@ -41,7 +47,7 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <SavedJobs likedJobs={likedJobs} />
+            <SavedJobs likedJobs={likedJobs} handleRemoveButton={handleRemoveButton}/>
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );

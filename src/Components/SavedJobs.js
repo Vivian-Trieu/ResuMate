@@ -1,7 +1,8 @@
 import "./SavedJobs.css"
 import React from 'react';
 
-function SavedJobs({likedJobs}) {
+function SavedJobs({likedJobs, handleRemoveButton}) {
+
   return (
     <>
       <div className="header-placeholder"></div>
@@ -17,7 +18,7 @@ function SavedJobs({likedJobs}) {
               <p>{job.company}</p>
               <div className="job-buttons">
                 <button className="apply-btn">Apply</button>
-                <button className="remove-btn">Remove</button>
+                <button className="remove-btn" onClick={() => {handleRemoveButton(job);}}>Remove</button>
               </div>
             </div>
           ))}
