@@ -48,10 +48,10 @@ function JobCard({ job, onDislikeButton, onLikeButton }) {
         >
             <div className="job">
                 <h1 className="job-title">{job.title}</h1>
-                <p className="company">{job.company}</p>
+                <p className="company">{job.companyDisplayName}</p>
                 <div className="break"></div>
                 <div className="other-attributes">
-                    <p className="location">{job.location}</p>
+                    <p className="location">{job.addresses}</p>
                 </div>
                 <div className="description-box">
                     {/* <p>{job.description}</p> */}

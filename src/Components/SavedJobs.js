@@ -15,7 +15,7 @@ function SavedJobs({likedJobs, handleRemoveButton}) {
           {likedJobs.map(job => (
             <div key={job.id} className="saved-job">
               <h3>{job.title}</h3>
-              <p>{job.company}</p>
+              <p>{job.companyDisplayName}</p>
               <div className="job-buttons">
                 <button className="apply-btn">Apply</button>
                 <button className="remove-btn" onClick={() => {handleRemoveButton(job);}}>Remove</button>
