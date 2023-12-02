@@ -16,6 +16,10 @@ body {
     background-color: #00A7A6;
 }
 
+.spinner-img {
+    -ms-interpolation-mode:bicubic;
+}
+
 .job-box {
     display: flex;
     flex-direction: column; 

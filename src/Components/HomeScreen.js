@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./HomeScreen.css";
 import JobCard from './JobCard';
 import Amplify, { API } from 'aws-amplify';
+import spinner from '../img/spinner.gif';
 
 function HomeScreen({ likedJobs, setLikedJobs }) {
 
@@ -65,7 +66,11 @@ function HomeScreen({ likedJobs, setLikedJobs }) {
       <>
         <div className="header-placeholder"></div>
         <div className="home-screen-container">
-          <p>Loading...</p>
+          <img className="spinner-img"
+            src={spinner}
+            style={{ width: '50px', margin: 'auto', display: 'block' }}
+            alt="Loading..."
+          />
         </div>
         <div className="header-placeholder"></div>
       </>
