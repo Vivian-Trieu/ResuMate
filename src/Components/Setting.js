@@ -85,6 +85,7 @@ function Setting(props) {
                             {editableField === 'email' ? (
                                 <>
                                     <input
+                                        className="setting-textbox"
                                         type="text"
                                         value={updatedValue}
                                         onChange={(e) => setUpdatedValue(e.target.value)}
@@ -108,6 +109,7 @@ function Setting(props) {
                             {editableField === 'name' ? (
                                 <>
                                     <input
+                                        className="setting-textbox"
                                         type="text"
                                         value={updatedValue}
                                         onChange={(e) => setUpdatedValue(e.target.value)}
@@ -131,6 +133,7 @@ function Setting(props) {
                             {editableField === 'password' ? (
                                 <>
                                     <input
+                                        className="setting-textbox"
                                         type="text"
                                         value={updatedValue}
                                         onChange={(e) => setUpdatedValue(e.target.value)}

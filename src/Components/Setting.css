@@ -57,7 +57,13 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+}
+
+.setting-textbox {
+    height: 20px;
+    
 }
 
 .edit-text {
@@ -152,7 +158,6 @@ form {
     height: 100%;
     background: rgba(0,0,0,0.5);
 }
-
 
 @media (max-width: 780px) {
     .setting-container {
