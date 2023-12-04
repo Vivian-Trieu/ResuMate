@@ -7,6 +7,9 @@ import { API } from 'aws-amplify';
 function Setting(props) {
     const [editableField, setEditableField] = useState('');
     const [updatedValue, setUpdatedValue] = useState('');
+    const [showPopUp, setShowPopUp] = useState(false);
+    const open = () => setShowPopUp(true);  
+    const close = () => setShowPopUp(false);
 
     const handleUpdate = async (field) => {
         try {
@@ -148,7 +151,20 @@ function Setting(props) {
                     {/* <button type="submit">Update Account</button> */}
                     {/* </form> */}
                 </div>
-                <button className="delete-account" onClick={() => {handleDelete(); props.onFormSwitch('login')}}>DELETE ACCOUNT</button>
+                <button className="delete-account" onClick={open}>DELETE ACCOUNT</button>
+                {showPopUp && (
+                    <>
+                        <div className="delete-pop-up-overlay"></div>
+                        <div className="delete-pop-up">
+                            <p>Are you sure want to delete your account?</p>
+                        
+                            <div className="delete-pop-up-buttons">
+                                <button onClick={close}>Cancel</button>
+                                <button onClick={() => {handleDelete(); props.onFormSwitch('login')}}>Confirm</button>
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     );
