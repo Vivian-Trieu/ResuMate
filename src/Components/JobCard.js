@@ -15,6 +15,22 @@ function JobCard({ job, onDislikeButton, onLikeButton, user_id }) {
         setSwipeDirection('');
     }, [job]);
 
+    async function saveJobToDB(job) {
+        try {
+            const user = {
+                user_id: user_id,
+                job_id: key,
+            };
+            // Send updated data to DynamoDB
+            const apiResponse = await API.post('Users', '/saveJob', {
+                contentType: "application/json",
+                body: user,
+            });
+        
+        } catch (error) {
+          console.log('Error saving job:', error);
+        }
+      }
 
     const handleDislike = () => {
         onDislikeButton();
@@ -25,6 +41,7 @@ function JobCard({ job, onDislikeButton, onLikeButton, user_id }) {
 
     const handleLike = () => {
         onLikeButton();
+        saveJobToDB(job);
         setSwiped(true);
         setSwipeDirection('right');
     };

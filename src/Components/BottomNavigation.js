@@ -6,6 +6,7 @@ import Home from "../img/home-button.png"
 import ClickedHome from "../img/home-button-clicked.png"
 import Profile from "../img/profile-button.png"
 import ClickedProfile from "../img/profile-button-clicked.png"
+import { useNavigate } from "react-router-dom";
 
 
 function BottomNavigation(props) {
@@ -13,6 +14,8 @@ function BottomNavigation(props) {
     const [homeImg, setHomeImg] = useState(ClickedHome);
     const [savedImg, setSavedImg] = useState(SavedJobs);
     const [profileImg, setProfileImg] = useState(Profile);
+    const navigate = useNavigate();
+    
 
     function handleTabClick(tab) {
         if (tab === 'home') {
@@ -38,15 +41,15 @@ function BottomNavigation(props) {
                 <div className="bottom-nav-box">
                     <nav className="bottom-nav">
                         <ul>
-                            <li className={props.currentForm === 'saved-jobs' ? 'active' : ''} onClick={() => {handleTabClick('saved-jobs');}}>
+                            <li className={props.currentForm === 'saved-jobs' ? 'active' : ''} onClick={() => {handleTabClick('saved-jobs'); navigate('/saved')}}>
                                 <img className="nav-button-img" src={savedImg} alt="Saved Jobs"  />
                             </li>
                     
-                            <li className={props.currentForm === 'home' ? 'active' : ''} onClick={() => {handleTabClick('home');}}>
+                            <li className={props.currentForm === 'home' ? 'active' : ''} onClick={() => {handleTabClick('home'); navigate('/home')}}>
                                 <img className="nav-button-img" src={homeImg} alt="Home"  />
                             </li>
                     
-                            <li className={props.currentForm === 'account' ? 'active' : ''} onClick={() => {handleTabClick('account');}}>
+                            <li className={props.currentForm === 'account' ? 'active' : ''} onClick={() => {handleTabClick('account'); navigate('/account')}}>
                                 <img className="nav-button-img" src={profileImg} alt="My Account"  />
                             </li>
                         </ul>

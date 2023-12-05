@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import LoginPage from "./Components/LoginPage";
 import SignUpPage from "./Components/SignUpPage";
 import ForgotPasswordPage from "./Components/ForgotPasswordPage";
@@ -27,86 +27,191 @@ function App() {
     setLikedJobs(updatedJobs);
   }
 
-  const renderForm = () => {
-    switch (currentForm) {
-      case 'login':
-        return <LoginPage setUserID={setUserID} onFormSwitch={toggleForm} setName={setName} setEmail={setEmail}/>;
-      case 'sign up':
-        return <SignUpPage onFormSwitch={toggleForm} />;
-      case 'forgot password':
-        return <ForgotPasswordPage onFormSwitch={toggleForm} />;
-      case 'home':
-        return (
-          <>
-            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
-            <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} user_id={user_id} />
-            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-          </>
-        );
-      case 'saved-jobs':
-        return (
-          <>
-            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <SavedJobs likedJobs={likedJobs} handleRemoveButton={handleRemoveButton}/>
-            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-          </>
-        );
-      case 'account':
-        return (
-          <>
-            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} />
-            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-          </>
-        );
-      case 'profile':
-        return (
-          <>
-            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Profile currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} name={name}/>
-            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-          </>
-        );
-      case 'preferences':
-        return (
-          <>
-            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Preferences currentForm={currentForm} onFormSwitch={toggleForm} />
-            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-          </>
-        );
-      case 'setting':
-        console.log(email)
-        return (
-          <>
-            <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-            <Setting 
-              currentForm={currentForm} 
-              onFormSwitch={toggleForm} 
-              user_id={user_id} name={name} 
-              email={email} setName={setName} 
-              setEmail={setEmail} 
-              setPassword={setPassword}
-            />
-            <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-          </>
-        );
+  // const renderForm = () => {
+  //   switch (currentForm) {
+  //     case 'login':
+  //       return <LoginPage setUserID={setUserID} onFormSwitch={toggleForm} setName={setName} setEmail={setEmail}/>;
+  //     case 'sign up':
+  //       return <SignUpPage onFormSwitch={toggleForm} />;
+  //     case 'forgot password':
+  //       return <ForgotPasswordPage onFormSwitch={toggleForm} />;
+  //     case 'home':
+  //       return (
+  //         <>
+  //           <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
+  //           <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} user_id={user_id} />
+  //           <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+  //         </>
+  //       );
+  //     case 'saved-jobs':
+  //       return (
+  //         <>
+  //           <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+  //           <SavedJobs likedJobs={likedJobs} handleRemoveButton={handleRemoveButton}/>
+  //           <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+  //         </>
+  //       );
+  //     case 'account':
+  //       return (
+  //         <>
+            // <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            // <MyAccount currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} />
+            // <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+  //         </>
+  //       );
+  //     case 'profile':
+  //       return (
+  //         <>
+            // <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            // <Profile currentForm={currentForm} onFormSwitch={toggleForm} user_id={user_id} name={name}/>
+            // <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+  //         </>
+  //       );
+  //     case 'preferences':
+  //       return (
+  //         <>
+            // <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+            // <Preferences currentForm={currentForm} onFormSwitch={toggleForm} />
+            // <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+  //         </>
+  //       );
+  //     case 'setting':
+  //       console.log(email)
+  //       return (
+  //         <>
+  //           <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+  //           <Setting 
+  //             currentForm={currentForm} 
+  //             onFormSwitch={toggleForm} 
+  //             user_id={user_id} name={name} 
+  //             email={email} setName={setName} 
+  //             setEmail={setEmail} 
+  //             setPassword={setPassword}
+  //           />
+  //           <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+  //         </>
+  //       );
 
-      // Add more cases for other forms if needed
-      default:
-        return <LoginPage onFormSwitch={toggleForm} />;
-    }
-  };
+  //     // Add more cases for other forms if needed
+  //     default:
+  //       return <LoginPage onFormSwitch={toggleForm} />;
+  //   }
+  // };
 
-  const toggleForm = async (formName) => {
+  const toggleForm = (formName) => {
     setCurrentForm(formName);
   };
 
+  // return (
+  //   <div className="App">
+  //     {renderForm()}
+  //   </div>
+  // );
+
   return (
     <div className="App">
-      {renderForm()}
+      <BrowserRouter>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/login"/>} />
+            <Route path="/login" element={
+              <>
+                <LoginPage 
+                  setUserID={setUserID} 
+                  onFormSwitch={toggleForm} 
+                  setName={setName} 
+                  setEmail={setEmail}
+                />
+              </>
+            }/>
+            <Route path="/signup" element={
+              <>
+                <SignUpPage 
+                  onFormSwitch={toggleForm} 
+                />
+              </>
+            }/>
+            <Route path="/forgot" element={
+              <>
+                <ForgotPasswordPage 
+                  onFormSwitch={toggleForm}
+                />;
+              </>
+            }/>
+            <Route path="/home" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
+                <HomeScreen 
+                  likedJobs={likedJobs} 
+                  setLikedJobs={setLikedJobs} 
+                  user_id={user_id} 
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/saved" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <SavedJobs 
+                  likedJobs={likedJobs} 
+                  handleRemoveButton={handleRemoveButton}
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />        
+              </>
+            }/>
+            <Route path="/account" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <MyAccount 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                  user_id={user_id} 
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/profile" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <Profile 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                  user_id={user_id} 
+                  name={name}
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/preferences" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <Preferences 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/setting" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <Setting 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                  user_id={user_id} name={name} 
+                  email={email} setName={setName} 
+                  setEmail={setEmail} 
+                  setPassword={setPassword}
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
-  );
+  )
+
 }
 
 

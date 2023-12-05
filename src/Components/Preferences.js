@@ -4,6 +4,7 @@ import closeButton from "../img/close-button.png"
 import "./Preferences.css"
 import Slider from "./Slider"
 import Checkbox from "./Checkbox";
+import { useNavigate } from 'react-router-dom';
 
 function Preferences(props) {
 
@@ -13,6 +14,7 @@ function Preferences(props) {
     const [distanceSliderValue, setDistanceSliderValue] = useState(25);
     const [salarySliderValue, setSalarySliderValue] = useState(250);
     const [checked, setChecked] = useState(false);
+    const navigate = useNavigate();
   
     const handleCheck = () => {
       setChecked(!checked);
@@ -24,7 +26,7 @@ function Preferences(props) {
                 <div className="header-tab-box">
                     <button className="close-btn btn-placeholder"><img className="close-button-img" src={closeButton} alt="Close Button"/></button>
                     <div className="header-title"><h2 className="profile">Search preferences</h2></div>
-                    <button className="close-btn" onClick={() => props.onFormSwitch('account')}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                    <button className="close-btn" onClick={() => {props.onFormSwitch('account'); navigate('/account')}}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
                 </div>
             </div>
             <div className="preferences-container">

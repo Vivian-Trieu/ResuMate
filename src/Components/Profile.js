@@ -6,6 +6,7 @@ import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 import addButton from "../img/add.png"
 import Amplify, { API, Storage } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
@@ -15,6 +16,7 @@ function Profile(props) {
     const [skills, setSkills] = useState([]);
     const [links, setLinks] = useState('');
     const [isLoading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
     
@@ -107,7 +109,7 @@ function Profile(props) {
                 <div className="header-tab-box">
                     <button className="close-btn btn-placeholder"><img className="close-button-img" src={closeButton} alt="Close Button"/></button>
                     <div className="header-title"><h2 className="profile">Profile</h2></div>
-                    <button className="close-btn" onClick={() => props.onFormSwitch('account')}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                    <button className="close-btn" onClick={() => {props.onFormSwitch('account'); navigate('/account')}}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
                 </div>
             </div>
             <div className="profile-container">

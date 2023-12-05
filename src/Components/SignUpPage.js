@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { API } from 'aws-amplify';
 import "./SignUpPage.css";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -65,7 +67,7 @@ function SignUpPage(props) {
   return (
     <div className="signup-container">
       <div className="div">
-        <button type="button" className="back" onClick={() => props.onFormSwitch('login')}>Back</button>
+        <button type="button" className="back" onClick={() => {props.onFormSwitch('login'); navigate('/login')}}>Back</button>
         <div className="label">
           <div className="signup">Sign Up</div>
         </div>

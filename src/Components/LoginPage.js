@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 import { API } from 'aws-amplify';
+import { useNavigate } from "react-router-dom";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null); 
+
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     // Check if fields are empty
@@ -42,6 +47,7 @@ function LoginPage(props) {
         props.setUserID(user_id)
         props.setName(name)
         props.setEmail(user_email)
+        navigate('/home')
         props.onFormSwitch('home'); // pass user_id to home screen
       }
     } catch (error) {
@@ -74,13 +80,13 @@ function LoginPage(props) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="button" className="forgot-password" onClick={() => props.onFormSwitch('forgot password')}>
+          <button type="button" className="forgot-password" onClick={() => {props.onFormSwitch('forgot password'); navigate('/forgot')}}>
             Forgot password?
           </button>
           <button type="button" className="sign-in" onClick={handleLogin} >
               SIGN IN
           </button>
-          <button type="button" className="sign-up" onClick={() => props.onFormSwitch('sign up')}>
+          <button type="button" className="sign-up" onClick={() =>  {props.onFormSwitch('sign-up'); navigate('/signup')}}>
               Register here
           </button>
         </form>

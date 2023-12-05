@@ -3,6 +3,7 @@ import "./Setting.css"
 import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 import { API } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom';
 
 function Setting(props) {
     const [editableField, setEditableField] = useState('');
@@ -10,6 +11,7 @@ function Setting(props) {
     const [showPopUp, setShowPopUp] = useState(false);
     const open = () => setShowPopUp(true);  
     const close = () => setShowPopUp(false);
+    const navigate = useNavigate();
 
     const handleUpdate = async (field) => {
         try {
@@ -72,7 +74,7 @@ function Setting(props) {
                 <div className="header-tab-box">
                     <button className="close-btn btn-placeholder"><img className="close-button-img" src={closeButton} alt="Close Button"/></button>
                     <div className="header-title"><h2 className="profile">Account settings</h2></div>
-                    <button className="close-btn" onClick={() => props.onFormSwitch('account')}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                    <button className="close-btn" onClick={() => {props.onFormSwitch('account'); navigate('/account')}}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
                 </div>
             </div>
             <div className="setting-container">
@@ -163,7 +165,7 @@ function Setting(props) {
                         
                             <div className="delete-pop-up-buttons">
                                 <button onClick={close}>Cancel</button>
-                                <button onClick={() => {handleDelete(); props.onFormSwitch('login')}}>Confirm</button>
+                                <button onClick={() => {handleDelete(); props.onFormSwitch('login'); navigate('/login')}}>Confirm</button>
                             </div>
                         </div>
                     </>

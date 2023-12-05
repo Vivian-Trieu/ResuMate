@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import "./ForgotPassword.css";
+import { useNavigate } from "react-router-dom";
 
 function ForgotPasswordPage(props) {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="forgot-password-container">
       <div className="div">
-        <button type="button" className="back" onClick={() => props.onFormSwitch('login')}>Back</button>
+        <button type="button" className="back" onClick={() => {props.onFormSwitch('login'); navigate('/login')}}>Back</button>
         <div className="label">
           <div className="recover-password">Recover Password</div>
         </div>
