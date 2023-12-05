@@ -4,7 +4,7 @@ import JobCard from './JobCard';
 import Amplify, { API } from 'aws-amplify';
 import spinner from '../img/spinner.gif';
 
-function HomeScreen({ likedJobs, setLikedJobs }) {
+function HomeScreen({ likedJobs, setLikedJobs, user_id }) {
 
   const [jobs, setJobs] = useState([]);
   const [currentJobIndex, setCurrentJobIndex] = useState(0);
@@ -94,6 +94,7 @@ function HomeScreen({ likedJobs, setLikedJobs }) {
             job={jobs[currentJobIndex]}
             onDislikeButton={handleDislike}
             onLikeButton={handleLike}
+            user_id={user_id}
           />
         </div>
         <div className="header-placeholder"></div>

@@ -39,7 +39,7 @@ function App() {
         return (
           <>
             <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
-            <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} />
+            <HomeScreen likedJobs={likedJobs} setLikedJobs={setLikedJobs} user_id={user_id} />
             <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
           </>
         );

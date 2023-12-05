@@ -3,21 +3,25 @@ import "./JobCard.css";
 import SaveButton from "../img/click-to-save-job-button.png"
 import SkipButton from "../img/click-to-skip-job-button.png"
 import InnerHTMLReader from './InnerHTMLReader';
+import { API } from 'aws-amplify';
 
-function JobCard({ job, onDislikeButton, onLikeButton }) {
+function JobCard({ job, onDislikeButton, onLikeButton, user_id }) {
     const [swiped, setSwiped] = useState(false);
     const [swipeDirection, setSwipeDirection] = useState('');
+    const key= job.requisitionId;
 
     useEffect(() => {
         setSwiped(false);
         setSwipeDirection('');
     }, [job]);
 
+
     const handleDislike = () => {
         onDislikeButton();
         setSwiped(true);
         setSwipeDirection('left');
     };
+
 
     const handleLike = () => {
         onLikeButton();
@@ -41,7 +45,7 @@ function JobCard({ job, onDislikeButton, onLikeButton }) {
 
     return (
         <div 
-            key={job.id}
+            // key={job.requisitionId}
             className={`job-card ${swiped ? 'swiped' : ''}`} 
             style={getCardStyle()}
             onTransitionEnd={handleTransitionEnd}
@@ -63,7 +67,7 @@ function JobCard({ job, onDislikeButton, onLikeButton }) {
                     <img className="button-img" src={SkipButton} alt="Skip Job" />
                 </button>
                 <button className="swipe-btn save-job" onClick={handleLike}>
-                    <img className="button-img" src={SaveButton} alt="Save           ob" />
+                    <img className="button-img" src={SaveButton} alt="Save Job" />
                 </button>
             </div>
         </div>

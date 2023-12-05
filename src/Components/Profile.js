@@ -10,10 +10,10 @@ import Amplify, { API, Storage } from 'aws-amplify';
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
     const [resumeData, setResumeData] = useState([]);
-    //const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
-    //const [education, setEducation] = useState('');
-    //const [skills, setSkills] = useState([]);
-    //const [links, setLinks] = useState('');
+    const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
+    const [education, setEducation] = useState('');
+    const [skills, setSkills] = useState([]);
+    const [links, setLinks] = useState('');
 
     console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
     
@@ -36,8 +36,22 @@ function Profile(props) {
                 contentType: "application/json",
                 body: { user_id: props.user_id },
             });
+            
 
+            if (apiResponse && apiResponse.length > 0) {
+                setResumeData(apiResponse[apiResponse.length - 1]); 
+            }
             console.log('Resume Info API Response:', apiResponse);
+            setResumeData(data => {
+                setEducation(data.Education);
+                setWorkExperience(data['Work Experience']);
+                setLinks(data.Links);
+                const skillsString = data.Skills;
+                const skillsArray = skillsString.split(", "); 
+                const trimmedSkills = skillsArray.map(skill => skill.trim()); 
+                setSkills(trimmedSkills);
+            });
+
             
 
         } catch (error) {
@@ -47,7 +61,7 @@ function Profile(props) {
 
     const uploadFileToS3 = async (file) => {
         try {
-            const fileName = `resume_${Date.now()}.pdf`; // Generate a unique file name
+            const fileName = `resume_${Date.now()}`; // Generate a unique file name
             await Storage.put(fileName, file, {
                 level: 'public',
                 contentType: 'application/pdf', // Set the content type for PDF files
@@ -125,13 +139,7 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                    deserunt mollit anim id est laborum.
-                                </p>
+                                <p>{education}</p>
                             </div>
                         </div>
                         <div className="sub-info experience">
@@ -140,13 +148,7 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                    deserunt mollit anim id est laborum.
-                                </p>
+                                <p>{workExperience}</p>
                             </div>
                         </div>
                         <div className="sub-info skills">
@@ -155,24 +157,11 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-tags"> 
-                                <div className="tag">
-                                    <p>Tag 1</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 2</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 3</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 4</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 5</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 6</p>
-                                </div>
+                                {skills.map(skill => (
+                                    <div className="tag" key={skill}>
+                                    <p>{skill}</p> 
+                                    </div>
+                                ))}   
                             </div>
                         </div>
                         <div className="sub-info links">
@@ -181,8 +170,7 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>
-                                </p>
+                                <p>{links}</p>
                             </div>
                         </div>
                     </div>
