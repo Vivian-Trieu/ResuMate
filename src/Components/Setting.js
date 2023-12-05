@@ -7,6 +7,9 @@ import { API } from 'aws-amplify';
 function Setting(props) {
     const [editableField, setEditableField] = useState('');
     const [updatedValue, setUpdatedValue] = useState('');
+    const [showPopUp, setShowPopUp] = useState(false);
+    const open = () => setShowPopUp(true);  
+    const close = () => setShowPopUp(false);
 
     const handleUpdate = async (field) => {
         try {
@@ -42,6 +45,27 @@ function Setting(props) {
         }
     }
 
+    const handleDelete = async () => {
+        try {
+            const user = {
+                user_id: props.user_id,
+            };
+            // Send updated data to DynamoDB
+            const apiResponse = await API.post('Users', '/delete', {
+                contentType: "application/json",
+                body: user,
+            });
+
+
+            console.log('API Response:', apiResponse);
+            setEditableField('');
+            setUpdatedValue('');
+
+        } catch (error) {
+            console.error('Failed to delete account:', error)
+        }
+    }
+
     return (
         <>  
             <div className="header-placeholder">
@@ -61,6 +85,7 @@ function Setting(props) {
                             {editableField === 'email' ? (
                                 <>
                                     <input
+                                        className="setting-textbox"
                                         type="text"
                                         value={updatedValue}
                                         onChange={(e) => setUpdatedValue(e.target.value)}
@@ -84,6 +109,7 @@ function Setting(props) {
                             {editableField === 'name' ? (
                                 <>
                                     <input
+                                        className="setting-textbox"
                                         type="text"
                                         value={updatedValue}
                                         onChange={(e) => setUpdatedValue(e.target.value)}
@@ -107,6 +133,7 @@ function Setting(props) {
                             {editableField === 'password' ? (
                                 <>
                                     <input
+                                        className="setting-textbox"
                                         type="text"
                                         value={updatedValue}
                                         onChange={(e) => setUpdatedValue(e.target.value)}
@@ -127,7 +154,20 @@ function Setting(props) {
                     {/* <button type="submit">Update Account</button> */}
                     {/* </form> */}
                 </div>
-                <button className="delete-account">DELETE ACCOUNT</button>
+                <button className="delete-account" onClick={open}>DELETE ACCOUNT</button>
+                {showPopUp && (
+                    <>
+                        <div className="delete-pop-up-overlay"></div>
+                        <div className="delete-pop-up">
+                            <p>Are you sure want to delete your account?</p>
+                        
+                            <div className="delete-pop-up-buttons">
+                                <button onClick={close}>Cancel</button>
+                                <button onClick={() => {handleDelete(); props.onFormSwitch('login')}}>Confirm</button>
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     );
