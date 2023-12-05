@@ -40,17 +40,17 @@ function Profile(props) {
 
             if (apiResponse && apiResponse.length > 0) {
                 setResumeData(apiResponse[apiResponse.length - 1]); 
+                setResumeData(data => {
+                    setEducation(data.Education);
+                    setWorkExperience(data['Work Experience']);
+                    setLinks(data.Links);
+                    const skillsString = data.Skills;
+                    const skillsArray = skillsString.split(", "); 
+                    const trimmedSkills = skillsArray.map(skill => skill.trim()); 
+                    setSkills(trimmedSkills);
+                });
             }
             console.log('Resume Info API Response:', apiResponse);
-            setResumeData(data => {
-                setEducation(data.Education);
-                setWorkExperience(data['Work Experience']);
-                setLinks(data.Links);
-                const skillsString = data.Skills;
-                const skillsArray = skillsString.split(", "); 
-                const trimmedSkills = skillsArray.map(skill => skill.trim()); 
-                setSkills(trimmedSkills);
-            });
 
             
 
@@ -139,7 +139,13 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>{education}</p>
+                                {
+                                    education !== "" ? (
+                                        <p>{education}</p>  
+                                    ) : (
+                                        <p>No education added yet</p>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className="sub-info experience">
@@ -148,7 +154,13 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>{workExperience}</p>
+                                {
+                                    workExperience !== "" ? (
+                                        <p>{workExperience}</p>  
+                                    ) : (
+                                        <p>No work experience added yet</p>
+                                    )
+                                }        
                             </div>
                         </div>
                         <div className="sub-info skills">
@@ -157,11 +169,20 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-tags"> 
-                                {skills.map(skill => (
-                                    <div className="tag" key={skill}>
-                                    <p>{skill}</p> 
-                                    </div>
-                                ))}   
+                                {
+                                    skills.length > 0 ? (
+                                        skills.map(skill => (
+                                            <div className="tag" key={skill}>
+                                                <p>{skill}</p> 
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="tag">
+                                                <p>No skill added yet</p> 
+                                        </div>
+                                    )
+                                }
+                                
                             </div>
                         </div>
                         <div className="sub-info links">
@@ -170,7 +191,13 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>{links}</p>
+                                {
+                                    links !== "" ? (
+                                        <p>{links}</p>  
+                                    ) : (
+                                        <p>No link added yet</p>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
