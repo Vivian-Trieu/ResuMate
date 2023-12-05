@@ -14,6 +14,7 @@ function Profile(props) {
     const [education, setEducation] = useState('');
     const [skills, setSkills] = useState([]);
     const [links, setLinks] = useState('');
+    const [isLoading, setLoading] = useState(false);
 
     console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
     
@@ -21,7 +22,6 @@ function Profile(props) {
         if (selectedFile) {
             uploadFileToS3(selectedFile);
         }
-
         fetchResumeData();
     }, [selectedFile]);
     
@@ -49,10 +49,7 @@ function Profile(props) {
                     const trimmedSkills = skillsArray.map(skill => skill.trim()); 
                     setSkills(trimmedSkills);
                 });
-            }
-            console.log('Resume Info API Response:', apiResponse);
-
-            
+            }            
 
         } catch (error) {
             console.error('Error fetching resume info:', error);
@@ -79,7 +76,7 @@ function Profile(props) {
     };
 
     const handleResumeUploadEvent = async (user_id, resume_id) => {
-        
+        setLoading(true);
         try {
             const resume = {
                 user_id: user_id,
@@ -100,6 +97,8 @@ function Profile(props) {
         } catch (error) {
             console.error('Error handling resume upload event:', error);
         }
+        setLoading(false);
+        props.onFormSwitch('account');
     };
 
     return (
@@ -125,11 +124,6 @@ function Profile(props) {
 
                         <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
                             <input type="file" id="resume-upload-btn" accept=".pdf" onChange={handleFileUpload} />
-                       
-                        {/* <button className="resume-upload-btn">
-                            UPLOAD RESUME
-                            
-                        </button> */}
                     </div>
 
                     <div className="resume-info">
@@ -202,6 +196,14 @@ function Profile(props) {
                         </div>
                     </div>
                 </div>
+            {isLoading && (
+                    <>
+                        <div className="delete-pop-up-overlay"></div>
+                        <div className="delete-pop-up">
+                            <p>loading</p>
+                        </div>
+                    </>
+            )}
             </div>
         </>
     );
