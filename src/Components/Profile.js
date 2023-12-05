@@ -137,7 +137,7 @@ function Profile(props) {
                                     education !== "" ? (
                                         <p>{education}</p>  
                                     ) : (
-                                        <p>No education added yet</p>
+                                        <p></p>
                                     )
                                 }
                             </div>
@@ -152,7 +152,7 @@ function Profile(props) {
                                     workExperience !== "" ? (
                                         <p>{workExperience}</p>  
                                     ) : (
-                                        <p>No work experience added yet</p>
+                                        <p></p>
                                     )
                                 }        
                             </div>
@@ -172,7 +172,7 @@ function Profile(props) {
                                         ))
                                     ) : (
                                         <div className="tag">
-                                                <p>No skill added yet</p> 
+                                                <p></p> 
                                         </div>
                                     )
                                 }
@@ -189,7 +189,7 @@ function Profile(props) {
                                     links !== "" ? (
                                         <p>{links}</p>  
                                     ) : (
-                                        <p>No link added yet</p>
+                                        <p></p>
                                     )
                                 }
                             </div>
