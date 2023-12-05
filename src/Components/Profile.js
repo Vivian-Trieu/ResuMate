@@ -32,7 +32,7 @@ function Profile(props) {
 
     const fetchResumeData = async () => {
         try {
-            const apiResponse = await API.post('Resumes', '/getProfile', {
+            const apiResponse = await API.post('Resumes', '/get', {
                 contentType: "application/json",
                 body: { user_id: props.user_id },
             });
