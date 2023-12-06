@@ -108,7 +108,7 @@ function Profile(props) {
             console.error('Error handling resume upload event:', error);
         }
         setLoading(false);
-        // navigate(0);
+        navigate(0);
     };
 
     return (
