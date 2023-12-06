@@ -46,7 +46,7 @@ function MyAccount(props) {
                     </div>
                 </div>
             </div>
-            <button className="log-out" onClick={() => {props.onFormSwitch('login'); navigate('/login')}}>LOG OUT</button>
+            <button className="log-out" onClick={() => {props.onFormSwitch('login'); window.sessionStorage.clear(); navigate('/login')}}>LOG OUT</button>
         </div>
         <div className="header-placeholder"></div>
         </>

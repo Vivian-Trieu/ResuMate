@@ -4,12 +4,13 @@ import JobCard from './JobCard';
 import Amplify, { API } from 'aws-amplify';
 import spinner from '../img/spinner.gif';
 
-function HomeScreen({ likedJobs, setLikedJobs, user_id }) {
+function HomeScreen({ likedJobs, setLikedJobs}) {
 
   const [jobs, setJobs] = useState([]);
   const [currentJobIndex, setCurrentJobIndex] = useState(0);
   const [currentScreen, setCurrentScreen] = useState('loading');
-
+  const user_id = window.sessionStorage.getItem('user_id');
+  
   useEffect(() => {
     const fetchJobs = async () => {
       try {

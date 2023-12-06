@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import LoginPage from "./Components/LoginPage";
 import SignUpPage from "./Components/SignUpPage";
@@ -15,10 +15,22 @@ import Setting from "./Components/Setting";
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const [likedJobs, setLikedJobs] = useState([]);
-  const [user_id, setUserID] = useState(null);
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
+  // const [user_id, setUserID] = useState(null);
+  // const [name, setName] = useState(null);
+  // const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  
+  // useEffect(() => {
+  //   const fetchUser = () => {
+  //     const userInfo = window.sessionStorage.getItem('userInfo');
+  //     if(userInfo) {
+  //       setName(userInfo.name);
+  //       setEmail(userInfo.email);
+  //       setUserID(userInfo.user_id);
+  //     }
+  //   };
+  //   fetchUser();
+  // }, [window.sessionStorage.getItem('userInfo')]);
 
   function handleRemoveButton(job){
     const index = likedJobs.indexOf(job);
@@ -26,6 +38,123 @@ function App() {
     var updatedJobs = likedJobs.filter(j => j !== job); 
     setLikedJobs(updatedJobs);
   }
+
+  
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  };
+
+  // console.log(user_id);
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/login"/>} />
+            <Route path="/login" element={
+              <>
+                <LoginPage 
+                  // setUserID={setUserID} 
+                  onFormSwitch={toggleForm} 
+                  // setName={setName} 
+                  // setEmail={setEmail}
+                />
+              </>
+            }/>
+            <Route path="/signup" element={
+              <>
+                <SignUpPage 
+                  onFormSwitch={toggleForm} 
+                />
+              </>
+            }/>
+            <Route path="/forgot" element={
+              <>
+                <ForgotPasswordPage 
+                  onFormSwitch={toggleForm}
+                />;
+              </>
+            }/>
+            <Route path="/home" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
+                <HomeScreen 
+                  likedJobs={likedJobs} 
+                  setLikedJobs={setLikedJobs} 
+                  // user_id={user_id} 
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/saved" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <SavedJobs 
+                  likedJobs={likedJobs} 
+                  handleRemoveButton={handleRemoveButton}
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />        
+              </>
+            }/>
+            <Route path="/account" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <MyAccount 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                  // user_id={user_id} 
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/profile" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <Profile 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                  // user_id={user_id} 
+                  // name={name}
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/preferences" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <Preferences 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+            <Route path="/setting" element={
+              <>
+                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <Setting 
+                  currentForm={currentForm} 
+                  onFormSwitch={toggleForm} 
+                  // user_id={user_id} name={name} 
+                  // email={email} setName={setName} 
+                  // setEmail={setEmail} 
+                  setPassword={setPassword}
+                />
+                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+              </>
+            }/>
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
+  );
+
+}
+
+
+export default App;
+
 
   // const renderForm = () => {
   //   switch (currentForm) {
@@ -98,9 +227,6 @@ function App() {
   //   }
   // };
 
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  };
 
   // return (
   //   <div className="App">
@@ -108,114 +234,8 @@ function App() {
   //   </div>
   // );
 
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Navigate to="/login"/>} />
-            <Route path="/login" element={
-              <>
-                <LoginPage 
-                  setUserID={setUserID} 
-                  onFormSwitch={toggleForm} 
-                  setName={setName} 
-                  setEmail={setEmail}
-                />
-              </>
-            }/>
-            <Route path="/signup" element={
-              <>
-                <SignUpPage 
-                  onFormSwitch={toggleForm} 
-                />
-              </>
-            }/>
-            <Route path="/forgot" element={
-              <>
-                <ForgotPasswordPage 
-                  onFormSwitch={toggleForm}
-                />;
-              </>
-            }/>
-            <Route path="/home" element={
-              <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
-                <HomeScreen 
-                  likedJobs={likedJobs} 
-                  setLikedJobs={setLikedJobs} 
-                  user_id={user_id} 
-                />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-              </>
-            }/>
-            <Route path="/saved" element={
-              <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-                <SavedJobs 
-                  likedJobs={likedJobs} 
-                  handleRemoveButton={handleRemoveButton}
-                />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />        
-              </>
-            }/>
-            <Route path="/account" element={
-              <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-                <MyAccount 
-                  currentForm={currentForm} 
-                  onFormSwitch={toggleForm} 
-                  user_id={user_id} 
-                />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-              </>
-            }/>
-            <Route path="/profile" element={
-              <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-                <Profile 
-                  currentForm={currentForm} 
-                  onFormSwitch={toggleForm} 
-                  user_id={user_id} 
-                  name={name}
-                />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-              </>
-            }/>
-            <Route path="/preferences" element={
-              <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-                <Preferences 
-                  currentForm={currentForm} 
-                  onFormSwitch={toggleForm} 
-                />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-              </>
-            }/>
-            <Route path="/setting" element={
-              <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
-                <Setting 
-                  currentForm={currentForm} 
-                  onFormSwitch={toggleForm} 
-                  user_id={user_id} name={name} 
-                  email={email} setName={setName} 
-                  setEmail={setEmail} 
-                  setPassword={setPassword}
-                />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
-              </>
-            }/>
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
-  )
+  
 
-}
-
-
-export default App;
 
 
 /*

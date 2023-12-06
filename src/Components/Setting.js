@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Setting.css"
 import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
@@ -12,11 +12,15 @@ function Setting(props) {
     const open = () => setShowPopUp(true);  
     const close = () => setShowPopUp(false);
     const navigate = useNavigate();
+    
+    const user_id = window.sessionStorage.getItem('user_id');
+    const name = window.sessionStorage.getItem('name');
+    const email = window.sessionStorage.getItem('email');
 
     const handleUpdate = async (field) => {
         try {
             const user = {
-                user_id: props.user_id,
+                user_id: user_id,
                 update_attributes: { [field]: updatedValue },
             };
             // Send updated data to DynamoDB
@@ -28,10 +32,12 @@ function Setting(props) {
             // Update the corresponding prop based on the changed value
             switch (field) {
                 case 'email':
-                    props.setEmail(updatedValue);
+                    window.sessionStorage.setItem('email', updatedValue);
+                    // props.setEmail(updatedValue);
                     break;
                 case 'name':
-                    props.setName(updatedValue);
+                    window.sessionStorage.setItem('name', updatedValue);
+                    // props.setName(updatedValue);
                     break;
                 // Add additional cases for other fields if needed
                 default:
@@ -50,7 +56,7 @@ function Setting(props) {
     const handleDelete = async () => {
         try {
             const user = {
-                user_id: props.user_id,
+                user_id: user_id,
             };
             // Send updated data to DynamoDB
             const apiResponse = await API.post('Users', '/delete', {
@@ -97,7 +103,7 @@ function Setting(props) {
                             ) : (
                                 <div className="label-edit-container">
                                     <div className="setting-description"> 
-                                        <p>{props.email}</p>
+                                        <p>{email}</p>
                                     </div>
                                     <button className="edit-text" onClick={() => setEditableField('email')}>Edit</button>
                                 </div>
@@ -121,7 +127,7 @@ function Setting(props) {
                             ) : (
                                 <div className="label-edit-container">
                                     <div className="s-description"> 
-                                        <p>{props.name}</p>
+                                        <p>{name}</p>
                                     </div>
                                     <button className="edit-text" onClick={() => setEditableField('name')}>Edit</button>
                                 </div>
@@ -165,7 +171,7 @@ function Setting(props) {
                         
                             <div className="delete-pop-up-buttons">
                                 <button onClick={close}>Cancel</button>
-                                <button onClick={() => {handleDelete(); props.onFormSwitch('login'); navigate('/login')}}>Confirm</button>
+                                <button onClick={() => {handleDelete(); props.onFormSwitch('login'); window.sessionStorage.clear(); navigate('/login')}}>Confirm</button>
                             </div>
                         </div>
                     </>

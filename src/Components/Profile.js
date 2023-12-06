@@ -18,7 +18,15 @@ function Profile(props) {
     const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
+    // const [user_id, setUserID] = useState(null);
+    
+    
+    const user_id = window.sessionStorage.getItem('user_id');
+    const name = window.sessionStorage.getItem('name');
+     
+    console.log(user_id);
+
+    // console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
     
     useEffect(() => {
         if (selectedFile) {
@@ -36,7 +44,7 @@ function Profile(props) {
         try {
             const apiResponse = await API.post('Resumes', '/get', {
                 contentType: "application/json",
-                body: { user_id: props.user_id },
+                body: { user_id: user_id },
             });
             
 
@@ -70,7 +78,7 @@ function Profile(props) {
             
 
             // Perform any additional actions after uploading the file 
-            handleResumeUploadEvent(props.user_id, fileName);
+            handleResumeUploadEvent(user_id, fileName);
             
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -100,7 +108,7 @@ function Profile(props) {
             console.error('Error handling resume upload event:', error);
         }
         setLoading(false);
-        props.onFormSwitch('account');
+        // navigate(0);
     };
 
     return (
@@ -122,7 +130,7 @@ function Profile(props) {
                             </button>
                         </div>
 
-                        <h2 className="profile-name">{props.name}</h2>
+                        <h2 className="profile-name">{name}</h2>
 
                         <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
                             <input type="file" id="resume-upload-btn" accept=".pdf" onChange={handleFileUpload} />

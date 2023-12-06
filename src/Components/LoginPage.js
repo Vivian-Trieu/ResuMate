@@ -44,9 +44,15 @@ function LoginPage(props) {
       } else {
         alert('Login successful!');
         console.log("Login successful.");
-        props.setUserID(user_id)
-        props.setName(name)
-        props.setEmail(user_email)
+
+        // Store in SessionStorage instead of local data -> wont be remove once reload the page
+        window.sessionStorage.setItem('user_id', user_id);
+        window.sessionStorage.setItem('name', name);
+        window.sessionStorage.setItem('email', user_email);
+
+        // props.setUserID(user_id)
+        // props.setName(name)
+        // props.setEmail(user_email)
         navigate('/home')
         props.onFormSwitch('home'); // pass user_id to home screen
       }
@@ -54,8 +60,8 @@ function LoginPage(props) {
       console.error('Login API Error:', error);
     }
 
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
     
   };
 
