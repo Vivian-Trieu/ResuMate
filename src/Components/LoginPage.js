@@ -8,6 +8,7 @@ function LoginPage(props) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null); 
+  window.sessionStorage.setItem('currentForm', 'login');
 
   const navigate = useNavigate();
 

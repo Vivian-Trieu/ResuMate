@@ -24,9 +24,9 @@ function Profile(props) {
     const user_id = window.sessionStorage.getItem('user_id');
     const name = window.sessionStorage.getItem('name');
      
-    console.log(user_id);
+    // console.log(user_id);
 
-    // console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
+    console.log("User ID in Profile: ", user_id) // pass the user_id from App.js
     
     useEffect(() => {
         if (selectedFile) {

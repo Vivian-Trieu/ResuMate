@@ -5,7 +5,9 @@ import closeButton from "../img/close-button.png"
 
 function HeaderTab(props) {
 
-    if (props.currentForm === 'home' || props.currentForm === 'saved-jobs' || props.currentForm === 'account')
+    const currentForm = window.sessionStorage.getItem('currentForm')
+
+    if (currentForm === 'home' || currentForm === 'saved-jobs' || currentForm === 'account')
         return (
             <div className="header-tab"></div>
         )

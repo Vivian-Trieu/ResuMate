@@ -13,7 +13,11 @@ import Preferences from "./Components/Preferences"
 import Setting from "./Components/Setting";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login');
+  const currentForm = window.sessionStorage.getItem('currentForm');
+  if (!currentForm) {
+    window.sessionStorage.setItem('currentForm', 'login');
+  }
+  
   const [likedJobs, setLikedJobs] = useState([]);
   // const [user_id, setUserID] = useState(null);
   // const [name, setName] = useState(null);
@@ -41,7 +45,7 @@ function App() {
 
   
   const toggleForm = (formName) => {
-    setCurrentForm(formName);
+    window.sessionStorage.setItem('currentForm', formName);
   };
 
   // console.log(user_id);
@@ -78,70 +82,70 @@ function App() {
             }/>
             <Route path="/home" element={
               <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm}/>
+                <HeaderTab onFormSwitch={toggleForm}/>
                 <HomeScreen 
                   likedJobs={likedJobs} 
                   setLikedJobs={setLikedJobs} 
                   // user_id={user_id} 
                 />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+                <BottomNavigation onFormSwitch={toggleForm} />
               </>
             }/>
             <Route path="/saved" element={
               <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <HeaderTab onFormSwitch={toggleForm} />
                 <SavedJobs 
                   likedJobs={likedJobs} 
                   handleRemoveButton={handleRemoveButton}
                 />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />        
+                <BottomNavigation onFormSwitch={toggleForm} />        
               </>
             }/>
             <Route path="/account" element={
               <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <HeaderTab  onFormSwitch={toggleForm} />
                 <MyAccount 
-                  currentForm={currentForm} 
+                   
                   onFormSwitch={toggleForm} 
                   // user_id={user_id} 
                 />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+                <BottomNavigation onFormSwitch={toggleForm} />
               </>
             }/>
             <Route path="/profile" element={
               <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <HeaderTab onFormSwitch={toggleForm} />
                 <Profile 
-                  currentForm={currentForm} 
+                   
                   onFormSwitch={toggleForm} 
                   // user_id={user_id} 
                   // name={name}
                 />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+                <BottomNavigation onFormSwitch={toggleForm} />
               </>
             }/>
             <Route path="/preferences" element={
               <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <HeaderTab onFormSwitch={toggleForm} />
                 <Preferences 
-                  currentForm={currentForm} 
+                   
                   onFormSwitch={toggleForm} 
                 />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+                <BottomNavigation onFormSwitch={toggleForm} />
               </>
             }/>
             <Route path="/setting" element={
               <>
-                <HeaderTab currentForm={currentForm} onFormSwitch={toggleForm} />
+                <HeaderTab onFormSwitch={toggleForm} />
                 <Setting 
-                  currentForm={currentForm} 
+                   
                   onFormSwitch={toggleForm} 
                   // user_id={user_id} name={name} 
                   // email={email} setName={setName} 
                   // setEmail={setEmail} 
                   setPassword={setPassword}
                 />
-                <BottomNavigation currentForm={currentForm} onFormSwitch={toggleForm} />
+                <BottomNavigation onFormSwitch={toggleForm} />
               </>
             }/>
           </Routes>
