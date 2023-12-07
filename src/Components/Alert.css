@@ -27,7 +27,7 @@
     }
   }
   
-  .close-btn {
+  .alert-close-btn {
     background-color: transparent;
     border:hwb(from color h w b);
     cursor: pointer;

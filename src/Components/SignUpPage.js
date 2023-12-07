@@ -104,7 +104,7 @@ function SignUpPage(props) {
       {errorMessage && 
             <div className="error-message-box">
                 <p className="message">{errorMessage}</p>
-                <button onClick={() => setErrorMessage(null)} className="close-btn">X</button>
+                <button onClick={() => setErrorMessage(null)} className="alert-close-btn">X</button>
             </div>
           }
       {successMessage && 
