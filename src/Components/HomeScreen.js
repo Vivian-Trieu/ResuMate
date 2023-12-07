@@ -9,7 +9,7 @@ function HomeScreen() {
   const [jobs, setJobs] = useState([]);
   const [currentJobIndex, setCurrentJobIndex] = useState(0);
   const [currentScreen, setCurrentScreen] = useState('loading');
-  const [resumeData, setResumeData] = useState([]);
+  const [resumeData, setResumeData] = useState(null);
   const user_id = window.sessionStorage.getItem('user_id');
   
 
@@ -36,7 +36,7 @@ function HomeScreen() {
     }, [])
     
     useEffect(() => {
-      if (resumeData) {
+      if (resumeData !== null) {
   
         console.log('get', resumeData);
         const keysToFilter = ['resume_id', 'user_id', 'upload_date', 'Name', 'Links', 'Education', 'Work Experience'];
