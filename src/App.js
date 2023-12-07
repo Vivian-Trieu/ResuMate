@@ -18,7 +18,7 @@ function App() {
     window.sessionStorage.setItem('currentForm', 'login');
   }
   
-  const [likedJobs, setLikedJobs] = useState([]);
+  // const [likedJobs, setLikedJobs] = useState([]);
   // const [user_id, setUserID] = useState(null);
   // const [name, setName] = useState(null);
   // const [email, setEmail] = useState(null);
@@ -36,12 +36,12 @@ function App() {
   //   fetchUser();
   // }, [window.sessionStorage.getItem('userInfo')]);
 
-  function handleRemoveButton(job){
-    const index = likedJobs.indexOf(job);
-    console.log(index)
-    var updatedJobs = likedJobs.filter(j => j !== job); 
-    setLikedJobs(updatedJobs);
-  }
+  // function handleRemoveButton(job){
+  //   const index = likedJobs.indexOf(job);
+  //   console.log(index)
+  //   var updatedJobs = likedJobs.filter(j => j !== job); 
+  //   setLikedJobs(updatedJobs);
+  // }
 
   
   const toggleForm = (formName) => {
@@ -84,8 +84,8 @@ function App() {
               <>
                 <HeaderTab onFormSwitch={toggleForm}/>
                 <HomeScreen 
-                  likedJobs={likedJobs} 
-                  setLikedJobs={setLikedJobs} 
+                  // likedJobs={likedJobs} 
+                  // setLikedJobs={setLikedJobs} 
                   // user_id={user_id} 
                 />
                 <BottomNavigation onFormSwitch={toggleForm} />
@@ -95,8 +95,8 @@ function App() {
               <>
                 <HeaderTab onFormSwitch={toggleForm} />
                 <SavedJobs 
-                  likedJobs={likedJobs} 
-                  handleRemoveButton={handleRemoveButton}
+                  // likedJobs={likedJobs} 
+                  // handleRemoveButton={handleRemoveButton}
                 />
                 <BottomNavigation onFormSwitch={toggleForm} />        
               </>

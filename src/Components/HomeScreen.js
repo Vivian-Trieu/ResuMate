@@ -4,7 +4,7 @@ import JobCard from './JobCard';
 import Amplify, { API } from 'aws-amplify';
 import spinner from '../img/spinner.gif';
 
-function HomeScreen({ likedJobs, setLikedJobs}) {
+function HomeScreen() {
 
   const [jobs, setJobs] = useState([]);
   const [currentJobIndex, setCurrentJobIndex] = useState(0);
@@ -42,7 +42,7 @@ function HomeScreen({ likedJobs, setLikedJobs}) {
 
   function handleLike() {
     const job = jobs[currentJobIndex];
-    setLikedJobs([...likedJobs, job]);
+    // setLikedJobs([...likedJobs, job]);
     nextJob();
   }
 
