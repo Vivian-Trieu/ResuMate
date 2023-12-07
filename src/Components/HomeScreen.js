@@ -9,36 +9,73 @@ function HomeScreen() {
   const [jobs, setJobs] = useState([]);
   const [currentJobIndex, setCurrentJobIndex] = useState(0);
   const [currentScreen, setCurrentScreen] = useState('loading');
+  const [resumeData, setResumeData] = useState([]);
   const user_id = window.sessionStorage.getItem('user_id');
   
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const apiResponse = await API.post('Jobs', '/query', {
-          body: {
-            query: "New Jersey, BPO, data trend analysis, MSFT Office",
-          },
-        });
 
-        console.log('Resume Info API Response:', apiResponse);
-
-        // Check if the response contains the expected property
-        if (apiResponse && apiResponse.matches) {
-          setJobs(apiResponse.matches);
-          setCurrentScreen('swiping');
-        } else {
-          console.log('Error fetching jobs: Invalid response format');
-          setCurrentScreen('error');
+    useEffect(() => {
+      const fetchResumeData = async () => {
+        try {
+            const apiResponse = await API.post('Resumes', '/get', {
+                contentType: "application/json",
+                body: { user_id: user_id },
+            });
+            
+    
+            if (apiResponse && apiResponse.length > 0) {
+                setResumeData(apiResponse[apiResponse.length - 1]);     
+                console.log('set', apiResponse[apiResponse.length - 1]);   
+                // console.log('get', resumeData);
+            }            
+    
+        } catch (error) {
+            console.error('Error fetching resume info:', error);
         }
-
-      } catch (error) {
-        console.log('Error fetching jobs:', error);
-        setCurrentScreen('error');
       }
-    };
-
-    fetchJobs();
-  }, []);
+      fetchResumeData();
+    }, [])
+    
+    useEffect(() => {
+      if (resumeData) {
+  
+        console.log('get', resumeData);
+        const keysToFilter = ['resume_id', 'user_id', 'upload_date', 'Name', 'Links', 'Education', 'Work Experience'];
+  
+        const filtered = Object.entries(resumeData).filter(([key]) => !keysToFilter.includes(key)).filter(([, value]) => value !== 'N/A').map(([, value]) => value);
+        const string = filtered.join(', ');
+  
+        console.log(string);
+  
+  
+  
+        const fetchJobs = async () => {
+          try {
+            const apiResponse = await API.post('Jobs', '/query', {
+              body: {
+                query: string,
+              },
+            });
+  
+            console.log('Resume Info API Response:', apiResponse);
+  
+            // Check if the response contains the expected property
+            if (apiResponse && apiResponse.matches) {
+              setJobs(apiResponse.matches);
+              setCurrentScreen('swiping');
+            } else {
+              console.log('Error fetching jobs: Invalid response format');
+              setCurrentScreen('error');
+            }
+  
+          } catch (error) {
+            console.log('Error fetching jobs:', error);
+            setCurrentScreen('error');
+          }
+        };
+  
+        fetchJobs();
+      }
+    }, [resumeData]);
 
   function handleLike() {
     const job = jobs[currentJobIndex];
