@@ -7,6 +7,7 @@ import closeButton from "../img/close-button.png"
 import addButton from "../img/add.png"
 import Amplify, { API, Storage } from 'aws-amplify';
 import { useNavigate } from 'react-router-dom';
+import spinner from '../img/spinner.gif';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
@@ -232,9 +233,19 @@ function Profile(props) {
             {isLoading && (
                     <>
                         <div className="delete-pop-up-overlay"></div>
-                        <div className="delete-pop-up">
-                            <p>loading</p>
-                        </div>
+                        <img className="spinner-img"
+                            src={spinner}
+                            style={{ position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                width: '50px',
+                                margin: 'auto',
+                                display: 'block'
+                            }}
+                            alt="Loading..."
+                        />
                     </>
             )}
             </div>
