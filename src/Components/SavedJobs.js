@@ -57,7 +57,7 @@ function SavedJobs() {
               <h3>{job.name}</h3>
               <p>{job.company.name}</p>
               <div className="job-buttons">
-                <button className="apply-btn">Apply</button>
+                <button className="apply-btn" onClick={() => window.open(job.refs.landing_page, '_blank')}>Apply</button>
                 <button className="remove-btn" onClick={() => handleRemoveJob(job.job_id)}>Remove</button>
               </div>
             </div>
