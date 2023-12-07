@@ -58,7 +58,9 @@ function Profile(props) {
                     const skillsArray = skillsString.split(", "); 
                     const trimmedSkills = skillsArray.map(skill => skill.trim()); 
                     setSkills(trimmedSkills);
+                    window.sessionStorage.setItem('resume_id', data.resume_id);
                 });
+            
             }            
 
         } catch (error) {
@@ -86,6 +88,8 @@ function Profile(props) {
     };
 
     const handleResumeUploadEvent = async (user_id, resume_id) => {
+        const previousResumeId = window.sessionStorage.getItem('resume_id');
+        // await deletePreviousResume(user_id, previousResumeId);
         setLoading(true);
         try {
             const resume = {
@@ -103,13 +107,32 @@ function Profile(props) {
             });
             console.log('Handle resume upload event for user:', user_id, 'resumeId:', resume_id);
             console.log('Resume upload event response:', apiResponse);
+            // console.log(apiResponse[0].resume_id)
+            // deletePreviousResume(user_id, apiResponse[0].resume_id);
+            window.sessionStorage.setItem('resume_id', apiResponse.resume_profile_data.resume_id);
+            console.log(apiResponse.resume_profile_data.resume_id);
 
         } catch (error) {
             console.error('Error handling resume upload event:', error);
         }
         setLoading(false);
+
         navigate(0);
     };
+
+    const deletePreviousResume = async (resume_id) => {
+        try {
+            const apiResponse = await API.post('Resumes', '/delete', {
+            body: {
+              user_id: user_id,
+              resume_id: resume_id  
+            }
+          });
+          console.log('Deleted previous resume:', resume_id);
+        } catch (error) {
+          console.log('Error deleting previous resume:', error); 
+        }
+      }
 
     return (
         <>
