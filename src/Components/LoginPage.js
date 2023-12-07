@@ -18,18 +18,18 @@ function LoginPage(props) {
       return;
     }
     
-    // try {
-    const user = {
-        username: email,
-        password: password,
-        email: email,
-    };
+    try {
+      const user = {
+          username: email,
+          password: password,
+          email: email,
+      };
 
       // Make API request to lambda function for login
-      API.post('Users', '/login', {
+      const apiResponse = await API.post('Users', '/login', {
         contentType: "application/json",
         body: user,
-      }).then(apiResponse => {
+      });
 
       const user_id = apiResponse.Items[0].user_id; // Get user_id from api response
       const name = apiResponse.Items[0].name;
@@ -58,14 +58,14 @@ function LoginPage(props) {
         }, 3000);
        
 
-      }).catch(error => {
-      if (error.statusCode === 401) {
-        // setErrorMessage(error.apiResponse.body);
-        console.log("Login failed. Invalid credentials.");
-        }
-      else {console.log('Login API Error:', error);}
-      // console.log('Login API Error:', error.statusCode);
-    })
+      } catch(error) {
+      // if (error.statusCode === 401) {
+      //   setErrorMessage(error.response.data);
+      //   console.log("Login failed. Invalid credentials.");
+      //   }
+      // else {console.log('Login API Error:', error.response.data);}
+      setErrorMessage(error.response.data);
+    };
 
     // setEmail("");
     // setPassword("");

@@ -8,6 +8,8 @@ function SignUpPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null); 
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -38,23 +40,19 @@ function SignUpPage(props) {
       });
       // Handle response data
       console.log('API Response:', apiResponse);
+        setSuccessMessage("Registration successful.");
+        // alert('Registration successful!'); // alert does not show up
+        setTimeout(() => {
+          setSuccessMessage(null); // Optional: Clear message after a few seconds
+          props.onFormSwitch('login'); // pass user_id to home screen
+          navigate('/login');
+        }, 3000);
 
-      // Check if registration was successful and send alert based on status code
-      
-      if (apiResponse.statusCode === 200) {
-        console.log("Registration successful.");
-        alert('Registration successful!'); // alert does not show up
-        return;
-      } else if (apiResponse.statusCode === 400) {
-        console.log("Registration failed.");
-        alert('Registration failed. Account already exists.'); // alert does not show up
-        return;
-      }
       
 
     } catch (error) {
       // Handle errors from API call
-      console.error('API Error:', error);
+      setErrorMessage(error.response.data);
     }
 
     // Reset the form fields
@@ -103,6 +101,17 @@ function SignUpPage(props) {
           <button type="submit" className="register" onClick={handleSignUp}>REGISTER</button>
         </form>
       </div>
+      {errorMessage && 
+            <div className="error-message-box">
+                <p className="message">{errorMessage}</p>
+                <button onClick={() => setErrorMessage(null)} className="close-btn">X</button>
+            </div>
+          }
+      {successMessage && 
+        <div className="success-message-box">
+            <p className="message">{successMessage}</p>
+        </div>
+      }
     </div>
   );
 }
