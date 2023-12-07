@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
+import "./Alert.css";
 import { API } from 'aws-amplify';
 import { useNavigate } from "react-router-dom";
 
@@ -13,22 +14,22 @@ function LoginPage(props) {
   const handleLogin = async () => {
     // Check if fields are empty
     if (!email || !password) {
-      alert('Please enter both email and password.');
+      setErrorMessage('Please enter both email and password.');
       return;
     }
     
-    try {
-      const user = {
+    // try {
+    const user = {
         username: email,
         password: password,
         email: email,
-      };
+    };
 
       // Make API request to lambda function for login
-      const apiResponse = await API.post('Users', '/login', {
+      API.post('Users', '/login', {
         contentType: "application/json",
         body: user,
-      });
+      }).then(apiResponse => {
 
       const user_id = apiResponse.Items[0].user_id; // Get user_id from api response
       const name = apiResponse.Items[0].name;
@@ -37,11 +38,9 @@ function LoginPage(props) {
       console.log('User ID:', user_id); 
 
       // If login was successful, switch to HomeScreen
-      if (apiResponse.statusCode === 401) {
-        alert('Login failed. Invalid credentials.');
-        console.log("Login failed. Invalid credentials.");
-      } else {
-        alert('Login successful!');
+      
+        setSuccessMessage("Login successful!");
+
         console.log("Login successful.");
 
         // Store in SessionStorage instead of local data -> wont be remove once reload the page
@@ -52,12 +51,21 @@ function LoginPage(props) {
         // props.setUserID(user_id)
         // props.setName(name)
         // props.setEmail(user_email)
-        navigate('/home')
-        props.onFormSwitch('home'); // pass user_id to home screen
-      }
-    } catch (error) {
-      console.error('Login API Error:', error);
-    }
+        setTimeout(() => {
+          setSuccessMessage(null); // Optional: Clear message after a few seconds
+          props.onFormSwitch('home'); // pass user_id to home screen
+          navigate('/home');
+        }, 3000);
+       
+
+      }).catch(error => {
+      if (error.statusCode === 401) {
+        // setErrorMessage(error.apiResponse.body);
+        console.log("Login failed. Invalid credentials.");
+        }
+      else {console.log('Login API Error:', error);}
+      // console.log('Login API Error:', error.statusCode);
+    })
 
     // setEmail("");
     // setPassword("");
@@ -96,6 +104,17 @@ function LoginPage(props) {
           </button>
         </form>
       </div>
+      {errorMessage && 
+            <div className="error-message-box">
+                <p className="message">{errorMessage}</p>
+                <button onClick={() => setErrorMessage(null)} className="close-btn">X</button>
+            </div>
+          }
+      {successMessage && 
+        <div className="success-message-box">
+            <p className="message">{successMessage}</p>
+        </div>
+      }
     </div>
   );
 }
