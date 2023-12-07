@@ -26,6 +26,22 @@ function SavedJobs() {
     fetchJobs();
   }, []);
 
+  const handleRemoveJob = async (job_id) => {
+    try {
+      const apiResponse = await API.post('Users', '/unsaveJob', {
+        body: {
+          user_id: user_id,
+          job_id: job_id,
+        },
+      });
+      setJobs(prevJobs => 
+        prevJobs.filter(job => job.job_id !== job_id)
+      );
+      
+  } catch (error) {
+    console.error('Error', error);
+}
+};
 
   return (
     <>
@@ -42,7 +58,7 @@ function SavedJobs() {
               <p>{job.company.name}</p>
               <div className="job-buttons">
                 <button className="apply-btn">Apply</button>
-                <button className="remove-btn" >Remove</button>
+                <button className="remove-btn" onClick={() => handleRemoveJob(job.job_id)}>Remove</button>
               </div>
             </div>
           ))}
