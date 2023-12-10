@@ -28,12 +28,30 @@ function JobCard({ job, onDislikeButton, onLikeButton, user_id }) {
             });
         
         } catch (error) {
-          console.log('Error saving job:', error);
+          console.log('Error saving job to DB:', error);
+        }
+      }
+
+      async function saveToSeenJob(job) {
+        try {
+            const user = {
+                user_id: user_id,
+                job_id: key,
+            };
+            // Send updated data to DynamoDB
+            const apiResponse = await API.post('Users', '/addSeenJob', {
+                contentType: "application/json",
+                body: user,
+            });
+        
+        } catch (error) {
+          console.log('Error saving job to SeenJob:', error);
         }
       }
 
     const handleDislike = () => {
         onDislikeButton();
+        saveToSeenJob(job);
         setSwiped(true);
         setSwipeDirection('left');
     };
@@ -42,6 +60,7 @@ function JobCard({ job, onDislikeButton, onLikeButton, user_id }) {
     const handleLike = () => {
         onLikeButton();
         saveJobToDB(job);
+        saveToSeenJob(job);
         setSwiped(true);
         setSwipeDirection('right');
     };
