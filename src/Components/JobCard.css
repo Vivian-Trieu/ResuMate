@@ -80,6 +80,7 @@
     position: relative;
     padding: 0;
     text-align: start;
+    width: 100%;
 }
 
 ::-webkit-scrollbar {
