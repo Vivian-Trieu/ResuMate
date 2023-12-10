@@ -95,11 +95,16 @@ function HomeScreen() {
   function handleLike() {
     const job = jobs[currentJobIndex];
     // setLikedJobs([...likedJobs, job]);
-    nextJob();
+    setTimeout(() => {
+      nextJob();
+    }, 500);
+    
   }
 
   function handleDislike() {
-    nextJob();
+    setTimeout(() => {
+      nextJob();
+    }, 500);
   }
 
   function nextJob() {

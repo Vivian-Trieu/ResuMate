@@ -74,6 +74,7 @@ function JobCard({ job, onDislikeButton, onLikeButton, user_id }) {
         if (swiped) {
             return {
                 transform: `translateX(${swipeDirection === 'right' ? '100%' : '-100%'})`,
+                opacity: 0 ,
             };
         }
         return {};

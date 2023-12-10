@@ -9,7 +9,7 @@
     height: 35em;
     border-radius: 30px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.5s ease, opacity 0.5s ease; */
 }
 
 .job {
@@ -25,7 +25,11 @@
 }
 
 .job-card.swiped {
+    opacity: 0;
     pointer-events: none;
+    transition: 
+        transform 0.5s ease,
+        opacity 0.4s 0.1s ease; 
     /* Disable pointer events during animation */
 }
 
