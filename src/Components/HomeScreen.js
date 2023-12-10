@@ -33,27 +33,41 @@ function HomeScreen() {
         }
       }
       fetchResumeData();
+
     }, [])
     
     useEffect(() => {
       if (resumeData !== null) {
   
         console.log('get', resumeData);
-        const keysToFilter = ['resume_id', 'user_id', 'upload_date', 'Name', 'Links', 'Education', 'Work Experience'];
+        const keysToFilter = ['resume_id', 'user_id', 'upload_date', 'Name', 'Links', 'Education', 'Work Experience', 'Keywords', 'Skills'];
   
         const filtered = Object.entries(resumeData).filter(([key]) => !keysToFilter.includes(key)).filter(([, value]) => value !== 'N/A').map(([, value]) => value);
         const string = filtered.join(', ');
   
         console.log(string);
-  
+        
+        const user = {
+          queries:
+            [
+              {
+                query: resumeData.Keywords
+              },
+              {
+                query: resumeData.Skills
+              },
+              {
+                query: string
+              }
+            ],
+          user_id: user_id
+        }
   
   
         const fetchJobs = async () => {
           try {
             const apiResponse = await API.post('Jobs', '/query', {
-              body: {
-                query: string,
-              },
+              body: user
             });
   
             console.log('Resume Info API Response:', apiResponse);
