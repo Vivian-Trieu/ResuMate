@@ -10,9 +10,9 @@
 
 .signup-container .div {
   background-color: #ffffff;
-  height: 844px;
+  height: 100dvh;
   width: 390px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .label {

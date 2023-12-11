@@ -155,6 +155,40 @@ body {
     width: 100%;
 }
 
+.sub-info-description p {
+    margin: 0;
+}
+
+.tag p {
+    margin: 0;
+}
+
+
+.delete-pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px; 
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3); 
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-pop-up-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.spinner-img {
+    -ms-interpolation-mode:bicubic;
+}
 
 @media (max-width: 780px) {
     .profile-container {

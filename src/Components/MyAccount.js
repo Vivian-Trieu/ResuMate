@@ -3,9 +3,11 @@ import "./MyAccount.css"
 import UserProfile from "../img/user-profile.png"
 import UserPreference from "../img/user-preference.png"
 import UserSetting from "../img/user-setting.png"
+import { useNavigate } from 'react-router-dom';
 
 
 function MyAccount(props) {
+    const navigate = useNavigate();
 
     return (
         <>
@@ -16,7 +18,7 @@ function MyAccount(props) {
             </div>
           
             <div className="my-account-box">
-                <div className="my-account-block user-profile" onClick={() => props.onFormSwitch('profile')}>
+                <div className="my-account-block user-profile" onClick={() => {props.onFormSwitch('profile'); navigate('/profile')}}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserProfile} alt="User Profile" />
                     </div>
@@ -25,7 +27,7 @@ function MyAccount(props) {
                         <p>Upload or edit your resume to <br></br> create a profile.</p>
                     </div>
                 </div>
-                <div className="my-account-block user-preference" onClick={() => props.onFormSwitch('preferences')}>
+                <div className="my-account-block user-preference" onClick={() => {props.onFormSwitch('preferences'); navigate('/preferences')}}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserPreference} alt="User Preference" />
                     </div>
@@ -34,7 +36,7 @@ function MyAccount(props) {
                         <p>Filter your job matches to match <br></br> your preferences.</p>
                     </div>
                 </div>
-                <div className="my-account-block user-setting" onClick={() => props.onFormSwitch('setting')}>
+                <div className="my-account-block user-setting" onClick={() => {props.onFormSwitch('setting'); navigate('/setting')}}>
                     <div className="my-account-block-img">
                         <img className="my-account-img" src={UserSetting} alt="User Setting" />
                     </div>
@@ -44,7 +46,7 @@ function MyAccount(props) {
                     </div>
                 </div>
             </div>
-            <button className="log-out" onClick={() => props.onFormSwitch('login')}>LOG OUT</button>
+            <button className="log-out" onClick={() => {props.onFormSwitch('login'); window.sessionStorage.clear(); navigate('/login')}}>LOG OUT</button>
         </div>
         <div className="header-placeholder"></div>
         </>

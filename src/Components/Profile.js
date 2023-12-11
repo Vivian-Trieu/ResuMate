@@ -6,22 +6,33 @@ import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 import addButton from "../img/add.png"
 import Amplify, { API, Storage } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom';
+import spinner from '../img/spinner.gif';
 
 function Profile(props) {
     const [selectedFile, setSelectedFile] = useState();
     const [resumeData, setResumeData] = useState([]);
-    //const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
-    //const [education, setEducation] = useState('');
-    //const [skills, setSkills] = useState([]);
-    //const [links, setLinks] = useState('');
+    const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
+    const [education, setEducation] = useState('');
+    const [skills, setSkills] = useState([]);
+    const [links, setLinks] = useState('');
+    const [isLoading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-    console.log("User ID in Profile: ", props.user_id) // pass the user_id from App.js
+    // const [user_id, setUserID] = useState(null);
+    
+    
+    const user_id = window.sessionStorage.getItem('user_id');
+    const name = window.sessionStorage.getItem('name');
+     
+    // console.log(user_id);
+
+    console.log("User ID in Profile: ", user_id) // pass the user_id from App.js
     
     useEffect(() => {
         if (selectedFile) {
             uploadFileToS3(selectedFile);
         }
-
         fetchResumeData();
     }, [selectedFile]);
     
@@ -32,13 +43,26 @@ function Profile(props) {
 
     const fetchResumeData = async () => {
         try {
-            const apiResponse = await API.post('Resumes', '/getProfile', {
+            const apiResponse = await API.post('Resumes', '/get', {
                 contentType: "application/json",
-                body: { user_id: props.user_id },
+                body: { user_id: user_id },
             });
-
-            console.log('Resume Info API Response:', apiResponse);
             
+
+            if (apiResponse && apiResponse.length > 0) {
+                setResumeData(apiResponse[apiResponse.length - 1]); 
+                setResumeData(data => {
+                    setEducation(data.Education);
+                    setWorkExperience(data['Work Experience']);
+                    setLinks(data.Links);
+                    const skillsString = data.Skills;
+                    const skillsArray = skillsString.split(", "); 
+                    const trimmedSkills = skillsArray.map(skill => skill.trim()); 
+                    setSkills(trimmedSkills);
+                    window.sessionStorage.setItem('resume_id', data.resume_id);
+                });
+            
+            }            
 
         } catch (error) {
             console.error('Error fetching resume info:', error);
@@ -47,7 +71,7 @@ function Profile(props) {
 
     const uploadFileToS3 = async (file) => {
         try {
-            const fileName = `resume_${Date.now()}.pdf`; // Generate a unique file name
+            const fileName = `resume_${Date.now()}`; // Generate a unique file name
             await Storage.put(fileName, file, {
                 level: 'public',
                 contentType: 'application/pdf', // Set the content type for PDF files
@@ -57,7 +81,7 @@ function Profile(props) {
             
 
             // Perform any additional actions after uploading the file 
-            handleResumeUploadEvent(props.user_id, fileName);
+            handleResumeUploadEvent(user_id, fileName);
             
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -65,7 +89,9 @@ function Profile(props) {
     };
 
     const handleResumeUploadEvent = async (user_id, resume_id) => {
-        
+        const previousResumeId = window.sessionStorage.getItem('resume_id');
+        // await deletePreviousResume(user_id, previousResumeId);
+        setLoading(true);
         try {
             const resume = {
                 user_id: user_id,
@@ -82,11 +108,32 @@ function Profile(props) {
             });
             console.log('Handle resume upload event for user:', user_id, 'resumeId:', resume_id);
             console.log('Resume upload event response:', apiResponse);
+            // console.log(apiResponse[0].resume_id)
+            // deletePreviousResume(user_id, apiResponse[0].resume_id);
+            window.sessionStorage.setItem('resume_id', apiResponse.resume_profile_data.resume_id);
+            console.log(apiResponse.resume_profile_data.resume_id);
 
         } catch (error) {
             console.error('Error handling resume upload event:', error);
         }
+        setLoading(false);
+
+        navigate(0);
     };
+
+    const deletePreviousResume = async (resume_id) => {
+        try {
+            const apiResponse = await API.post('Resumes', '/delete', {
+            body: {
+              user_id: user_id,
+              resume_id: resume_id  
+            }
+          });
+          console.log('Deleted previous resume:', resume_id);
+        } catch (error) {
+          console.log('Error deleting previous resume:', error); 
+        }
+      }
 
     return (
         <>
@@ -94,7 +141,7 @@ function Profile(props) {
                 <div className="header-tab-box">
                     <button className="close-btn btn-placeholder"><img className="close-button-img" src={closeButton} alt="Close Button"/></button>
                     <div className="header-title"><h2 className="profile">Profile</h2></div>
-                    <button className="close-btn" onClick={() => props.onFormSwitch('account')}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
+                    <button className="close-btn" onClick={() => {props.onFormSwitch('account'); navigate('/account')}}><img className="close-button-img" src={closeButton} alt="Close Button" /></button>
                 </div>
             </div>
             <div className="profile-container">
@@ -107,15 +154,10 @@ function Profile(props) {
                             </button>
                         </div>
 
-                        <h2 className="profile-name">{props.name}</h2>
+                        <h2 className="profile-name">{name}</h2>
 
                         <label className="resume-upload" htmlFor="resume-upload-btn" >UPLOAD RESUME</label>
                             <input type="file" id="resume-upload-btn" accept=".pdf" onChange={handleFileUpload} />
-                       
-                        {/* <button className="resume-upload-btn">
-                            UPLOAD RESUME
-                            
-                        </button> */}
                     </div>
 
                     <div className="resume-info">
@@ -125,13 +167,13 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                    deserunt mollit anim id est laborum.
-                                </p>
+                                {
+                                    education !== "" ? (
+                                        <p>{education}</p>  
+                                    ) : (
+                                        <p></p>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className="sub-info experience">
@@ -140,13 +182,13 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                    deserunt mollit anim id est laborum.
-                                </p>
+                                {
+                                    workExperience !== "" ? (
+                                        <p>{workExperience}</p>  
+                                    ) : (
+                                        <p></p>
+                                    )
+                                }        
                             </div>
                         </div>
                         <div className="sub-info skills">
@@ -155,24 +197,20 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-tags"> 
-                                <div className="tag">
-                                    <p>Tag 1</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 2</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 3</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 4</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 5</p>
-                                </div>
-                                <div className="tag">
-                                    <p>Tag 6</p>
-                                </div>
+                                {
+                                    skills.length > 0 ? (
+                                        skills.map(skill => (
+                                            <div className="tag" key={skill}>
+                                                <p>{skill}</p> 
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="tag">
+                                                <p></p> 
+                                        </div>
+                                    )
+                                }
+                                
                             </div>
                         </div>
                         <div className="sub-info links">
@@ -181,12 +219,35 @@ function Profile(props) {
                                 <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
                             </div>
                             <div className="sub-info-description"> 
-                                <p>
-                                </p>
+                                {
+                                    links !== "" ? (
+                                        <p>{links}</p>  
+                                    ) : (
+                                        <p></p>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
+            {isLoading && (
+                    <>
+                        <div className="delete-pop-up-overlay"></div>
+                        <img className="spinner-img"
+                            src={spinner}
+                            style={{ position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                width: '50px',
+                                margin: 'auto',
+                                display: 'block'
+                            }}
+                            alt="Loading..."
+                        />
+                    </>
+            )}
             </div>
         </>
     );

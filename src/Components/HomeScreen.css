@@ -16,6 +16,10 @@ body {
     background-color: #00A7A6;
 }
 
+.spinner-img {
+    -ms-interpolation-mode:bicubic;
+}
+
 .job-box {
     display: flex;
     flex-direction: column; 
@@ -55,29 +59,6 @@ body {
     justify-content: flex-end;
 }
 
-.job {
-    position: relative;
-    display: flex;
-    /* justify-content: center; */
-    align-items: flex-start;
-    flex-direction: column;
-    margin: 5px auto;
-
-    width: 90%;
-    max-width: 20em;
-    min-height: 380px;
-    max-height: 550px;
-}
-
-.description-box {
-    /* height: calc(100vh - 60vh); */
-    overflow: auto;
-    position: relative;
-    padding: 0;
-    text-align: start;
-    /* margin-bottom: 20px */
-}
-
 ::-webkit-scrollbar {
     visibility: hidden !important;
     display: none;
@@ -89,34 +70,6 @@ body {
     /* background: #eee; */
     height: 30px;
     border-radius: 15px;
-}
-
-
-.job-title {
-    text-align: left;
-    margin-top: 0.3em;
-    font-size: 1.8em !important;
-    margin-bottom: 0 !important;
-    /* margin: 2px; */
-}
-
-p, .company {
-    font-size: 1.3em;
-    margin-top: 0 !important;
-}
-
-.break {
-    width: 100%;
-    border-bottom: 1.25px solid #C3C3C3;
-    margin-top: 0.7em;
-}
-
-.other-attributes {
-    margin: 0.85em 0 0.6em 0;
-}
-
-p, .location {
-    margin-bottom: 0;
 }
 
 p {

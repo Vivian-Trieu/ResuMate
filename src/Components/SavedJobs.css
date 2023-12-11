@@ -52,6 +52,7 @@ body {
     margin: 0;
 }
 
+
 .saved-jobs-box {
     overflow: auto;
     display: flex;
@@ -72,10 +73,11 @@ body {
     background: #EFEFEF;
     /* color: white; */
     margin-top: 0.6em;
-    padding: 0.3em 4em;
+    padding: 0.3em 1em;
     border: 1px solid #c3c3c3;
     border-radius: 15px;
     cursor: pointer;
+    width: 140px;
 }
 
   
@@ -86,7 +88,7 @@ body {
     }
 
     .saved-jobs-box {
-        height: 30em;
+        height: 32em;
     }
     /* .job-box {
         height: 32em;
