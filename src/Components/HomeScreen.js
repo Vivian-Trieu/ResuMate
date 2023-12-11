@@ -74,7 +74,9 @@ function HomeScreen() {
             console.log('Resume Info API Response:', apiResponse);
   
             // Check if the response contains the expected property
-            if (apiResponse && apiResponse.matches) {
+            if (apiResponse.length == 0) {
+              setCurrentScreen('no-more');
+            } else if (apiResponse && apiResponse.matches) {
               setJobs(apiResponse.matches);
               setCurrentScreen('swiping');
             } else {
