@@ -26,7 +26,7 @@ function JobDataContent({jobData, handleRemoveJob, close}) {
                 </div>
                 <div className="saved-button-container">
                     <button className="saved-apply-btn" onClick={() => window.open(jobData.refs.landing_page, '_blank')}>Apply</button>
-                    <button className="saved-remove-btn" onClick={() => handleRemoveJob(jobData.job_id)}>Remove</button>
+                    <button className="saved-remove-btn" onClick={() => {handleRemoveJob(jobData.job_id); close()}}>Remove</button>
                 </div>
             </div>
         </>
