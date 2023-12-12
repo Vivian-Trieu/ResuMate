@@ -1,0 +1,103 @@
+.saved-job-card-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    padding: 1em;
+    text-align: center;
+    width: 20em;
+    height: 35em;
+    border-radius: 30px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* transition: transform 0.5s ease, opacity 0.5s ease; */
+}
+
+.saved-close-btn {
+    position: absolute;
+    top: 0.8px; 
+    right: 0.6em;
+    cursor: pointer;
+    font-size: 2.5em;
+  }
+
+.saved-job-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 5px auto;
+    width: 90%;
+    max-width: 20em;
+    min-height: 380px;
+    max-height: 550px;
+}
+
+
+.saved-button-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saved-apply-btn,
+.saved-remove-btn {
+    display: flex;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5em 1em;
+    /* border: none; */
+    /* border-radius: 5px; */
+    font-size: 1em;
+    outline: none;
+    transition: background-color 0.3s ease;
+    background-color: #00a7a6;
+    color: #ffffff;
+    border-radius: 10px;
+    /* position: relative; */
+    padding: 3% 15%;
+    /* cursor: pointer; */
+}
+
+
+.saved-job-title {
+    text-align: left;
+    margin-top: 0.3em;
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.saved-company {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.saved-home-break {
+    width: 100%;
+    border-bottom: 1.25px solid #C3C3C3;
+    margin-top: 0.5em;
+}
+
+.saved-other-attributes {
+    margin: 0 0 0.6em 0;
+}
+
+.saved-location {
+    margin-bottom: 0;
+}
+
+.saved-description-box {
+    overflow: auto;
+    position: relative;
+    padding: 0;
+    text-align: start;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
