@@ -5,6 +5,7 @@ import "./Profile.css"
 import "./HeaderTab.css"
 import closeButton from "../img/close-button.png"
 import addButton from "../img/add.png"
+import editText from "../img/edit-text.png"
 import Amplify, { API, Storage } from 'aws-amplify';
 import { useNavigate } from 'react-router-dom';
 import spinner from '../img/spinner.gif';
@@ -15,14 +16,26 @@ function Profile(props) {
     const [workExperience, setWorkExperience] = useState(''); // ignore all these for now
     const [education, setEducation] = useState('');
     const [skills, setSkills] = useState([]);
+    const [skillsStr, setSkillsStr] = useState([]);
     const [links, setLinks] = useState('');
+    const [location, setLocation] = useState('');
+    const [keywords, setKeywords] = useState([]);
+    const [keywordsStr, setKeywordsStr] = useState([]);
     const [isLoading, setLoading] = useState(false);
+    const [showPopUp, setShowPopUp] = useState(false);
+    const open = () => setShowPopUp(true);  
+    const close = () => setShowPopUp(false);
+    const [editingField, setEditingField] = useState(null);
+    const [updatedValue, setUpdatedValue] = useState(null);
+    const [originalSkills, setOriginalSkills] = useState();
+    const [originalKeywords, setOriginalKeywords] = useState();
     const navigate = useNavigate();
 
     // const [user_id, setUserID] = useState(null);
     
     
     const user_id = window.sessionStorage.getItem('user_id');
+    // const resume_id = window.sessionStorage.getItem('resume_id');
     const name = window.sessionStorage.getItem('name');
      
     // console.log(user_id);
@@ -41,6 +54,14 @@ function Profile(props) {
         setSelectedFile(fileInput.files[0]);
     }
 
+    const handleStringToArray = (input) => {
+        const str = input;
+        const arr = str.split(",");
+        const trimmed = arr.map(e => e.trim());
+        return trimmed;
+
+    }
+
     const fetchResumeData = async () => {
         try {
             const apiResponse = await API.post('Resumes', '/get', {
@@ -55,10 +76,11 @@ function Profile(props) {
                     setEducation(data.Education);
                     setWorkExperience(data['Work Experience']);
                     setLinks(data.Links);
-                    const skillsString = data.Skills;
-                    const skillsArray = skillsString.split(", "); 
-                    const trimmedSkills = skillsArray.map(skill => skill.trim()); 
-                    setSkills(trimmedSkills);
+                    setLocation(data.Location);
+                    setSkills(handleStringToArray(data.Skills));
+                    setSkillsStr(data.Skills);
+                    setKeywords(handleStringToArray(data.Keywords));
+                    setKeywordsStr(data.Keywords);
                     window.sessionStorage.setItem('resume_id', data.resume_id);
                 });
             
@@ -90,7 +112,7 @@ function Profile(props) {
 
     const handleResumeUploadEvent = async (user_id, resume_id) => {
         const previousResumeId = window.sessionStorage.getItem('resume_id');
-        // await deletePreviousResume(user_id, previousResumeId);
+        await deletePreviousResume(previousResumeId);
         setLoading(true);
         try {
             const resume = {
@@ -135,6 +157,56 @@ function Profile(props) {
         }
       }
 
+    const handleEditButton = (field) => {
+        open();
+        setEditingField(field);
+        setOriginalSkills(skillsStr); 
+        setOriginalKeywords(keywordsStr);
+    }
+
+    //// working on confirm button to change the attribute
+
+    const handleConfirmEdit = async (field) => {
+        const resume_id = window.sessionStorage.getItem('resume_id');
+        try {
+            const user = {
+                user_id: user_id,
+                resume_id: resume_id,
+                update_attributes: { [field]: updatedValue },
+            };
+            // Send updated data to DynamoDB
+            const apiResponse = await API.post('Resumes', '/update', {
+                contentType: "application/json",
+                body: user,
+            });
+
+            console.log('API Response:', apiResponse);
+            setEditingField(null);
+            setUpdatedValue('');
+            close();
+
+        } catch (error) {
+            console.error('Failed to update user attribute:', error)
+        }
+    }
+
+    const handleCancelEdit = () => {
+        if (editingField === "Skills") {
+            setSkillsStr(originalSkills);
+            setSkills(handleStringToArray(originalSkills));
+          }
+          if (editingField === "Keywords") {
+            setKeywordsStr(originalKeywords);
+            setKeywords(handleStringToArray(originalKeywords)); 
+        }
+        setEditingField(null);
+        setUpdatedValue(null); 
+        
+        close();
+      }
+      
+
+
     return (
         <>
             <div className="header-placeholder">
@@ -164,7 +236,7 @@ function Profile(props) {
                         <div className="sub-info education">
                             <div className="sub-info-title">
                                 <h4>Education</h4>
-                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
+                                {/* <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button> */}
                             </div>
                             <div className="sub-info-description"> 
                                 {
@@ -179,7 +251,7 @@ function Profile(props) {
                         <div className="sub-info experience">
                             <div className="sub-info-title">
                                 <h4>Work experience</h4>
-                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
+                                {/* <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button> */}
                             </div>
                             <div className="sub-info-description"> 
                                 {
@@ -191,10 +263,25 @@ function Profile(props) {
                                 }        
                             </div>
                         </div>
+                        <div className="sub-info location">
+                            <div className="sub-info-title">
+                                <h4>Location</h4>
+                                <button className="edit" onClick={() => handleEditButton('Location')}><img className="edit-text-img" src={editText} alt="Edit Text"/></button>
+                            </div>
+                            <div className="sub-info-description"> 
+                                {
+                                    location !== "" ? (
+                                        <p>{location}</p>  
+                                    ) : (
+                                        <p></p>
+                                    )
+                                }        
+                            </div>
+                        </div>
                         <div className="sub-info skills">
                             <div className="sub-info-title">
                                 <h4>Skills</h4>
-                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
+                                <button className="edit" onClick={() => handleEditButton('Skills')}><img className="edit-text-img" src={editText} alt="Edit Text"/></button>
                             </div>
                             <div className="sub-info-tags"> 
                                 {
@@ -213,10 +300,32 @@ function Profile(props) {
                                 
                             </div>
                         </div>
+                        <div className="sub-info keywords">
+                            <div className="sub-info-title">
+                                <h4>Keywords</h4>
+                                <button className="edit" onClick={() => handleEditButton('Keywords')}><img className="edit-text-img" src={editText} alt="Edit Text"/></button>
+                            </div>
+                            <div className="sub-info-tags"> 
+                                {
+                                    keywords.length > 0 ? (
+                                        keywords.map(keyword => (
+                                            <div className="tag" key={keyword}>
+                                                <p>{keyword}</p> 
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="tag">
+                                                <p></p> 
+                                        </div>
+                                    )
+                                }
+                                
+                            </div>
+                        </div>
                         <div className="sub-info links">
                             <div className="sub-info-title">
                                 <h4>Links</h4>
-                                <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button>
+                                {/* <button className="add"><img className="add-button-img" src={addButton} alt="Add Button"/></button> */}
                             </div>
                             <div className="sub-info-description"> 
                                 {
@@ -248,6 +357,29 @@ function Profile(props) {
                         />
                     </>
             )}
+            {showPopUp && (
+                    <>
+                        <div className="edit-pop-up-overlay"></div>
+                        <div className="edit-pop-up">
+                            <div className="edit-pop-up-content">
+                                {editingField === 'Location' && (
+                                    <textarea value={location} onChange={e => {setLocation(e.target.value); setUpdatedValue(e.target.value)}}/>
+                                )}
+                                {editingField === 'Skills' && (
+                                    <textarea value={skillsStr} onChange={e => {setSkillsStr(e.target.value); setSkills(handleStringToArray(e.target.value)); setUpdatedValue(e.target.value)}}/>
+                                )}
+                                {editingField === 'Keywords' && (
+                                    <textarea value={keywordsStr} onChange={e => {setKeywordsStr(e.target.value); setKeywords(handleStringToArray(e.target.value)); setUpdatedValue(e.target.value)}}/>
+                                )}
+                            </div>
+                        
+                            <div className="edit-pop-up-buttons">
+                                <button onClick={() => handleCancelEdit()}>Cancel</button>
+                                <button onClick={() => handleConfirmEdit(editingField)}>Confirm</button>
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     );

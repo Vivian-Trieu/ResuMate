@@ -141,7 +141,7 @@ body {
     justify-content: space-between;
 }
 
-.add {
+.edit {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -151,7 +151,7 @@ body {
 }
 
 
-.add-button-img {
+.edit-text-img {
     width: 100%;
 }
 
@@ -164,7 +164,7 @@ body {
 }
 
 
-.delete-pop-up {
+.edit-pop-up {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -177,13 +177,38 @@ body {
     flex-direction: column;
 }
 
-.delete-pop-up-overlay {
+.edit-pop-up-overlay {
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
+}
+
+.edit-pop-up-content {
+    margin-bottom: 1em;
+}
+
+.edit-pop-up-content textarea{
+    min-width: 20em;
+    /* margin-bottom: 1em; */
+}
+
+.edit-pop-up-buttons {
+    display: flex;
+    /* border-top: 1px solid black; */
+    /* width: 100%; */
+    justify-content: space-between;
+}
+
+.edit-pop-up-buttons button{
+    background-color: #00a7a6;
+    color: #ffffff;
+    border-radius: 5px;
+    /* position: relative; */
+    padding: 3% 15%;
+    cursor: pointer;
 }
 
 .spinner-img {
