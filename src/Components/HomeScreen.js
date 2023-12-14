@@ -27,7 +27,10 @@ function HomeScreen() {
                 setResumeData(apiResponse[apiResponse.length - 1]);     
                 console.log('set', apiResponse[apiResponse.length - 1]);   
                 // console.log('get', resumeData);
-            }            
+            }
+            else if (apiResponse.length == 0) {
+                setCurrentScreen('no-resume');
+            }
     
         } catch (error) {
             console.error('Error fetching resume info:', error);
@@ -74,7 +77,9 @@ function HomeScreen() {
             console.log('Resume Info API Response:', apiResponse);
   
             // Check if the response contains the expected property
-            if (apiResponse && apiResponse.matches) {
+            if (apiResponse.length == 0) {
+              setCurrentScreen('no-more');
+            } else if (apiResponse && apiResponse.matches) {
               setJobs(apiResponse.matches);
               setCurrentScreen('swiping');
             } else {
@@ -111,6 +116,7 @@ function HomeScreen() {
     setCurrentJobIndex((prevIndex) => {
       const newIndex = prevIndex + 1;
       if (newIndex >= jobs.length) {
+        setCurrentScreen('loading')
         setIsLoadingMore(true);
         return prevIndex;
         // setCurrentScreen('no-more');
@@ -151,8 +157,9 @@ function HomeScreen() {
 
         console.log('Resume Info API Response:', apiResponse);
 
-        // Check if the response contains the expected property
-        if (apiResponse && apiResponse.matches) {
+        if (apiResponse.length == 0) {
+          setCurrentScreen('no-more');
+        } else if (apiResponse && apiResponse.matches) {
           // setJobs(apiResponse.matches);
           setCurrentScreen('swiping');
           setJobs(prevJobs => [...prevJobs, ...apiResponse.matches]);
@@ -170,6 +177,7 @@ function HomeScreen() {
     };
     
     fetchAdditionalJobs();
+    setCurrentScreen('swiping')
 
   }, [isLoadingMore]);
 
@@ -224,6 +232,21 @@ function HomeScreen() {
             <div className="job no-more">
               <h2>No more jobs</h2>
               <p>You've seen all available jobs. Check back later.</p>
+            </div>
+          </div>
+        </div>
+        <div className="header-placeholder"></div>
+      </>
+    );
+  } else if (currentScreen === 'no-resume') {
+    content = (
+      <>
+        <div className="header-placeholder"></div>
+        <div className="home-screen-container">
+          <div className="job-box">
+            <div className="job no-more">
+              <h2>No resume uploaded</h2>
+              <p>Please upload your resume to start your recommendation.</p>
             </div>
           </div>
         </div>
